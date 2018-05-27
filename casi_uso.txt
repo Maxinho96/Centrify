@@ -1,0 +1,99 @@
+Casi d’uso:
+
+UC1: Registrazione allievo
+Attore primario: Responsabile del centro
+Attore finale: Allievo
+Precondizioni: Il responsabile del centro è autenticato nel sistema
+Scenario principale di successo:
+	1. Un nuovo allievo si reca presso un centro di formazione e richiede la registrazione
+	2. Il responsabile seleziona l’operazione “Registra allievo”
+	3. Il responsabile inserisce i dati comunicati dall’allievo, ovvero nome, cognome, email, numero di telefono, data di nascita e luogo di nascita
+	4. Il sistema mostra i dati appena inseriti e chiede conferma
+	5. Il responsabile conferma l’inserimento
+	6. Il sistema registra il nuovo allievo e mostra la scheda dell’allievo
+Estensioni:
+	4a. Il sistema rileva che l’Allievo era già registrato
+	    1. Il sistema restituisce un messaggio d’errore
+	    2. Il responsabile annulla l’operazione
+	4b. Il sistema rileva che il centro ha raggiunto la capienza massima
+	    1. Il sistema restituisce un messaggio d’errore
+	    2. Il responsabile annulla l’operazione
+	6a. Il responsabile annulla l’inserimento e non viene registrato nessun allievo
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+UC2: Ricerca allievo
+Attore primario: Responsabile del centro
+Precondizioni: Il responsabile del centro è autenticato nel sistema
+Scenario principale di successo:
+	1. Il responsabile seleziona l’operazione “Ricerca allievo”
+	2. Il responsabile inserisce nome e/o cognome e/o email di un allievo
+	3. Il sistema restituisce la lista degli allievi che corrispondono ai dati inseriti
+	4. Il responsabile seleziona un allievo dalla lista
+	5. Il sistema restituisce una scheda con i dati dell’allievo selezionato, che contiene anche la lista delle attività a cui egli è iscritto
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+UC3: Assegnazione attività ad allievo
+Attore primario: Responsabile del centro
+Attore finale: Allievo
+Precondizioni: Il responsabile del centro è autenticato nel sistema ed è aperta la scheda di un allievo
+Scenario principale di successo:
+	1. L’allievo richiede l’iscrizione ad un’attività del centro
+	2. Il responsabile seleziona “Aggiungi attività” dalla scheda dell’allievo
+	3. Il sistema restituisce la lista di tutte le attività del centro a cui l’allievo non è iscritto
+	4. Il responsabile seleziona un’attività dalla lista
+	5. Il sistema registra l’iscrizione dell’allievo all’attività e restituisce la scheda aggiornata dell’allievo
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+UC4: Report attività del centro
+Attore primario: Responsabile del centro
+Precondizioni: Il responsabile del centro è autenticato nel sistema
+Scenario principale di successo:
+	1. Il responsabile seleziona l’operazione “Report attività del centro”
+	2. Il sistema restituisce la lista di tutte le attività del centro
+	3. Il responsabile seleziona un’attività
+	4. Il sistema mostra la scheda dell’attività selezionata, che contiene anche gli allievi iscritti ad essa
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+UC5: Registrazione nuova attività di un centro
+Attore primario: Responsabile del centro
+Precondizioni: Il responsabile del centro è autenticato nel sistema
+Scenario principale di successo:
+	1. Il responsabile seleziona l’operazione “Aggiungi attività”
+	2. Il responsabile inserisce i dati dell’attività
+	3. Il sistema registra la nuova attività del centro e mostra la sua scheda
+Estensioni: 
+	2a. Il sistema rileva che esiste già un’attività con lo stesso nome
+	    1. Il sistema mostra un messaggio d’errore
+	    2. Il responsabile annulla l’operazione
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+UC6: Registrazione nuovo centro dell’azienda
+Attore primario: Direttore dell’azienda
+Precondizioni: Il direttore dell’azienda è autenticato nel sistema
+Scenario principale di successo:
+	1. Il direttore seleziona l’operazione “Aggiungi centro”
+	2. Il direttore inserisce i dati del centro
+	3. Il sistema registra il nuovo centro dell’azienda e mostra la sua scheda
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+UC7: Registrazione nuovo responsabile di un centro
+Attore primario: Direttore dell’azienda
+Precondizioni: Il direttore dell’azienda è autenticato nel sistema
+Scenario principale di successo:
+	1. Il direttore seleziona l’operazione “Aggiungi responsabile”
+	2. Il sistema mostra la lista dei centri che non hanno ancora un responsabile
+	3. Il direttore seleziona un centro dalla lista
+	4. Il direttore inserisce i dati del nuovo responsabile
+	5. Il sistema registra il nuovo responsabile del centro e mostra la scheda del centro
+Estensioni:
+	3a. Il sistema rileva che non sono presenti centri senza responsabile
+	    1. Il sistema mostra un messaggio d’errore
+	    2. Il direttore annulla l’operazione
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
