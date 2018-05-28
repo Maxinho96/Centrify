@@ -20,7 +20,7 @@
 
         <!-- Generated: 2018-05-24 16:37:20 +0200 -->
 
-        <title>Report Centro</title>
+        <title>Titolo Attività</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
@@ -46,7 +46,7 @@
 
         <!-- Input Mask Plugin -->
         <script src="./assets/plugins/input-mask/plugin.js"></script>
-        
+
         <!-- Custom CSS -->
         <link href="./assets/css/custom.css" rel="stylesheet" />
 
@@ -64,7 +64,7 @@
                                 <div class="dropdown">
                                     <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
                                         <span class="avatar" style="background-image: url(./assets/images/profile_resp.png)">
-                                             <span class="avatar-status bg-green"></span>
+                                            <span class="avatar-status bg-green"></span>
                                         </span>
                                         <span class="ml-2 d-none d-lg-block">
                                             <span class="text-default">Marco Rossi</span>
@@ -106,7 +106,7 @@
                                     <li class="nav-item">
                                         <a href="#" class="nav-link"><i class="fe fe-user-plus"></i> Aggiungi allievo</a>
                                     </li>
-                                                                        
+
                                     <li class="nav-item">
                                         <a href="#" class="nav-link"><i class="fe fe-file-plus"></i> Aggiungi attività</a>
                                     </li>                                    
@@ -115,47 +115,91 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="my-3 my-md-5">
                     <div class="container">
                         <div class="row">
-                            <!-- inserire loop -->
-                            <!-- attività -->
-                            <div class="col-lg-6">
+                            <div class="col-md-6 col-xl-4">
                                 <div class="card">
-                                    <div class="card-status card-status-left bg-blue"></div>
                                     <div class="card-header">
-                                        <h3 class="card-title">Nome Attività</h3>
-                                        <div class="card-options">
-                                            <a href="./template_attivita.html" class="btn btn-primary btn-sm">Apri</a>
-                                        </div>
+                                        <h1 class="page-title">Nome Attività</h1>
                                     </div>
                                     <div class="card-body">
-                                    descrizione attività... Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam deleniti fugit incidunt, iste, itaque minima neque pariatur perferendis sed suscipit velit vitae voluptatem. A consequuntur, deserunt eaque error nulla temporibus!
+                                        <p>
+                                            <span class="card-title">Data: </span>
+                                            <span>11/09/2018</span>
+                                        </p>
+                                        <p>
+                                            <span class="card-title">Orario: </span>
+                                            <span>13:30</span>
+                                        </p>
+                                        <p>
+                                            <span class="card-title">Docente: </span>
+                                            <span>Ennio Malavita</span>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
-                            <!-- fine attività -->                            
+
+                            <div class="col-lg-8">
+                                <div class="row row-cards row-deck">
+                                    <div class="col-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h1 class="card-title">Utenti iscritti</h1>
+                                            </div>
+                                            <div class="table-responsive">
+                                                <table class="table table-hover table-outline table-vcenter text-nowrap card-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="text-center w-1"><i class="icon-people"></i></th>
+                                                            <th>Nome</th>
+                                                            <th>Cognome</th>
+                                                            <th>Data iscrizione</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="text-center">
+                                                                <span class="avatar avatar-cyan d-block">DB</span>
+                                                            </td>
+                                                            <td>
+                                                                <div>Diego</div>
+                                                            </td>
+                                                            <td>
+                                                               <div>Barbieri</div>
+                                                            </td>
+                                                            <td>
+                                                                <div>11/03/2018</div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <footer class="footer">
-            <div class="container">
-              <div class="row align-items-center flex-row-reverse">
-                <div class="col-auto ml-lg-auto">
-                  <div class="row align-items-center">
-                    <div class="col-auto">
-                      <a href="#" class="btn btn-outline-primary btn-sm">Source code</a>
+
+            <footer class="footer">
+                <div class="container">
+                    <div class="row align-items-center flex-row-reverse">
+                        <div class="col-auto ml-lg-auto">
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <a href="#" class="btn btn-outline-primary btn-sm">Source code</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
+                            Sviluppato con amore da Marco Berbeglia, Diego Barbieri e Massimiliano Bruni
+                        </div>
                     </div>
-                  </div>
                 </div>
-                <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
-                    Sviluppato con amore da Marco Berbeglia, Diego Barbieri e Massimiliano Bruni
-                </div>
-              </div>
-            </div>
-      </footer>
-    </body>
-</html>
+            </footer>
+            </body>
+        </html>
