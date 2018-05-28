@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Allievo {
@@ -29,6 +31,7 @@ public class Allievo {
 	
 	private String telefono;
 	
+	@Temporal(TemporalType.DATE)
 	private Date dataDiNascita;
 	
 	private String luogoDiNascita;

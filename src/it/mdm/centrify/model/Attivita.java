@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Attivita {
@@ -22,6 +24,7 @@ public class Attivita {
 	private String nome;
 	
 	@Column(nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataOraSvolgimento;
 	
 	private String professore;
