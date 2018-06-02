@@ -1,5 +1,6 @@
 package it.mdm.centrify.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,22 +16,34 @@ import javax.persistence.TemporalType;
 
 @Entity
 public class Attivita {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@Column(nullable = false)
 	private String nome;
-	
+
 	@Column(nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataOraSvolgimento;
-	
+
 	private String professore;
-	
+
+	private String descrizione;
+
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Allievo> allievi;
+
+	public Attivita() {};
+	
+	public Attivita(String nome, Date dataOraSvolgimento, String professore, String descrizione) {
+		this.nome = nome;
+		this.dataOraSvolgimento = dataOraSvolgimento;
+		this.professore = professore;
+		this.allievi = new ArrayList<Allievo>();
+		this.descrizione = descrizione;
+	}
 
 	public Long getId() {
 		return id;
@@ -72,4 +85,12 @@ public class Attivita {
 		this.allievi = allievi;
 	}
 
+	public String getDescrizione() {
+		return descrizione;
+	}
+
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
+	}
+	
 }
