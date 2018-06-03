@@ -1,6 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<fmt:formatDate value="${attivita.dataOraSvolgimento}" var="data" type="date" pattern="dd/MM/yyyy" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" dir="ltr">
 <head>
@@ -19,19 +18,19 @@
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
 
-<link rel="icon" href="assets/images/favicon.png" type="image/x-icon" />
-<link rel="shortcut icon" href="assets/images/favicon.png"
+<link rel="icon" href="/assets/images/favicon.png" type="image/x-icon" />
+<link rel="shortcut icon" href="/assets/images/favicon.png"
 	type="image/x-icon" />
 
 <!-- Generated: 2018-05-24 16:37:20 +0200 -->
 
-<title>${attivita.nome} </title>
+<title>${attivita.nome}</title>
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
-<script src="./assets/js/require.min.js"></script>
+<script src="/assets/js/require.min.js"></script>
 <script>
 	requirejs.config({
 		baseUrl : '.'
@@ -39,20 +38,20 @@
 </script>
 
 <!-- Dashboard Core -->
-<link href="./assets/css/dashboard.css" rel="stylesheet" />
-<script src="./assets/js/dashboard.js"></script>
+<link href="/assets/css/dashboard.css" rel="stylesheet" />
+<script src="/assets/js/dashboard.js"></script>
 
 
 <!-- c3.js Charts Plugin -->
-<link href="./assets/plugins/charts-c3/plugin.css" rel="stylesheet" />
-<script src="./assets/plugins/charts-c3/plugin.js"></script>
+<link href="/assets/plugins/charts-c3/plugin.css" rel="stylesheet" />
+<script src="/assets/plugins/charts-c3/plugin.js"></script>
 
 <!-- Google Maps Plugin -->
-<link href="./assets/plugins/maps-google/plugin.css" rel="stylesheet" />
-<script src="./assets/plugins/maps-google/plugin.js"></script>
+<link href="/assets/plugins/maps-google/plugin.css" rel="stylesheet" />
+<script src="/assets/plugins/maps-google/plugin.js"></script>
 
 <!-- Input Mask Plugin -->
-<script src="./assets/plugins/input-mask/plugin.js"></script>
+<script src="/assets/plugins/input-mask/plugin.js"></script>
 
 </head>
 <body class="">
@@ -61,15 +60,15 @@
 			<div class="header py-4">
 				<div class="container">
 					<div class="d-flex">
-						<a class="header-brand" href="./index.html"> <img
-							src="./assets/images/logo_title.png" class="header-brand-img"
+						<a class="header-brand" href="/index.html"> <img
+							src="/assets/images/logo_title.png" class="header-brand-img"
 							alt="Centrify logo">
 						</a>
 						<div class="d-flex order-lg-2 ml-auto">
 							<div class="dropdown">
 								<a href="#" class="nav-link pr-0 leading-none"
 									data-toggle="dropdown"> <span class="avatar"
-									style="background-image: url(./assets/images/profile_resp.png)">
+									style="background-image: url(/assets/images/profile_resp.png)">
 										<span class="avatar-status bg-green"></span>
 								</span> <span class="ml-2 d-none d-lg-block"> <span
 										class="text-default">Marco Rossi</span> <small
@@ -107,15 +106,15 @@
 						</div>
 						<div class="col-lg order-lg-first">
 							<ul class="nav nav-tabs border-0 flex-column flex-lg-row">
-								<li class="nav-item"><a href="./mainpage_resp.html"
+								<li class="nav-item"><a href="/mainpage"
 									class="nav-link active"><i class="fe fe-home"></i> Home</a></li>
-								<li class="nav-item"><a href="./aggiungi_allievo.html"
+								<li class="nav-item"><a href="/aggiungi_allievo"
 									class="nav-link"><i class="fe fe-user-plus"></i> Aggiungi
 										allievo</a></li>
 
-								<li class="nav-item"><a href="./aggiungi_attivita.html"
+								<li class="nav-item"><a href="/aggiungi_attivita"
 									class="nav-link"><i class="fe fe-file-plus"></i> Aggiungi
-										attivitÃ </a></li>
+										attività </a></li>
 							</ul>
 						</div>
 					</div>
@@ -129,15 +128,17 @@
 						<div class="col-md-6 col-lg-4">
 							<div class="card">
 								<div class="card-header">
-									<h1 class="page-title">${attivita.nome} </h1>
+									<h1 class="page-title">${attivita.nome}</h1>
 								</div>
 								<div class="card-body">
 									<p>${attivita.descrizione}</p>
 									<p>
+										<fmt:formatDate value="${attivita.dataOraSvolgimento}" var="data" type="date" pattern="dd/MM/yyyy" />
 										<span class="card-title">Data: </span> <span>${data}</span>
 									</p>
-									<p>
-										<span class="card-title">Orario: </span> <span>13:30</span>
+									<p>	
+										<fmt:formatDate value="${attivita.dataOraSvolgimento}" var="ora" type="time" pattern="H:m" />
+										<span class="card-title">Orario: </span> <span>${ora}</span>
 									</p>
 									<p>
 										<span class="card-title">Docente: </span> <span>${attivita.professore}</span>
