@@ -1,2 +1,6 @@
 /build/
 /target/
+
+*.docx#
+
+src/main/resources/application\.properties
