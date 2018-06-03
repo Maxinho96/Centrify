@@ -132,7 +132,7 @@
 									<div class="card-header">
 										<h3 class="card-title">${att.nome}</h3>
 										<div class="card-options">
-											<a href="${'/scheda_attivita/' += att.id}" class="btn btn-primary btn-sm">Apri</a>
+											<a href="/scheda_attivita/${att.id}" class="btn btn-primary btn-sm">Apri</a>
 										</div>
 									</div>
 									<div class="card-body">${att.descrizione}</div>
