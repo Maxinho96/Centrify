@@ -54,7 +54,7 @@
                 <div class="header py-4">
                     <div class="container">
                         <div class="d-flex">
-                            <a class="header-brand" href="/index.html">
+                            <a class="header-brand" href="/mainpage">
                                 <img src="/assets/images/logo_title.png" class="header-brand-img" alt="Centrify logo">
                             </a>
                             <div class="d-flex order-lg-2 ml-auto">
@@ -72,7 +72,7 @@
                                         <a class="dropdown-item" href="#">
                                             <i class="dropdown-icon fe fe-user"></i> Profilo
                                         </a>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="/logout">
                                             <i class="dropdown-icon fe fe-log-out"></i> Sign out
                                         </a>
                                     </div>
@@ -98,14 +98,14 @@
                             <div class="col-lg order-lg-first">
                                 <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
                                     <li class="nav-item">
-                                        <a href="/mainpage_resp.html" class="nav-link active"><i class="fe fe-home"></i> Home</a>
+                                        <a href="/mainpage" class="nav-link active"><i class="fe fe-home"></i> Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="/aggiungi_allievo.html" class="nav-link"><i class="fe fe-user-plus"></i> Aggiungi allievo</a>
+                                        <a href="/aggiungi_allievo" class="nav-link"><i class="fe fe-user-plus"></i> Aggiungi allievo</a>
                                     </li>
 
                                     <li class="nav-item">
-                                        <a href="/aggiungi_attivita.html" class="nav-link"><i class="fe fe-file-plus"></i> Aggiungi attività</a>
+                                        <a href="/aggiungi_attivita" class="nav-link"><i class="fe fe-file-plus"></i> Aggiungi attività</a>
                                     </li>                                    
                                 </ul>
                             </div>
@@ -162,7 +162,7 @@
                                                     <tbody>
                                                         <tr>
                                                             <td class="text-center">
-                                                                <a href="template_attivita.html" class="avatar avatar-green d-block">NA</a>
+                                                                <a href="/scheda_attivita" class="avatar avatar-green d-block">NA</a>
                                                             </td>
                                                             <td>
                                                                 <div>Nome Attività</div>

@@ -19,6 +19,11 @@ public class ResponsabileController {
 		return "mainpage_resp";
 	}
 	
+	@RequestMapping("/scheda_allievo")
+	public String schedaAllievo() {
+		return "template_allievo";
+	}
+	
 	@RequestMapping("/aggiungi_allievo")
 	public String aggiungiAllievo() {
 		return "aggiungi_allievo";
@@ -41,4 +46,8 @@ public class ResponsabileController {
 		return "aggiungi_attivita";
 	}
 
+//	@RequestMapping("/logout")
+//	public String logout() {
+//		return "index";
+//	}
 }
