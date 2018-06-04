@@ -53,7 +53,7 @@
                 <div class="header py-4">
                     <div class="container">
                         <div class="d-flex">
-                            <a class="header-brand" href="/index.html"> 
+                            <a class="header-brand" href="/mainpage"> 
                                 <img src="/assets/images/logo_title.png" class="header-brand-img" alt="Centrify logo">
                             </a>
                             <div class="d-flex order-lg-2 ml-auto">
