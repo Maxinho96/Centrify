@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" dir="ltr">
     <head>
@@ -17,8 +18,6 @@
 
         <link rel="icon" href="/assets/images/favicon.png" type="image/x-icon"/>
         <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon"/>
-
-        <!-- Generated: 2018-05-24 16:37:20 +0200 -->
 
         <title>Aggiungi allievo</title>
 
@@ -127,13 +126,13 @@
                                             <div class="col-md-3 col-lg-3">
                                                 <div class="form-group">
                                                     <label class="form-label">Nome</label>
-                                                    <input type="text" name="field-name" class="form-control" placeholder="" />
+                                                    <input type="text" name="nome_allievo" class="form-control" placeholder="" />
                                                 </div>      
                                             </div>
                                             <div class="col-md-3 col-lg-3">
                                                 <div class="form-group">
                                                     <label class="form-label">Cognome</label>
-                                                    <input type="text" name="field-name" class="form-control" placeholder="" />
+                                                    <input type="text" name="cognome_allievo" class="form-control" placeholder="" />
                                                 </div>
                                             </div>
                                             <div class="col-md-3 col-lg-3">
@@ -141,11 +140,11 @@
                                                     <div class="form-label">Sesso</div>
                                                     <div class="custom-controls-stacked">
                                                         <label class="custom-control custom-radio custom-control-inline">
-                                                            <input type="radio" class="custom-control-input" name="example-inline-radios" value="option1" checked>
+                                                            <input type="radio" class="custom-control-input" name="sesso" value="m" checked>
                                                             <span class="custom-control-label">M</span>
                                                         </label>
                                                         <label class="custom-control custom-radio custom-control-inline">
-                                                            <input type="radio" class="custom-control-input" name="example-inline-radios" value="option2">
+                                                            <input type="radio" class="custom-control-input" name="sesso" value="f">
                                                             <span class="custom-control-label">F</span>
                                                         </label>
                                                     </div>
@@ -156,19 +155,19 @@
                                             <div class="col-md-5 col-lg-5">
                                                 <div class="form-group">
                                                     <label class="form-label">Email</label>
-                                                    <input type="text" name="field-name" class="form-control" placeholder="email@posta.com" />
+                                                    <input type="text" name="email" class="form-control" placeholder="email@posta.com" />
                                                 </div>   
                                             </div>
                                             <div class="col-md-3 col-lg-3">
                                                 <div class="form-group">
                                                     <label class="form-label">Cellulare</label>
-                                                    <input type="text" name="field-name" class="form-control" data-mask="000 000 0000" data-mask-clearifnotmatch="true" placeholder="335 123 4567" />
+                                                    <input type="text" name="cellulare" class="form-control" data-mask="000 000 0000" data-mask-clearifnotmatch="true" placeholder="335 123 4567" />
                                                 </div>
                                             </div>
                                             <div class="col-md-3 col-lg-3">
                                                 <div class="form-group">
                                                     <label class="form-label">Data Iscrizione</label>
-                                                    <div class="form-control-plaintext">11/03/2018</div>
+                                                    <div class="form-control-plaintext">11/03/2018</div><!--data corrente-->
                                                 </div>
                                             </div>
                                         </div>
@@ -347,7 +346,7 @@
                                             <div class="col-md-4 col-lg-4">
                                                 <div class="form-group">
                                                     <label class="form-label">Città natale</label>
-                                                    <input type="text" name="field-name" class="form-control" placeholder="" />
+                                                    <input type="text" name="citta" class="form-control" placeholder="" />
                                                 </div>
                                             </div>
                                         </div>
