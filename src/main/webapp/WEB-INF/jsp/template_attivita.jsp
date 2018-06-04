@@ -54,7 +54,7 @@
                 <div class="header py-4">
                     <div class="container">
                         <div class="d-flex">
-                            <a class="header-brand" href="./index.html">
+                            <a class="header-brand" href="#">
                                 <img src="./assets/images/logo_title.png" class="header-brand-img" alt="Centrify logo">
                             </a>
                             <div class="d-flex order-lg-2 ml-auto">
@@ -72,7 +72,7 @@
                                         <a class="dropdown-item" href="#">
                                             <i class="dropdown-icon fe fe-user"></i> Profilo
                                         </a>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="/logout">
                                             <i class="dropdown-icon fe fe-log-out"></i> Sign out
                                         </a>
                                     </div>
@@ -98,14 +98,14 @@
                             <div class="col-lg order-lg-first">
                                 <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
                                     <li class="nav-item">
-                                        <a href="./mainpage_resp.html" class="nav-link active"><i class="fe fe-home"></i> Home</a>
+                                        <a href="/mainpage" class="nav-link active"><i class="fe fe-home"></i> Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="./aggiungi_allievo.html" class="nav-link"><i class="fe fe-user-plus"></i> Aggiungi allievo</a>
+                                        <a href="/aggiungi_allievo" class="nav-link"><i class="fe fe-user-plus"></i> Aggiungi allievo</a>
                                     </li>
 
                                     <li class="nav-item">
-                                        <a href="./aggiungi_attivita.html" class="nav-link"><i class="fe fe-file-plus"></i> Aggiungi attività</a>
+                                        <a href="/aggiungi_attivita" class="nav-link"><i class="fe fe-file-plus"></i> Aggiungi attività</a>
                                     </li>                                    
                                 </ul>
                             </div>
@@ -120,11 +120,11 @@
                             <div class="col-md-6 col-lg-4">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h1 class="page-title">Nome Attività</h1>
+                                        <h1 class="page-title">Nome Attivit�</h1>
                                     </div>
                                     <div class="card-body">
                                         <p>
-                                            descrizione attività... Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam deleniti fugit incidunt, iste, itaque minima neque pariatur perferendis sed suscipit velit vitae voluptatem. A consequuntur, deserunt eaque error nulla temporibus!
+                                            descrizione attivit�... Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam deleniti fugit incidunt, iste, itaque minima neque pariatur perferendis sed suscipit velit vitae voluptatem. A consequuntur, deserunt eaque error nulla temporibus!
                                         </p>
                                         <p>
                                             <span class="card-title">Data: </span>
@@ -162,7 +162,7 @@
                                                     <tbody>
                                                         <tr>
                                                             <td class="text-center">
-                                                                <a href="template_allievo.html" class="avatar avatar-cyan d-block">DB</a>
+                                                                <a href="/scheda_allievo" class="avatar avatar-cyan d-block">DB</a>
                                                             </td>
                                                             <td>
                                                                 <div>Diego</div>
