@@ -1,8 +1,8 @@
 package it.mdm.centrify.model;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -27,7 +28,7 @@ public class Allievo {
 	@Column(nullable = false)
 	private String cognome;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String email;
 	
 	@Column(nullable = false)
@@ -48,7 +49,8 @@ public class Allievo {
 	private Character sesso;
 	
 	@ManyToMany(mappedBy = "allievi", fetch = FetchType.EAGER)
-	private List<Attivita> attivita;
+	@OrderBy("nome")
+	private Set<Attivita> attivita;
 	
 	public Allievo() {};
 
@@ -62,7 +64,7 @@ public class Allievo {
 		this.dataDiIscrizione = dataDiIscrizione;
 		this.luogoDiNascita = luogoDiNascita;
 		this.sesso = sesso;
-		this.attivita = new ArrayList<Attivita>();
+		this.attivita = new HashSet<Attivita>();
 	}
 
 	public Long getId() {
@@ -117,11 +119,11 @@ public class Allievo {
 		this.luogoDiNascita = luogoDiNascita;
 	}
 
-	public List<Attivita> getAttivita() {
+	public Set<Attivita> getAttivita() {
 		return attivita;
 	}
 
-	public void setAttivita(List<Attivita> attivita) {
+	public void setAttivita(Set<Attivita> attivita) {
 		this.attivita = attivita;
 	}
 	

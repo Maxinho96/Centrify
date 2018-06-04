@@ -1,7 +1,7 @@
 package it.mdm.centrify.service;
 
-import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class AttivitaService {
 	private CentroRepository centroRepository;
 
 	@Transactional
-	public List<Attivita> getAllByCentro(Long id) {
+	public Set<Attivita> getAllByCentro(Long id) {
 		Optional<Centro> centro = this.centroRepository.findById(id);
 		if(centro.isPresent()) {
 			return centro.get().getAttivita();
