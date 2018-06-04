@@ -1,5 +1,6 @@
 package it.mdm.centrify.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -41,13 +42,20 @@ public class Centro {
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "centro_id")
 	private List<Attivita> attivita;
+	
+	public Centro() {};
+
+	public Centro(String nome, String indirizzo, String email, String telefono, Integer capienza) {
+		this.nome = nome;
+		this.indirizzo = indirizzo;
+		this.email = email;
+		this.telefono = telefono;
+		this.capienza = capienza;
+		this.attivita = new ArrayList<Attivita>();
+	}
 
 	public Long getId() {
 		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getNome() {
@@ -104,6 +112,10 @@ public class Centro {
 
 	public void setAttivita(List<Attivita> attivita) {
 		this.attivita = attivita;
+	}
+	
+	public void addAttivita(Attivita attivita) {
+		this.attivita.add(attivita);
 	}
 	
 }

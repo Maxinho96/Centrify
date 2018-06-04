@@ -27,9 +27,14 @@ public class Attivita {
 	@Column(nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataOraSvolgimento;
+	
+	@Column(nullable = false)
+	private String nomeProfessore;
+	
+	@Column(nullable = false)
+	private String cognomeProfessore;
 
-	private String professore;
-
+	@Column(nullable = false)
 	private String descrizione;
 
 	@ManyToMany(fetch = FetchType.EAGER)
@@ -37,12 +42,13 @@ public class Attivita {
 
 	public Attivita() {};
 	
-	public Attivita(String nome, Date dataOraSvolgimento, String professore, String descrizione) {
+	public Attivita(String nome, Date dataOraSvolgimento, String nomeProfessore, String cognomeProfessore, String descrizione) {
 		this.nome = nome;
 		this.dataOraSvolgimento = dataOraSvolgimento;
-		this.professore = professore;
-		this.allievi = new ArrayList<Allievo>();
+		this.nomeProfessore = nomeProfessore;
+		this.cognomeProfessore = cognomeProfessore;
 		this.descrizione = descrizione;
+		this.allievi = new ArrayList<Allievo>();
 	}
 
 	public Long getId() {
@@ -69,12 +75,20 @@ public class Attivita {
 		this.dataOraSvolgimento = dataOraSvolgimento;
 	}
 
-	public String getProfessore() {
-		return professore;
+	public String getNomeProfessore() {
+		return nomeProfessore;
 	}
 
-	public void setProfessore(String professore) {
-		this.professore = professore;
+	public void setNomeProfessore(String nomeProfessore) {
+		this.nomeProfessore = nomeProfessore;
+	}
+
+	public String getCognomeProfessore() {
+		return cognomeProfessore;
+	}
+
+	public void setCognomeProfessore(String cognomeProfessore) {
+		this.cognomeProfessore = cognomeProfessore;
 	}
 
 	public List<Allievo> getAllievi() {
@@ -83,6 +97,10 @@ public class Attivita {
 
 	public void setAllievi(List<Allievo> allievi) {
 		this.allievi = allievi;
+	}
+	
+	public void addAllievo(Allievo allievo) {
+		this.allievi.add(allievo);
 	}
 
 	public String getDescrizione() {
