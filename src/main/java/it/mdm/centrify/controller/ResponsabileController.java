@@ -6,13 +6,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import it.mdm.centrify.service.ResponsabileService;
+import it.mdm.centrify.service.AttivitaService;
 
 @Controller
 public class ResponsabileController {
 	
 	@Autowired
-	private ResponsabileService responsabileService; 
+	private AttivitaService attivitaService; 
 	
 	@RequestMapping("/login")
 	public String login() {
@@ -26,18 +26,13 @@ public class ResponsabileController {
 	
 	@RequestMapping("/mainpage")
 	public String mainPageResp(Model model) {
-		model.addAttribute("attivita", this.responsabileService.findAllAttivita());
+		model.addAttribute("attivita", this.attivitaService.getAll());
 		return "mainpage_resp";
-	}
-	
-	@RequestMapping("/scheda_attivita")
-	public String schedaAttivita() {
-		return "template_attivita";
 	}
 	
 	@RequestMapping("/scheda_attivita/{id}")
 	public String schedaAttivita(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("attivita", this.responsabileService.findByIdAttivita(id));
+		model.addAttribute("attivita", this.attivitaService.getOne(id));
 		return "template_attivita";
 	}
 	

@@ -4,23 +4,29 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import it.mdm.centrify.model.Attivita;
 import it.mdm.centrify.repository.AttivitaRepository;
 
 @Service
-public class ResponsabileService {
+public class AttivitaService {
+	
 	@Autowired
 	private AttivitaRepository attivitaRepository;
 	
-	public void addAttivita(Attivita attivita) {
+	@Transactional
+	public void add(Attivita attivita) {
 		this.attivitaRepository.save(attivita);
 	}
 	
-	public Iterable<Attivita> findAllAttivita() {
+	@Transactional
+	public Iterable<Attivita> getAll() {
 		return this.attivitaRepository.findAll();
 	}
-	public Attivita findByIdAttivita(Long id) {
+	
+	@Transactional
+	public Attivita getOne(Long id) {
 		Optional<Attivita> attivita = this.attivitaRepository.findById(id);
 		if(attivita.isPresent()) {
 			return attivita.get();
@@ -29,4 +35,5 @@ public class ResponsabileService {
 			return null;
 		}
 	}
+	
 }
