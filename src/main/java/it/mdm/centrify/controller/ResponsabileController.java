@@ -31,7 +31,7 @@ public class ResponsabileController {
 	
 	@RequestMapping("/mainpage")
 	public String mainPageResp(Model model) {
-		model.addAttribute("attivita", this.attivitaService.getAll());
+		model.addAttribute("attivita", this.attivitaService.getAllByCentro(6l));
 		return "mainpage_resp";
 	}
 	

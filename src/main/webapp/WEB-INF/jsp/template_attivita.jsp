@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" dir="ltr">
     <head>
@@ -139,7 +141,7 @@
                                         </p>
                                         <p>
                                             <span class="card-title">Docente: </span>
-                                            <span>${attivita.professore}</span>
+                                            <span>${attivita.nomeProfessore} ${attivita.cognomeProfessore}</span>
                                         </p>
                                     </div>
                                 </div>
@@ -163,20 +165,23 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                    <c:forEach var="allievo" items="${attivita.allievi}">
                                                         <tr>
                                                             <td class="text-center">
-                                                                <a href="template_allievo.html" class="avatar avatar-cyan d-block">DB</a>
+                                                                <a href="template_allievo.html" class="avatar avatar-cyan d-block">${fn:substring(allievo.nome, 0, 1)}${fn:substring(allievo.cognome, 0, 1)}</a>
                                                             </td>
                                                             <td>
-                                                                <div>Diego</div>
+                                                                <div>${allievo.nome}</div>
                                                             </td>
                                                             <td>
-                                                                <div>Barbieri</div>
+                                                                <div>${allievo.cognome}</div>
                                                             </td>
                                                             <td>
-                                                                <div>11/03/2018</div>
+                                                            	<fmt:formatDate value="${allievo.dataDiIscrizione}" var="dataDiIscrizione" type="date" pattern="dd/MM/yyyy" />
+                                                                <div>${dataDiIscrizione}</div>
                                                             </td>
                                                         </tr>
+                                                    </c:forEach>
                                                     </tbody>
                                                 </table>
                                             </div>
