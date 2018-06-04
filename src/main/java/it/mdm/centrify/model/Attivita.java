@@ -1,8 +1,8 @@
 package it.mdm.centrify.model;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -21,7 +22,7 @@ public class Attivita {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String nome;
 
 	@Column(nullable = false)
@@ -38,7 +39,8 @@ public class Attivita {
 	private String descrizione;
 
 	@ManyToMany(fetch = FetchType.EAGER)
-	private List<Allievo> allievi;
+	@OrderBy("email")
+	private Set<Allievo> allievi;
 
 	public Attivita() {};
 	
@@ -48,7 +50,7 @@ public class Attivita {
 		this.nomeProfessore = nomeProfessore;
 		this.cognomeProfessore = cognomeProfessore;
 		this.descrizione = descrizione;
-		this.allievi = new ArrayList<Allievo>();
+		this.allievi = new HashSet<Allievo>();
 	}
 
 	public Long getId() {
@@ -91,11 +93,11 @@ public class Attivita {
 		this.cognomeProfessore = cognomeProfessore;
 	}
 
-	public List<Allievo> getAllievi() {
+	public Set<Allievo> getAllievi() {
 		return allievi;
 	}
 
-	public void setAllievi(List<Allievo> allievi) {
+	public void setAllievi(Set<Allievo> allievi) {
 		this.allievi = allievi;
 	}
 	
