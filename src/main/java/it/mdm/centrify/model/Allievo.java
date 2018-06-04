@@ -1,5 +1,6 @@
 package it.mdm.centrify.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -29,22 +30,43 @@ public class Allievo {
 	@Column(nullable = false)
 	private String email;
 	
+	@Column(nullable = false)
 	private String telefono;
 	
+	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date dataDiNascita;
 	
+	@Column(nullable = false)
+	@Temporal(TemporalType.DATE)
+	private Date dataDiIscrizione;
+	
+	@Column(nullable = false)
 	private String luogoDiNascita;
+	
+	@Column(nullable = false)
+	private Character sesso;
 	
 	@ManyToMany(mappedBy = "allievi", fetch = FetchType.EAGER)
 	private List<Attivita> attivita;
+	
+	public Allievo() {};
+
+	public Allievo(String nome, String cognome, String email, String telefono, Date dataDiNascita,
+			Date dataDiIscrizione, String luogoDiNascita, Character sesso) {
+		this.nome = nome;
+		this.cognome = cognome;
+		this.email = email;
+		this.telefono = telefono;
+		this.dataDiNascita = dataDiNascita;
+		this.dataDiIscrizione = dataDiIscrizione;
+		this.luogoDiNascita = luogoDiNascita;
+		this.sesso = sesso;
+		this.attivita = new ArrayList<Attivita>();
+	}
 
 	public Long getId() {
 		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getNome() {
@@ -101,6 +123,26 @@ public class Allievo {
 
 	public void setAttivita(List<Attivita> attivita) {
 		this.attivita = attivita;
+	}
+	
+	public void addAttivita(Attivita attivita) {
+		this.attivita.add(attivita);
+	}
+
+	public Date getDataDiIscrizione() {
+		return dataDiIscrizione;
+	}
+
+	public void setDataDiIscrizione(Date dataDiIscrizione) {
+		this.dataDiIscrizione = dataDiIscrizione;
+	}
+
+	public Character getSesso() {
+		return sesso;
+	}
+
+	public void setSesso(Character sesso) {
+		this.sesso = sesso;
 	}
 
 }

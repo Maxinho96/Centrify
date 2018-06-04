@@ -1,5 +1,6 @@
 package it.mdm.centrify.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -36,13 +37,18 @@ public class Azienda {
 	
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Direttore direttore;
+	
+	public Azienda() {};
+
+	public Azienda(String nome, String indirizzo) {
+		this.nome = nome;
+		this.indirizzo = indirizzo;
+		this.allievi = new ArrayList<Allievo>();
+		this.centri = new ArrayList<Centro>();
+	}
 
 	public Long getId() {
 		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getNome() {
@@ -83,6 +89,14 @@ public class Azienda {
 
 	public void setDirettore(Direttore direttore) {
 		this.direttore = direttore;
+	}
+	
+	public void addCentro(Centro centro) {
+		this.centri.add(centro);
+	}
+	
+	public void addAllievo(Allievo allievo) {
+		this.allievi.add(allievo);
 	}
 
 }

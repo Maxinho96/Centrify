@@ -6,7 +6,6 @@
 	<groupId>it.mdm</groupId>
 	<artifactId>centrify</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
 
 	<name>Centrify</name>
 	<description>SIW project</description>

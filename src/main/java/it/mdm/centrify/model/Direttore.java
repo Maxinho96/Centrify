@@ -24,13 +24,18 @@ public class Direttore {
 	
 	@Column(nullable = false)
 	private String cognome;
+	
+	public Direttore() {};
+
+	public Direttore(String nomeUtente, String password, String nome, String cognome) {
+		this.nomeUtente = nomeUtente;
+		this.password = password;
+		this.nome = nome;
+		this.cognome = cognome;
+	}
 
 	public Long getId() {
 		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getNomeUtente() {

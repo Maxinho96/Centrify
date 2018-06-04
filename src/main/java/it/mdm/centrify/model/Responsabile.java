@@ -25,14 +25,21 @@ public class Responsabile {
 	@Column(nullable = false)
 	private String cognome;
 	
+	@Column(nullable = false)
 	private Float stipendio;
+	
+	public Responsabile() {};
+
+	public Responsabile(String nomeUtente, String password, String nome, String cognome, Float stipendio) {
+		this.nomeUtente = nomeUtente;
+		this.password = password;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.stipendio = stipendio;
+	}
 
 	public Long getId() {
 		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getNomeUtente() {

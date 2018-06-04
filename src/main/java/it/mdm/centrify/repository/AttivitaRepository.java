@@ -6,6 +6,5 @@ import it.mdm.centrify.model.Attivita;
 
 public interface AttivitaRepository extends CrudRepository<Attivita, Long> {
 	
-	
 }
  
