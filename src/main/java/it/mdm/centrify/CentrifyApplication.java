@@ -45,13 +45,13 @@ public class CentrifyApplication {
 		Direttore direttore = new Direttore("paolo.atzeni", "pass", "Paolo", "Atzeni");
 		azienda.setDirettore(direttore);
 		
-		Allievo allievo1 = new Allievo("Massimiliano", "Bruni", "mas.bruni@school.it", "331 123 4567", new Date(96, 6, 10), new Date(118, 6, 4), "Roma", 'M');
+		Allievo allievo1 = new Allievo("Massimiliano", "Bruni", "mas.bruni@school.it", "331 123 4567", 1996, 6, 10, new Date(118, 6, 4), "Roma", 'M');
 		azienda.addAllievo(allievo1);
 		
-		Allievo allievo2 = new Allievo("Marco", "Berbeglia", "marco.berb@school.it", "331 234 6433", new Date(96, 3, 11), new Date(118, 6, 4), "Roma", 'M');
+		Allievo allievo2 = new Allievo("Marco", "Berbeglia", "marco.berb@school.it", "331 234 6433", 1996, 3, 11, new Date(118, 6, 4), "Roma", 'M');
 		azienda.addAllievo(allievo2);
 		
-		Allievo allievo3 = new Allievo("Diego", "Barbieri", "diego.barb@school.it", "331 043 2053", new Date(96, 2, 25), new Date(118, 6, 4), "Roma", 'M');
+		Allievo allievo3 = new Allievo("Diego", "Barbieri", "diego.barb@school.it", "331 043 2053", 1996, 2, 25, new Date(118, 6, 4), "Roma", 'M');
 		azienda.addAllievo(allievo3);
 		
 		Attivita attivita1 = new Attivita("APS",new Date(118,8,23,17,30), "Luca", "Cabibbo", "Corso di Analisi e Progettazione del Software");

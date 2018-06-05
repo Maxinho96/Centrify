@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import it.mdm.centrify.model.Attivita;
 import it.mdm.centrify.model.Centro;
 import it.mdm.centrify.repository.AttivitaRepository;
+import it.mdm.centrify.repository.CentroRepository;
 
 @Service
 public class AttivitaService {

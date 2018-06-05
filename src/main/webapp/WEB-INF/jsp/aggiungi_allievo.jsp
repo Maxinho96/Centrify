@@ -118,7 +118,7 @@
                             <div class="row">
                                 <div class="col-lg-2 col-xl-2"></div>
                                 <div class="col-lg-8 col-xl-8">
-                                    <form:form class="card" action="/submit_aggiungi_allievo" method="post" modelAttribute="allievo">
+                                    <form:form class="card" action="/submit_aggiungi_allievo" method="POST" modelAttribute="allievo">
                                         <div class="card-header">
                                             <h3 class="card-title">Nuovo allievo</h3>
                                         </div>
@@ -163,12 +163,6 @@
                                                     <div class="form-group">
                                                         <label class="form-label">Cellulare</label>
                                                         <form:input type="text" name="cellulare" class="form-control" data-mask="000 000 0000" data-mask-clearifnotmatch="true" placeholder="335 123 4567" path="cellulare"></form:input>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3 col-lg-3">
-                                                    <div class="form-group">
-                                                        <label class="form-label">Data Iscrizione</label>
-                                                        <div class="form-control-plaintext">11/03/2018</div><!--data corrente-->
                                                     </div>
                                                 </div>
                                             </div>
