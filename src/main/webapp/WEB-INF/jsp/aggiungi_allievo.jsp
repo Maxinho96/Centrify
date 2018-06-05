@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
     <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
     <html lang="en" dir="ltr">
         <head>
@@ -117,7 +118,7 @@
                             <div class="row">
                                 <div class="col-lg-2 col-xl-2"></div>
                                 <div class="col-lg-8 col-xl-8">
-                                    <div class="card">
+                                    <form:form class="card" action="/submit_aggiungi_allievo" method="post" modelAttribute="allievo">
                                         <div class="card-header">
                                             <h3 class="card-title">Nuovo allievo</h3>
                                         </div>
@@ -126,13 +127,13 @@
                                                 <div class="col-md-3 col-lg-3">
                                                     <div class="form-group">
                                                         <label class="form-label">Nome</label>
-                                                        <input type="text" name="nome_allievo" class="form-control" placeholder="" />
+                                                        <form:input type="text" name="nome_allievo" class="form-control" placeholder="" path="nome"></form:input>
                                                     </div>      
                                                 </div>
                                                 <div class="col-md-3 col-lg-3">
                                                     <div class="form-group">
                                                         <label class="form-label">Cognome</label>
-                                                        <input type="text" name="cognome_allievo" class="form-control" placeholder="" />
+                                                        <form:input type="text" name="cognome_allievo" class="form-control" placeholder="" path="cognome"></form:input> 
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3 col-lg-3">
@@ -140,11 +141,11 @@
                                                         <div class="form-label">Sesso</div>
                                                         <div class="custom-controls-stacked">
                                                             <label class="custom-control custom-radio custom-control-inline">
-                                                                <input type="radio" class="custom-control-input" name="sesso" value="m" checked>
+                                                                <form:radiobutton class="custom-control-input" name="sesso" path="sesso" value="m" checked="true"></form:radiobutton>
                                                                 <span class="custom-control-label">M</span>
                                                             </label>
                                                             <label class="custom-control custom-radio custom-control-inline">
-                                                                <input type="radio" class="custom-control-input" name="sesso" value="f">
+                                                                <form:radiobutton class="custom-control-input" name="sesso" path="sesso" value="f"></form:radiobutton>
                                                                 <span class="custom-control-label">F</span>
                                                             </label>
                                                         </div>
@@ -155,13 +156,13 @@
                                                 <div class="col-md-5 col-lg-5">
                                                     <div class="form-group">
                                                         <label class="form-label">Email</label>
-                                                        <input type="text" name="email" class="form-control" placeholder="email@posta.com" />
+                                                        <form:input type="text" name="email" class="form-control" placeholder="email@posta.com" path="email"></form:input>
                                                     </div>   
                                                 </div>
                                                 <div class="col-md-3 col-lg-3">
                                                     <div class="form-group">
                                                         <label class="form-label">Cellulare</label>
-                                                        <input type="text" name="cellulare" class="form-control" data-mask="000 000 0000" data-mask-clearifnotmatch="true" placeholder="335 123 4567" />
+                                                        <form:input type="text" name="cellulare" class="form-control" data-mask="000 000 0000" data-mask-clearifnotmatch="true" placeholder="335 123 4567" path="cellulare"></form:input>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3 col-lg-3">
@@ -177,7 +178,7 @@
                                                         <label class="form-label">Data di nascita</label>
                                                         <div class="row gutters-xs">
                                                             <div class="col-4">
-                                                                <select name="giorno_nascita" class="form-control custom-select">
+                                                                <form:select name="giorno_nascita" class="form-control custom-select" path="giorno_nascita">
                                                                     <option value="" selected="selected">Giorno</option>
                                                                     <option value="1">1</option>
                                                                     <option value="2">2</option>
@@ -210,10 +211,10 @@
                                                                     <option value="29">29</option>
                                                                     <option value="30">30</option>
                                                                     <option value="31">31</option>
-                                                                </select>
+                                                                </form:select>
                                                             </div>
                                                             <div class="col-4">
-                                                                <select name="mese_nascita" class="form-control custom-select">
+                                                                <form:select name="mese_nascita" class="form-control custom-select" path="mese_nascita">
                                                                     <option value="" selected="selected">Mese</option>
                                                                     <option value="1">Gennaio</option>
                                                                     <option value="2">Febbraio</option>
@@ -227,10 +228,10 @@
                                                                     <option value="10">Ottobre</option>
                                                                     <option value="11">Novembre</option>
                                                                     <option value="12">Dicembre</option>
-                                                                </select>
+                                                                </form:select>
                                                             </div>
                                                             <div class="col-4">
-                                                                <select name="anno_nascita" class="form-control custom-select">
+                                                                <form:select name="anno_nascita" class="form-control custom-select" path="anno_nascita">
                                                                     <option value="" selected="selected">Anno</option>
                                                                     <option value="2005">2005</option>
                                                                     <option value="2004">2004</option>
@@ -338,7 +339,7 @@
                                                                     <option value="1902">1902</option>
                                                                     <option value="1901">1901</option>
                                                                     <option value="1900">1900</option>
-                                                                </select>
+                                                                </form:select>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -346,7 +347,7 @@
                                                 <div class="col-md-4 col-lg-4">
                                                     <div class="form-group">
                                                         <label class="form-label">Città natale</label>
-                                                        <input type="text" name="citta" class="form-control" placeholder="" />
+                                                        <form:input type="text" name="citta" class="form-control" placeholder="" path="luogoDiNascita"></form:input>
                                                     </div>
                                                 </div>
                                             </div>
@@ -354,7 +355,7 @@
                                         <div class="card-footer text-right">
                                             <button type="submit" class="btn btn-primary">Aggiungi</button>
                                         </div>
-                                    </div>
+                                    </form:form>
                                     <script>
                                         require(['input-mask']);
                                     </script>
