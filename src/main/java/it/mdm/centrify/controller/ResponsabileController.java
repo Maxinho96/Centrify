@@ -68,10 +68,10 @@ public class ResponsabileController {
     }
 	
 	@PostMapping("/submit_aggiungi_allievo")
-	public String submitAggiungiAllievo(@Valid @ModelAttribute Allievo allievo, BindingResult result) {
+	public String submitAggiungiAllievo(@Valid @ModelAttribute Allievo allievo, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			System.out.println(result.getAllErrors().toString());
-			return "";	//TO DO
+			return "/error";	//TO DO
 		}
 		allievo.setDataDiIscrizione(new Date());
 		
@@ -80,14 +80,15 @@ public class ResponsabileController {
 		Azienda azienda = this.aziendaService.get(1l); //provvisorio
 		if (azienda != null) {
 			if(azienda.containsAllievoWithEmail(allievo.getEmail())) {
-				return "";	//TO DO
+				model.addAttribute("valid", "is-invalid");
+				return "aggiungi_allievo";	//TO DO
 			}
 			else {
 				azienda.addAllievo(allievo);
 				this.aziendaService.save(azienda);
 			}
 		}	
-		return "template_allievo"; //provvisorio
+		return "template_allievo";
 	}
 
 	//	@RequestMapping("/logout")
