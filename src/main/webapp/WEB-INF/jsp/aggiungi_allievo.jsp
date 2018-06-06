@@ -156,7 +156,8 @@
                                                 <div class="col-md-5 col-lg-5">
                                                     <div class="form-group">
                                                         <label class="form-label">Email</label>
-                                                        <form:input type="text" name="email" class="form-control" placeholder="email@posta.com" path="email"></form:input>
+                                                        <form:input type="text" name="email" class="form-control ${valid}" placeholder="email@posta.com" path="email"></form:input>
+                                                        <div class="invalid-feedback">Email già registrata</div>
                                                     </div>   
                                                 </div>
                                                 <div class="col-md-3 col-lg-3">
