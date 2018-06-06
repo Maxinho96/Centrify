@@ -20,6 +20,7 @@ import it.mdm.centrify.model.Azienda;
 import it.mdm.centrify.service.AllievoService;
 import it.mdm.centrify.service.AttivitaService;
 import it.mdm.centrify.service.AziendaService;
+import it.mdm.centrify.service.CentroService;
 
 @Controller
 public class ResponsabileController {
@@ -32,6 +33,9 @@ public class ResponsabileController {
 	
 	@Autowired
 	private AllievoService allievoService;
+	
+	@Autowired
+	private CentroService centroService;
 
 	@RequestMapping("/login")
 	public String login() {
@@ -46,7 +50,7 @@ public class ResponsabileController {
 
 	@RequestMapping("/mainpage")
 	public String mainPageResp(Model model) {
-		model.addAttribute("attivita", this.attivitaService.getAllByCentro(6l));
+		model.addAttribute("attivita", this.centroService.getOne(6l).getAttivita());
 		return "mainpage_resp";
 	}
 
