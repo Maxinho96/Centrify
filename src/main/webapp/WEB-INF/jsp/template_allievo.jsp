@@ -1,3 +1,7 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" dir="ltr">
     <head>
@@ -18,9 +22,7 @@
         <link rel="icon" href="/assets/images/favicon.png" type="image/x-icon"/>
         <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon"/>
 
-        <!-- Generated: 2018-05-24 16:37:20 +0200 -->
-
-        <title>Diego Barbieri</title>
+        <title>Scheda Allievo</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
@@ -120,24 +122,33 @@
                             <div class="col-md-6 col-lg-4">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h1 class="page-title">Diego Barbieri</h1>
+                                        <h1 class="page-title">${allievo.nome} ${allievo.cognome}</h1>
                                     </div>
                                     <div class="card-body">
+                                     	<p>
+                                            <span class="card-title">Sesso:</span>
+                                            <span>${allievo.sesso}</span>
+                                        </p>
                                         <p>
                                             <span class="card-title">Telefono: </span>
-                                            <span>335 331 4322</span>
+                                            <span>${allievo.cellulare}</span>
                                         </p>
                                         <p>
                                             <span class="card-title">Email: </span>
-                                            <span>diegay@incontrigay.orgy</span>
+                                            <span>${allievo.email}</span>
                                         </p>
                                         <p>
                                             <span class="card-title">Data di nascita: </span>
-                                            <span>11/09/2018</span>
+                                            <span>${allievo.giorno_nascita}/${allievo.mese_nascita}/${allievo.anno_nascita}</span>
                                         </p>
                                         <p>
                                             <span class="card-title">Luogo di nascita: </span>
-                                            <span>Wakanda</span>
+                                            <span>${allievo.luogoDiNascita}</span>
+                                        </p>
+                                        <p>
+                                            <span class="card-title">Data di registrazione: </span>
+                                            <fmt:formatDate value="${allievo.dataDiIscrizione}" var="dataDiRegistrazione" type="date" pattern="dd/MM/yyyy"/>
+                                            <span>${dataDiRegistrazione}</span>
                                         </p>
                                     </div>
                                 </div>
@@ -148,7 +159,7 @@
                                     <div class="col-12">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h1 class="card-title">Iscrizioni</h1>
+                                                <h1 class="card-title">Attività</h1>
                                             </div>
                                             <div class="table-responsive">
                                                 <table class="table table-hover table-outline table-vcenter text-nowrap card-table">
@@ -156,21 +167,24 @@
                                                         <tr>
                                                             <th class="text-center w-1"><i class="icon-people"></i></th>
                                                             <th>Nome</th>
-                                                            <th>Data iscrizione</th>
+                                                            <th>Data Svolgimento</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td class="text-center">
-                                                                <a href="/scheda_attivita" class="avatar avatar-green d-block">NA</a>
-                                                            </td>
-                                                            <td>
-                                                                <div>Nome Attività</div>
-                                                            </td>
-                                                            <td>
-                                                                <div>11/03/2018</div>
-                                                            </td>
-                                                        </tr>
+	                                                    <c:forEach var="attivita" items="${allievo.attivita}">
+	                                                        <tr>
+	                                                            <td class="text-center">
+	                                                                <a href="/scheda_attivita/${attivita.id}" class="avatar avatar-green d-block">NA</a>
+	                                                            </td>
+	                                                            <td>
+	                                                                <div>${attivita.nome}</div>
+	                                                            </td>
+	                                                            <td>
+	                                                                <fmt:formatDate value="${attivita.dataOraSvolgimento}" var="dataSvolgimento" type="date" pattern="dd/MM/yyyy"/>
+	                                                                <div>${dataSvolgimento}</div>
+	                                                            </td>
+	                                                        </tr>
+	                                                     </c:forEach>
                                                     </tbody>
                                                 </table>
                                             </div>

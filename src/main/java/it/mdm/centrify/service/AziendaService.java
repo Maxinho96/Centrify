@@ -16,7 +16,7 @@ public class AziendaService {
 	private AziendaRepository aziendaRepository;
 	
 	@Transactional
-	public void add(Azienda azienda) {
+	public void save(Azienda azienda) {
 		this.aziendaRepository.save(azienda);
 	}
 	

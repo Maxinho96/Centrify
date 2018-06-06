@@ -74,7 +74,7 @@ public class CentrifyApplication {
 		allievo3.addAttivita(attivita3);
 		attivita3.addAllievo(allievo3);
 				
-		this.aziendaService.add(azienda);
+		this.aziendaService.save(azienda);
 	}
 	
 }

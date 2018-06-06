@@ -38,7 +38,7 @@ public class ResponsabileController {
 		return "mainpage_resp";
 	}
 
-	@RequestMapping("/scheda_allievo/{id}")
+	@RequestMapping("/scheda_attivita/scheda_allievo/{id}")
 	public String schedaAllievo(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("allievo", this.allievoService.getOne(id));
 		return "template_allievo";
@@ -74,12 +74,13 @@ public class ResponsabileController {
 			return "";
 		}
 		allievo.setDataDiIscrizione(new Date());
+		
 		//System.out.println(allievo.toString());
 		
 		Azienda azienda = this.aziendaService.get(1l); //provvisorio
 		if (azienda != null)
 			azienda.addAllievo(allievo);
-			this.aziendaService.add(azienda);
+			this.aziendaService.save(azienda);
 		
 		return "template_allievo"; //provvisorio
 	}
