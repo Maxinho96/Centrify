@@ -71,17 +71,22 @@ public class ResponsabileController {
 	public String submitAggiungiAllievo(@Valid @ModelAttribute Allievo allievo, BindingResult result) {
 		if (result.hasErrors()) {
 			System.out.println(result.getAllErrors().toString());
-			return "";
+			return "";	//TO DO
 		}
 		allievo.setDataDiIscrizione(new Date());
 		
 		//System.out.println(allievo.toString());
 		
 		Azienda azienda = this.aziendaService.get(1l); //provvisorio
-		if (azienda != null)
-			azienda.addAllievo(allievo);
-			this.aziendaService.save(azienda);
-		
+		if (azienda != null) {
+			if(azienda.containsAllievoWithEmail(allievo.getEmail())) {
+				return "";	//TO DO
+			}
+			else {
+				azienda.addAllievo(allievo);
+				this.aziendaService.save(azienda);
+			}
+		}	
 		return "template_allievo"; //provvisorio
 	}
 
