@@ -7,6 +7,10 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 import it.mdm.centrify.model.Allievo;
 import it.mdm.centrify.model.Attivita;
@@ -17,6 +21,7 @@ import it.mdm.centrify.model.Responsabile;
 import it.mdm.centrify.service.AziendaService;
 
 @SpringBootApplication
+@EnableOAuth2Sso
 public class CentrifyApplication {
 	
 	@Autowired
@@ -31,14 +36,16 @@ public class CentrifyApplication {
 		
 		Azienda azienda = new Azienda("Centrify", "Via Giuseppe Rossi, 80");
 		Centro centro1 = new Centro("Scuola Garibaldi", "Via Giuseppe Mazzini, 32", "garib@school.it", "06 823 2693", 12);
-		Responsabile responsabile1 = new Responsabile("resp1", "pass", "Marco", "Rossi", 1300f);
+		Responsabile responsabile1 = new Responsabile("resp1", "pass", "Massimiliano", "Bruni", 1300f, "1683524938432375");
 		
+		responsabile1.setCentro(centro1);
 		centro1.setResponsabile(responsabile1);
 		azienda.addCentro(centro1);
 		
 		Centro centro2 = new Centro("Scuola Berlusconi", "Via Marco Salvini, 69", "berlusca@school.it", "06 823 2645", 14);
-		Responsabile responsabile2 = new Responsabile("resp2", "pass", "Massimo", "Ottavi", 1400f);
+		Responsabile responsabile2 = new Responsabile("resp2", "pass", "Massimo", "Ottavi", 1400f, "a");
 		
+		responsabile2.setCentro(centro2);
 		centro2.setResponsabile(responsabile2);
 		azienda.addCentro(centro2);
 		

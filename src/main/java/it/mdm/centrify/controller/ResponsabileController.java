@@ -1,5 +1,6 @@
 package it.mdm.centrify.controller;
 
+import java.security.Principal;
 import java.util.Date;
 
 import javax.validation.Valid;
@@ -13,16 +14,20 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import it.mdm.centrify.model.Allievo;
 import it.mdm.centrify.model.Azienda;
+import it.mdm.centrify.model.Centro;
+import it.mdm.centrify.model.Responsabile;
 import it.mdm.centrify.service.AllievoService;
 import it.mdm.centrify.service.AttivitaService;
 import it.mdm.centrify.service.AziendaService;
-import it.mdm.centrify.service.CentroService;
+import it.mdm.centrify.service.ResponsabileService;
 
 @Controller
+@SessionAttributes("responsabileOauthIdentifier")
 public class ResponsabileController {
 
 	@Autowired
@@ -35,12 +40,30 @@ public class ResponsabileController {
 	private AllievoService allievoService;
 	
 	@Autowired
-	private CentroService centroService;
+	private ResponsabileService responsabileService;
+	
+	@ModelAttribute("responsabileOauthIdentifier")
+    public String getResponsabileOauthIdentifier (Principal principal) {
+		String oauthIdentifier = principal.getName();
+		if(this.responsabileService.getByOauthIdentifier(oauthIdentifier) != null) {
+			return oauthIdentifier;
+		}
+		else {
+			return "notPresent";
+		}
+    }
 
-	@RequestMapping("/login")
-	public String login() {
-		return "mainpage_resp";
-	}
+//	@RequestMapping("/index")
+//	public String index(Principal principal, Model model) {
+//		String oauthIdentifier = principal.getName();
+//		if(this.responsabileService.getByOauthIdentifier(oauthIdentifier) != null) {
+//			model.addAttribute("responsabileOauthIdentifier", "a");
+//			return "redirect:mainpage";
+//		}
+//		else {
+//			return "a"; // Implementare il caso del direttore
+//		}
+//	}
 
 	@RequestMapping("/scheda_attivita/scheda_allievo/{id}")
 	public String schedaAllievo(@PathVariable("id") Long id, Model model) {
@@ -49,9 +72,16 @@ public class ResponsabileController {
 	}
 
 	@RequestMapping("/mainpage")
-	public String mainPageResp(Model model) {
-		model.addAttribute("attivita", this.centroService.getOne(6l).getAttivita());
-		return "mainpage_resp";
+	public String mainPageResp(@ModelAttribute("responsabileOauthIdentifier") String responsabileOauthIdentifier, Model model) {
+		Responsabile responsabile = this.responsabileService.getByOauthIdentifier(responsabileOauthIdentifier);
+		if(responsabile != null) {
+			Centro centro = responsabile.getCentro();
+			model.addAttribute("attivita", centro.getAttivita());
+			return "mainpage_resp";
+		}
+		else {
+			return "errore_resp";
+		}
 	}
 
 	@RequestMapping("/scheda_attivita/{id}")
