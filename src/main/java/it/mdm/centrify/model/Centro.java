@@ -1,7 +1,7 @@
 package it.mdm.centrify.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderBy;
 
 @Entity
 public class Centro {
@@ -21,13 +22,13 @@ public class Centro {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String nome;
 	
 	@Column(nullable = false)
 	private String indirizzo;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String email;
 	
 	@Column(nullable = false)
@@ -41,7 +42,8 @@ public class Centro {
 	
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "centro_id")
-	private List<Attivita> attivita;
+	@OrderBy("nome")
+	private Set<Attivita> attivita;
 	
 	public Centro() {};
 
@@ -51,7 +53,8 @@ public class Centro {
 		this.email = email;
 		this.telefono = telefono;
 		this.capienza = capienza;
-		this.attivita = new ArrayList<Attivita>();
+		this.attivita = new HashSet<Attivita>();
+		System.out.println();
 	}
 
 	public Long getId() {
@@ -106,11 +109,11 @@ public class Centro {
 		this.responsabile = responsabile;
 	}
 
-	public List<Attivita> getAttivita() {
+	public Set<Attivita> getAttivita() {
 		return attivita;
 	}
 
-	public void setAttivita(List<Attivita> attivita) {
+	public void setAttivita(Set<Attivita> attivita) {
 		this.attivita = attivita;
 	}
 	

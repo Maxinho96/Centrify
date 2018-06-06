@@ -13,7 +13,7 @@ public class Direttore {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String nomeUtente;
 
 	@Column(nullable = false)
