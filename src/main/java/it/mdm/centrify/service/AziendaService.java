@@ -1,5 +1,7 @@
 package it.mdm.centrify.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,8 +16,18 @@ public class AziendaService {
 	private AziendaRepository aziendaRepository;
 	
 	@Transactional
-	public void add(Azienda azienda) {
+	public void save(Azienda azienda) {
 		this.aziendaRepository.save(azienda);
 	}
+	
+	@Transactional
+	public Azienda get(Long id) {
+		Optional<Azienda> azienda =this.aziendaRepository.findById(id);
+		if(azienda.isPresent())
+			return azienda.get();
+		else
+			return null;
+	}
+	
 
 }

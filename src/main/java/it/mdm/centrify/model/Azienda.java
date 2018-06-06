@@ -98,5 +98,13 @@ public class Azienda {
 	public void addAllievo(Allievo allievo) {
 		this.allievi.add(allievo);
 	}
-
+	
+	public boolean containsAllievoWithEmail(String email) {
+		for(Allievo a : this.allievi) {
+			if(a.getEmail().equals(email))
+				return true;
+		}
+		return false;
+	}
+	
 }

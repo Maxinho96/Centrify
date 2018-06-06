@@ -1,4 +1,4 @@
-package it.mdm.centrify.service;
+package it.mdm.centrify.repository;
 
 import org.springframework.data.repository.CrudRepository;
 

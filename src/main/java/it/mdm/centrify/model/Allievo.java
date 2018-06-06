@@ -32,11 +32,17 @@ public class Allievo {
 	private String email;
 	
 	@Column(nullable = false)
-	private String telefono;
+	private String cellulare;
+	
+	//li ho messi per matchare con gli attributi della jsp al posto di dataIscrizione
+	@Column(nullable = false)
+	private int giorno_nascita;
 	
 	@Column(nullable = false)
-	@Temporal(TemporalType.DATE)
-	private Date dataDiNascita;
+	private int mese_nascita;
+	
+	@Column(nullable = false)
+	private int anno_nascita;
 	
 	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
@@ -54,13 +60,15 @@ public class Allievo {
 	
 	public Allievo() {};
 
-	public Allievo(String nome, String cognome, String email, String telefono, Date dataDiNascita,
+	public Allievo(String nome, String cognome, String email, String cellulare, int anno_nascita, int mese_nascita, int giorno_nascita,
 			Date dataDiIscrizione, String luogoDiNascita, Character sesso) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.email = email;
-		this.telefono = telefono;
-		this.dataDiNascita = dataDiNascita;
+		this.cellulare = cellulare;
+		this.giorno_nascita = giorno_nascita;
+		this.mese_nascita = mese_nascita;
+		this.anno_nascita = anno_nascita;
 		this.dataDiIscrizione = dataDiIscrizione;
 		this.luogoDiNascita = luogoDiNascita;
 		this.sesso = sesso;
@@ -95,20 +103,36 @@ public class Allievo {
 		this.email = email;
 	}
 
-	public String getTelefono() {
-		return telefono;
+	public String getCellulare() {
+		return cellulare;
 	}
 
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
+	public void setCellulare(String cellulare) {
+		this.cellulare = cellulare;
 	}
 
-	public Date getDataDiNascita() {
-		return dataDiNascita;
+	public int getGiorno_nascita() {
+		return giorno_nascita;
 	}
 
-	public void setDataDiNascita(Date dataDiNascita) {
-		this.dataDiNascita = dataDiNascita;
+	public void setGiorno_nascita(int giorno_nascita) {
+		this.giorno_nascita = giorno_nascita;
+	}
+
+	public int getMese_nascita() {
+		return mese_nascita;
+	}
+
+	public void setMese_nascita(int mese_nascita) {
+		this.mese_nascita = mese_nascita;
+	}
+
+	public int getAnno_nascita() {
+		return anno_nascita;
+	}
+
+	public void setAnno_nascita(int anno_nascita) {
+		this.anno_nascita = anno_nascita;
 	}
 
 	public String getLuogoDiNascita() {
@@ -147,4 +171,12 @@ public class Allievo {
 		this.sesso = sesso;
 	}
 
+	@Override
+	public String toString() {
+		return "Allievo [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email + ", cellulare="
+				+ cellulare + ", giorno_nascita=" + giorno_nascita
+				+ ", mese_nascita=" + mese_nascita + ", anno_nascita=" + anno_nascita + ", dataDiIscrizione="
+				+ dataDiIscrizione + ", luogoDiNascita=" + luogoDiNascita + ", sesso=" + sesso + ", attivita="
+				+ attivita + "]";
+	}
 }
