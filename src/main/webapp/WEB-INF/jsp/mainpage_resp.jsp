@@ -118,9 +118,10 @@
                         </div>
                         <div class="my-3 my-md-5">
                             <div class="container">
-                                <div class="row">
-                                    <c:forEach var="att" items="${attivita}">
-                                        <div class="col-lg-12">
+                            	<c:forEach var="att" items="${attivita}">
+	                                <div class="row">
+	                                	<div class="col-lg-2"></div>
+                                        <div class="col-lg-8">
                                             <div class="card">
                                                 <div class="card-status card-status-left bg-blue"></div>
                                                 <div class="card-header">
@@ -132,8 +133,8 @@
                                                 <div class="card-body">${att.descrizione}</div>
                                             </div>
                                         </div>
-                                    </c:forEach>
-                                </div>
+                                    </div>
+                                </c:forEach>
                             </div>
                         </div>
                     </div>

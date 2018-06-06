@@ -161,14 +161,14 @@
                                                                             <th class="text-center w-1"><i class="icon-people"></i></th>
                                                                             <th>Nome</th>
                                                                             <th>Cognome</th>
-                                                                            <th>Data iscrizione</th>
+                                                                            <th>Data registrazione</th>
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
                                                                         <c:forEach var="allievo" items="${attivita.allievi}">
                                                                             <tr>
                                                                                 <td class="text-center">
-                                                                                    <a href="template_allievo.html" class="avatar avatar-cyan d-block">${fn:substring(allievo.nome, 0, 1)}${fn:substring(allievo.cognome, 0, 1)}</a>
+                                                                                    <a href="scheda_allievo/${allievo.id}" class="avatar avatar-cyan d-block">${fn:substring(allievo.nome, 0, 1)}${fn:substring(allievo.cognome, 0, 1)}</a>
                                                                                 </td>
                                                                                 <td>
                                                                                     <div>${allievo.nome}</div>
