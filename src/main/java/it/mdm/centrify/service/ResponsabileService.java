@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.mdm.centrify.model.Responsabile;
+import it.mdm.centrify.repository.ResponsabileRepository;
 
 @Service
 public class ResponsabileService {

@@ -14,12 +14,6 @@ public class Responsabile {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Column(nullable = false, unique = true)
-	private String nomeUtente;
-
-	@Column(nullable = false)
-	private String password;
-	
 	@Column(nullable = false)
 	private String nome;
 	
@@ -29,7 +23,7 @@ public class Responsabile {
 	@Column(nullable = false)
 	private Float stipendio;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String oauthIdentifier;
 	
 	@OneToOne
@@ -37,9 +31,7 @@ public class Responsabile {
 	
 	public Responsabile() {};
 
-	public Responsabile(String nomeUtente, String password, String nome, String cognome, Float stipendio, String oauthIdentifier) {
-		this.nomeUtente = nomeUtente;
-		this.password = password;
+	public Responsabile(String nome, String cognome, Float stipendio, String oauthIdentifier) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.stipendio = stipendio;
@@ -48,22 +40,6 @@ public class Responsabile {
 
 	public Long getId() {
 		return id;
-	}
-
-	public String getNomeUtente() {
-		return nomeUtente;
-	}
-
-	public void setNomeUtente(String nomeUtente) {
-		this.nomeUtente = nomeUtente;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public String getNome() {
