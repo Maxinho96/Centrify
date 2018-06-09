@@ -127,13 +127,15 @@
                                                 <div class="col-md-3 col-lg-3">
                                                     <div class="form-group">
                                                         <label class="form-label">Nome</label>
-                                                        <form:input type="text" name="nome_allievo" class="form-control" placeholder="" path="nome"></form:input>
+                                                        <form:input type="text" name="nome_allievo" class="form-control ${valid_nome}" placeholder="" path="nome"></form:input>
+                                                    	<div class="invalid-feedback">Campo obbligatorio</div>
                                                     </div>      
                                                 </div>
                                                 <div class="col-md-3 col-lg-3">
                                                     <div class="form-group">
                                                         <label class="form-label">Cognome</label>
-                                                        <form:input type="text" name="cognome_allievo" class="form-control" placeholder="" path="cognome"></form:input> 
+                                                        <form:input type="text" name="cognome_allievo" class="form-control ${valid_cognome}" placeholder="" path="cognome"></form:input> 
+                                                    	<div class="invalid-feedback">Campo obbligatorio</div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3 col-lg-3">
@@ -156,14 +158,15 @@
                                                 <div class="col-md-5 col-lg-5">
                                                     <div class="form-group">
                                                         <label class="form-label">Email</label>
-                                                        <form:input type="text" name="email" class="form-control ${valid}" placeholder="email@posta.com" path="email"></form:input>
-                                                        <div class="invalid-feedback">Email già registrata</div>
+                                                        <form:input type="text" name="email" class="form-control ${valid_email}" placeholder="email@posta.com" path="email"></form:input>
+                                                        <div class="invalid-feedback">Email errata o già registrata</div>
                                                     </div>   
                                                 </div>
                                                 <div class="col-md-3 col-lg-3">
                                                     <div class="form-group">
                                                         <label class="form-label">Cellulare</label>
-                                                        <form:input type="text" name="cellulare" class="form-control" data-mask="000 000 0000" data-mask-clearifnotmatch="true" placeholder="335 123 4567" path="cellulare"></form:input>
+                                                        <form:input type="text" name="cellulare" class="form-control ${valid_cellulare}" data-mask="000 000 0000" data-mask-clearifnotmatch="true" placeholder="335 123 4567" path="cellulare"></form:input>
+                                                    	<div class="invalid-feedback">Inserisci un cellulare corretto</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -173,7 +176,7 @@
                                                         <label class="form-label">Data di nascita</label>
                                                         <div class="row gutters-xs">
                                                             <div class="col-4">
-                                                                <form:select name="giorno_nascita" class="form-control custom-select" path="giorno_nascita">
+                                                                <form:select name="giorno_nascita" class="form-control custom-select ${valid_giornoNascita}" path="giorno_nascita">
                                                                     <option value="" selected="selected">Giorno</option>
                                                                     <option value="1">1</option>
                                                                     <option value="2">2</option>
@@ -209,7 +212,7 @@
                                                                 </form:select>
                                                             </div>
                                                             <div class="col-4">
-                                                                <form:select name="mese_nascita" class="form-control custom-select" path="mese_nascita">
+                                                                <form:select name="mese_nascita" class="form-control custom-select ${valid_meseNascita}" path="mese_nascita">
                                                                     <option value="" selected="selected">Mese</option>
                                                                     <option value="1">Gennaio</option>
                                                                     <option value="2">Febbraio</option>
@@ -226,7 +229,7 @@
                                                                 </form:select>
                                                             </div>
                                                             <div class="col-4">
-                                                                <form:select name="anno_nascita" class="form-control custom-select" path="anno_nascita">
+                                                                <form:select name="anno_nascita" class="form-control custom-select ${valid_annoNascita}" path="anno_nascita">
                                                                     <option value="" selected="selected">Anno</option>
                                                                     <option value="2005">2005</option>
                                                                     <option value="2004">2004</option>
@@ -342,7 +345,8 @@
                                                 <div class="col-md-4 col-lg-4">
                                                     <div class="form-group">
                                                         <label class="form-label">Città natale</label>
-                                                        <form:input type="text" name="citta" class="form-control" placeholder="" path="luogoDiNascita"></form:input>
+                                                        <form:input type="text" name="citta" class="form-control ${valid_luogoDiNascita}" placeholder="" path="luogoDiNascita"></form:input>
+                                                    	<div class="invalid-feedback">Campo obbligatorio</div>	
                                                     </div>
                                                 </div>
                                             </div>

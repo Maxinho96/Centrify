@@ -25,6 +25,7 @@ import it.mdm.centrify.service.AllievoService;
 import it.mdm.centrify.service.AttivitaService;
 import it.mdm.centrify.service.AziendaService;
 import it.mdm.centrify.service.ResponsabileService;
+import it.mdm.centrify.validator.AllievoValidator;
 
 @Controller
 @SessionAttributes("responsabile")
@@ -78,10 +79,7 @@ public class ResponsabileController {
 	}
 
 	@RequestMapping("/scheda_attivita/{id}")
-	public String schedaAttivita(
-			@ModelAttribute("responsabile") Responsabile responsabile, 
-			@PathVariable("id") Long id,
-			Model model) {
+	public String schedaAttivita(@ModelAttribute("responsabile") Responsabile responsabile, @PathVariable("id") Long id, Model model) {
 		if(responsabile == null) {
 			return "errore_resp";
 		}
@@ -107,27 +105,70 @@ public class ResponsabileController {
     }
 	
 	@PostMapping("/submit_aggiungi_allievo")
-	public String submitAggiungiAllievo(
-			@ModelAttribute("responsabile") Responsabile responsabile, 
-			@Valid @ModelAttribute Allievo allievo,
-			BindingResult result,
-			Model model) {
+	public String submitAggiungiAllievo(@ModelAttribute("responsabile") Responsabile responsabile, @Valid @ModelAttribute Allievo allievo, BindingResult result, Model model) {
 		if(responsabile == null) {
 			return "errore_resp";
 		}
 		if (result.hasErrors()) {
-			System.out.println(result.getAllErrors().toString());
-			return "/error";	//TO DO
+			//System.out.println(result.getAllErrors().toString());
+			//return "";
 		}
+		
+		boolean error = false;
+		AllievoValidator av = new AllievoValidator(allievo);
+		
+		if(!av.isNomeValid()) {
+			model.addAttribute("valid_nome", "is-invalid");
+			error = true;
+		}
+		
+		if(!av.isCognomeValid()) {
+			model.addAttribute("valid_cognome", "is-invalid");
+			error = true;
+		}
+		
+		if(!av.isEmailValid()) {
+			model.addAttribute("valid_email", "is-invalid");
+			error = true;
+		}
+		
+		if(!av.isCellulareValid()) {
+			model.addAttribute("valid_cellulare", "is-invalid");
+			error = true;
+		}
+		
+		if(!av.isLuogoDiNascitaValid()) {
+			model.addAttribute("valid_luogoDiNascita", "is-invalid");
+			error = true;
+		}
+		
+		if(!av.isGiornoNascitaValid()) {
+			model.addAttribute("valid_giornoNascita", "is-invalid");
+			error = true;
+		}
+		
+		if(!av.isMeseNascitaValid()) {
+			model.addAttribute("valid_meseNascita", "is-invalid");
+			error = true;
+		}
+		
+		if(!av.isAnnoNascitaValid()) {
+			model.addAttribute("valid_annoNascita", "is-invalid");
+			error = true;
+		}
+		
+		if(error)
+			
+			return "aggiungi_allievo";
+		
 		allievo.setDataDiIscrizione(new Date());
 		
 		//System.out.println(allievo.toString());
-		
 		Azienda azienda = this.aziendaService.get(1l); //provvisorio
 		if (azienda != null) {
 			if(azienda.containsAllievoWithEmail(allievo.getEmail())) {
-				model.addAttribute("valid", "is-invalid");
-				return "aggiungi_allievo";	//TO DO
+				model.addAttribute("valid_email", "is-invalid");
+				return "aggiungi_allievo";
 			}
 			else {
 				azienda.addAllievo(allievo);
