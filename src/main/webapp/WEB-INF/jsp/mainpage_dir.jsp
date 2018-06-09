@@ -57,7 +57,7 @@
 			<div class="header py-4">
 				<div class="container">
 					<div class="d-flex">
-						<a class="header-brand" href="/mainpage_r"> <img
+						<a class="header-brand" href="/mainpage_d"> <img
 							src="/assets/images/logo_title.png" class="header-brand-img"
 							alt="Centrify logo">
 						</a>
@@ -92,16 +92,9 @@
 			<div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
 				<div class="container">
 					<div class="row align-items-center">
-						<div class="col-lg-3 ml-auto">
-							<form class="input-icon my-3 my-lg-0">
-								<div class="input-icon-addon">
-									<i class="fe fe-search"></i>
-								</div>
-							</form>
-						</div>
 						<div class="col-lg order-lg-first">
 							<ul class="nav nav-tabs border-0 flex-column flex-lg-row">
-								<li class="nav-item"><a href="/mainpage_dir"
+								<li class="nav-item"><a href="/mainpage_d"
 									class="nav-link active"> <i class="fe fe-home"></i> Home
 								</a></li>
 								<li class="nav-item"><a href="/aggiungi_centro"
@@ -109,6 +102,25 @@
 										Centro
 								</a></li>
 							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="my-3 my-md-5">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-2"></div>
+						<div class="col-lg-8">
+							<div class="card">
+								<div class="card-status card-status-left bg-blue"></div>
+								<div class="card-header">
+									<h3 class="card-title">${centro1.nome}</h3>
+									<div class="card-options">
+										<a href="/scheda_centro/${centro1.id}"
+											class="btn btn-primary btn-sm">Apri</a>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
