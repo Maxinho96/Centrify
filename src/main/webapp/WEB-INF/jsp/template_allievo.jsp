@@ -56,7 +56,7 @@
                 <div class="header py-4">
                     <div class="container">
                         <div class="d-flex">
-                            <a class="header-brand" href="/mainpage">
+                            <a class="header-brand" href="/mainpage_r">
                                 <img src="/assets/images/logo_title.png" class="header-brand-img" alt="Centrify logo">
                             </a>
                             <div class="d-flex order-lg-2 ml-auto">
@@ -100,7 +100,7 @@
                             <div class="col-lg order-lg-first">
                                 <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
                                     <li class="nav-item">
-                                        <a href="/mainpage" class="nav-link active"><i class="fe fe-home"></i> Home</a>
+                                        <a href="/mainpage_r" class="nav-link active"><i class="fe fe-home"></i> Home</a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="/aggiungi_allievo" class="nav-link"><i class="fe fe-user-plus"></i> Aggiungi allievo</a>

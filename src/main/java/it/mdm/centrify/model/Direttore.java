@@ -13,45 +13,25 @@ public class Direttore {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Column(nullable = false, unique = true)
-	private String nomeUtente;
-
-	@Column(nullable = false)
-	private String password;
-	
 	@Column(nullable = false)
 	private String nome;
 	
 	@Column(nullable = false)
 	private String cognome;
 	
+	@Column(nullable = false, unique = true)
+	private String oauthIdentifier;
+	
 	public Direttore() {};
 
-	public Direttore(String nomeUtente, String password, String nome, String cognome) {
-		this.nomeUtente = nomeUtente;
-		this.password = password;
+	public Direttore(String nome, String cognome, String oauthIdentifier) {
 		this.nome = nome;
 		this.cognome = cognome;
+		this.oauthIdentifier = oauthIdentifier;
 	}
 
 	public Long getId() {
 		return id;
-	}
-
-	public String getNomeUtente() {
-		return nomeUtente;
-	}
-
-	public void setNomeUtente(String nomeUtente) {
-		this.nomeUtente = nomeUtente;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public String getNome() {
@@ -68,6 +48,14 @@ public class Direttore {
 
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
+	}
+
+	public String getOauthIdentifier() {
+		return oauthIdentifier;
+	}
+
+	public void setOauthIdentifier(String oauthIdentifier) {
+		this.oauthIdentifier = oauthIdentifier;
 	}
 
 }

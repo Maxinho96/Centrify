@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Responsabile {
@@ -12,12 +13,6 @@ public class Responsabile {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
-	@Column(nullable = false, unique = true)
-	private String nomeUtente;
-
-	@Column(nullable = false)
-	private String password;
 	
 	@Column(nullable = false)
 	private String nome;
@@ -28,34 +23,23 @@ public class Responsabile {
 	@Column(nullable = false)
 	private Float stipendio;
 	
+	@Column(nullable = false, unique = true)
+	private String oauthIdentifier;
+	
+	@OneToOne
+	private Centro centro;
+	
 	public Responsabile() {};
 
-	public Responsabile(String nomeUtente, String password, String nome, String cognome, Float stipendio) {
-		this.nomeUtente = nomeUtente;
-		this.password = password;
+	public Responsabile(String nome, String cognome, Float stipendio, String oauthIdentifier) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.stipendio = stipendio;
+		this.oauthIdentifier = oauthIdentifier;
 	}
 
 	public Long getId() {
 		return id;
-	}
-
-	public String getNomeUtente() {
-		return nomeUtente;
-	}
-
-	public void setNomeUtente(String nomeUtente) {
-		this.nomeUtente = nomeUtente;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public String getNome() {
@@ -80,6 +64,22 @@ public class Responsabile {
 
 	public void setStipendio(Float stipendio) {
 		this.stipendio = stipendio;
+	}
+
+	public String getOauthIdentifier() {
+		return oauthIdentifier;
+	}
+
+	public void setOauthIdentifier(String oauthIdentifier) {
+		this.oauthIdentifier = oauthIdentifier;
+	}
+
+	public Centro getCentro() {
+		return centro;
+	}
+
+	public void setCentro(Centro centro) {
+		this.centro = centro;
 	}
 
 }
