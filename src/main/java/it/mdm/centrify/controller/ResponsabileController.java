@@ -1,5 +1,6 @@
 package it.mdm.centrify.controller;
 
+import java.security.Principal;
 import java.util.Date;
 
 import javax.validation.Valid;
@@ -13,15 +14,20 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import it.mdm.centrify.model.Allievo;
 import it.mdm.centrify.model.Azienda;
+import it.mdm.centrify.model.Centro;
+import it.mdm.centrify.model.Responsabile;
 import it.mdm.centrify.service.AllievoService;
 import it.mdm.centrify.service.AttivitaService;
 import it.mdm.centrify.service.AziendaService;
+import it.mdm.centrify.service.ResponsabileService;
 
 @Controller
+@SessionAttributes("responsabile")
 public class ResponsabileController {
 
 	@Autowired
@@ -32,43 +38,83 @@ public class ResponsabileController {
 	
 	@Autowired
 	private AllievoService allievoService;
+	
+	@Autowired
+	private ResponsabileService responsabileService;
+	
+	@ModelAttribute("responsabile")
+    public Responsabile getResponsabile (Principal principal) {
+		String oauthIdentifier = principal.getName();
+		Responsabile responsabile = this.responsabileService.getByOauthIdentifier(oauthIdentifier);
+		// System.out.println(oauthIdentifier);
+		if(responsabile != null) {
+			return responsabile;
+		}
+		else {
+			return null;
+		}
+    }
 
-	@RequestMapping("/login")
-	public String login() {
-		return "mainpage_resp";
-	}
-
-	@RequestMapping("/scheda_attivita/scheda_allievo/{id}")
-	public String schedaAllievo(@PathVariable("id") Long id, Model model) {
+	@RequestMapping("/scheda_allievo/{id}")
+	public String schedaAllievo(
+			@ModelAttribute("responsabile") Responsabile responsabile,
+			@PathVariable("id") Long id,
+			Model model) {
+		if(responsabile == null) {
+			return "errore_resp";
+		}
 		model.addAttribute("allievo", this.allievoService.getOne(id));
 		return "template_allievo";
 	}
 
-	@RequestMapping("/mainpage")
-	public String mainPageResp(Model model) {
-		model.addAttribute("attivita", this.attivitaService.getAllByCentro(6l));
+	@RequestMapping("/mainpage_r")
+	public String mainPageResp(@ModelAttribute("responsabile") Responsabile responsabile, Model model) {
+		if(responsabile == null) {
+			return "errore_resp";
+		}
+		Centro centro = responsabile.getCentro();
+		model.addAttribute("attivita", centro.getAttivita());
 		return "mainpage_resp";
 	}
 
 	@RequestMapping("/scheda_attivita/{id}")
-	public String schedaAttivita(@PathVariable("id") Long id, Model model) {
+	public String schedaAttivita(
+			@ModelAttribute("responsabile") Responsabile responsabile, 
+			@PathVariable("id") Long id,
+			Model model) {
+		if(responsabile == null) {
+			return "errore_resp";
+		}
 		model.addAttribute("attivita", this.attivitaService.getOne(id));
 		return "template_attivita";
 	}
 
 	@RequestMapping("/aggiungi_attivita")
-	public String aggiungiAttivita() {
+	public String aggiungiAttivita(@ModelAttribute("responsabile") Responsabile responsabile) {
+		if(responsabile == null) {
+			return "errore_resp";
+		}
 		return "aggiungi_attivita";
 	}
 
 	
     @GetMapping("/aggiungi_allievo")
-    public ModelAndView showForm() {
+    public ModelAndView showForm(@ModelAttribute("responsabile") Responsabile responsabile) {
+    	if(responsabile == null) {
+    		return new ModelAndView("errore_resp");
+    	}
         return new ModelAndView("aggiungi_allievo", "allievo", new Allievo());
     }
 	
 	@PostMapping("/submit_aggiungi_allievo")
-	public String submitAggiungiAllievo(@Valid @ModelAttribute Allievo allievo, BindingResult result, Model model) {
+	public String submitAggiungiAllievo(
+			@ModelAttribute("responsabile") Responsabile responsabile, 
+			@Valid @ModelAttribute Allievo allievo,
+			BindingResult result,
+			Model model) {
+		if(responsabile == null) {
+			return "errore_resp";
+		}
 		if (result.hasErrors()) {
 			System.out.println(result.getAllErrors().toString());
 			return "/error";	//TO DO

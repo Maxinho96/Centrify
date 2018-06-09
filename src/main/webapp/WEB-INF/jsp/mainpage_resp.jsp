@@ -20,7 +20,7 @@
                 <link rel="icon" href="/assets/images/favicon.png" type="image/x-icon" />
                 <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon" />
 
-                <title>Report Centro</title>
+                <title>Home</title>
 
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
@@ -53,7 +53,7 @@
                         <div class="header py-4">
                             <div class="container">
                                 <div class="d-flex">
-                                    <a class="header-brand" href="/mainpage"> 
+                                    <a class="header-brand" href="/mainpage_r"> 
                                         <img src="/assets/images/logo_title.png" class="header-brand-img" alt="Centrify logo">
                                     </a>
                                     <div class="d-flex order-lg-2 ml-auto">
@@ -63,7 +63,7 @@
                                                     <span class="avatar-status bg-green"></span>
                                                 </span> 
                                                 <span class="ml-2 d-none d-lg-block"> 
-                                                    <span class="text-default">Marco Rossi</span> 
+                                                    <span class="text-default">${responsabile.nome} ${responsabile.cognome}</span> 
                                                     <small class="text-muted d-block mt-1">Responsabile</small>
                                                 </span>
                                             </a>
@@ -97,7 +97,7 @@
                                     <div class="col-lg order-lg-first">
                                         <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
                                             <li class="nav-item">
-                                                <a href="/mainpage" class="nav-link active">
+                                                <a href="/mainpage_r" class="nav-link active">
                                                     <i class="fe fe-home"></i> Home
                                                 </a>
                                             </li>
