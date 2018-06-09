@@ -21,7 +21,7 @@
                         <link rel="icon" href="/assets/images/favicon.png" type="image/x-icon" />
                         <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon" />
 
-                        <title>${attivita.nome}</title>
+                        <title>${attivita.nomeAttivita}</title>
 
                         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
                         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
@@ -125,19 +125,17 @@
                                             <div class="col-md-6 col-lg-4">
                                                 <div class="card">
                                                     <div class="card-header">
-                                                        <h1 class="page-title">${attivita.nome}</h1>
+                                                        <h1 class="page-title">${attivita.nomeAttivita}</h1>
                                                     </div>
                                                     <div class="card-body">
                                                         <p>${attivita.descrizione}</p>
                                                         <p>
-                                                            <fmt:formatDate value="${attivita.dataOraSvolgimento}" var="data" type="date" pattern="dd/MM/yyyy" />
                                                             <span class="card-title">Data: </span> 
-                                                            <span>${data}</span>
+                                                            <span>${attivita.giorno_svolgimento}/${attivita.mese_svolgimento}/${attivita.anno_svolgimento}</span>
                                                         </p>
                                                         <p>	
-                                                            <fmt:formatDate value="${attivita.dataOraSvolgimento}" var="ora" type="time" pattern="H:m" />
                                                             <span class="card-title">Orario: </span>
-                                                            <span>${ora}</span>
+                                                            <span>${attivita.ora_svolgimento}:${attivita.minuto_svolgimento}</span>
                                                         </p>
                                                         <p>
                                                             <span class="card-title">Docente: </span>

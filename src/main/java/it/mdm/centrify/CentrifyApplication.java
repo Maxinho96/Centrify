@@ -8,9 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 import it.mdm.centrify.model.Allievo;
 import it.mdm.centrify.model.Attivita;
@@ -62,9 +59,9 @@ public class CentrifyApplication {
 		Allievo allievo3 = new Allievo("Diego", "Barbieri", "diego.barb@school.it", "331 043 2053", 1996, 2, 25, new Date(118, 6, 4), "Roma", 'M');
 		azienda.addAllievo(allievo3);
 		
-		Attivita attivita1 = new Attivita("APS",new Date(118,8,23,17,30), "Luca", "Cabibbo", "Corso di Analisi e Progettazione del Software");
-		Attivita attivita2 = new Attivita("Filosofia",new Date(118,11,27,17,30), "Marta", "Cialdea", "Corso di Filosofia");
-		Attivita attivita3 = new Attivita("SIW", new Date(118,10,12,17,30),"Paolo", "Merialdo", "Corso di Sistemi Informativi per il web");
+		Attivita attivita1 = new Attivita("APS","Luca", "Cabibbo", "Corso di Analisi e Progettazione del Software",2,4,2018,"16","30");
+		Attivita attivita2 = new Attivita("Filosofia", "Marta", "Cialdea", "Corso di Filosofia",23,11,2018,"14","30");
+		Attivita attivita3 = new Attivita("SIW","Paolo", "Merialdo", "Corso di Sistemi Informativi per il web",11,10,2018,"11","25");
 		
 		centro1.addAttivita(attivita1);
 		centro1.addAttivita(attivita2);

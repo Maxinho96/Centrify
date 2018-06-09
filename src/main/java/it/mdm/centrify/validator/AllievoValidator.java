@@ -16,11 +16,15 @@ public class AllievoValidator {
 		return (s == null || s.isEmpty());
 	}
 	
+	public boolean isStringAlphabetic(String s) {
+		return Pattern.matches("^[a-zA-Z]+$", s);
+	}
+	
 	public boolean isNomeValid() {
 		boolean isValid = true;
 		String nome = this.allievo.getNome();
-		
-		if(isStringInvalid(nome))
+
+		if(isStringInvalid(nome) || !isStringAlphabetic(nome))
 			isValid = false;
 		
 		return isValid;
@@ -30,7 +34,7 @@ public class AllievoValidator {
 		boolean isValid = true;
 		String cognome = this.allievo.getCognome();
 		
-		if(isStringInvalid(cognome))
+		if(isStringInvalid(cognome) || !isStringAlphabetic(cognome))
 			isValid = false;	
 		
 		return isValid;
@@ -92,7 +96,7 @@ public class AllievoValidator {
 		boolean isValid = true;
 		String luogoDiNascita = this.allievo.getLuogoDiNascita();
 		
-		if(isStringInvalid(luogoDiNascita))
+		if(isStringInvalid(luogoDiNascita) || !isStringAlphabetic(luogoDiNascita))
 			isValid = false;
 		
 		return isValid;

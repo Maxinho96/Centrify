@@ -1,6 +1,5 @@
 package it.mdm.centrify.model;
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,10 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OrderBy;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
-@Entity
+@Entity 
 public class Attivita {
 
 	@Id
@@ -23,11 +20,23 @@ public class Attivita {
 	private Long id;
 
 	@Column(nullable = false, unique = true)
-	private String nome;
+	private String nomeAttivita;
 
+	//li ho messi per matchare con gli attributi della jsp al posto di dataSvolgimento
 	@Column(nullable = false)
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataOraSvolgimento;
+	private int giorno_svolgimento;
+	
+	@Column(nullable = false)
+	private int mese_svolgimento;
+	
+	@Column(nullable = false)
+	private int anno_svolgimento;
+	
+	@Column(nullable = false)
+	private String ora_svolgimento;
+	
+	@Column(nullable = false)
+	private String minuto_svolgimento;
 	
 	@Column(nullable = false)
 	private String nomeProfessore;
@@ -44,12 +53,17 @@ public class Attivita {
 
 	public Attivita() {};
 	
-	public Attivita(String nome, Date dataOraSvolgimento, String nomeProfessore, String cognomeProfessore, String descrizione) {
-		this.nome = nome;
-		this.dataOraSvolgimento = dataOraSvolgimento;
+	public Attivita(String nomeAttivita, String nomeProfessore, String cognomeProfessore, 
+			String descrizione, int giornoSvolgimento, int meseSvolgimento, int annoSvolgimento, String oraSvolgimento, String minutoSvolgimento) {
+		this.nomeAttivita = nomeAttivita;
 		this.nomeProfessore = nomeProfessore;
 		this.cognomeProfessore = cognomeProfessore;
 		this.descrizione = descrizione;
+		this.giorno_svolgimento = giornoSvolgimento;
+		this.mese_svolgimento = meseSvolgimento;
+		this.anno_svolgimento = annoSvolgimento;
+		this.ora_svolgimento = oraSvolgimento;
+		this.minuto_svolgimento = minutoSvolgimento;
 		this.allievi = new HashSet<Allievo>();
 	}
 
@@ -57,24 +71,52 @@ public class Attivita {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public String getNomeAttivita() {
+		return nomeAttivita;
 	}
 
-	public String getNome() {
-		return nome;
+	public void setNomeAttivita(String nomeAttivita) {
+		this.nomeAttivita = nomeAttivita;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public int getGiorno_svolgimento() {
+		return giorno_svolgimento;
 	}
 
-	public Date getDataOraSvolgimento() {
-		return dataOraSvolgimento;
+	public void setGiorno_svolgimento(int giorno_svolgimento) {
+		this.giorno_svolgimento = giorno_svolgimento;
 	}
 
-	public void setDataOraSvolgimento(Date dataOraSvolgimento) {
-		this.dataOraSvolgimento = dataOraSvolgimento;
+	public int getMese_svolgimento() {
+		return mese_svolgimento;
+	}
+
+	public void setMese_svolgimento(int mese_svolgimento) {
+		this.mese_svolgimento = mese_svolgimento;
+	}
+
+	public int getAnno_svolgimento() {
+		return anno_svolgimento;
+	}
+
+	public void setAnno_svolgimento(int anno_svolgimento) {
+		this.anno_svolgimento = anno_svolgimento;
+	}
+
+	public String getOra_svolgimento() {
+		return ora_svolgimento;
+	}
+
+	public void setOra_svolgimento(String ora_svolgimento) {
+		this.ora_svolgimento = ora_svolgimento;
+	}
+
+	public String getMinuto_svolgimento() {
+		return minuto_svolgimento;
+	}
+
+	public void setMinuto_svolgimento(String minuto_svolgimento) {
+		this.minuto_svolgimento = minuto_svolgimento;
 	}
 
 	public String getNomeProfessore() {

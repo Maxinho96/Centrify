@@ -159,14 +159,14 @@
                                                     <div class="form-group">
                                                         <label class="form-label">Email</label>
                                                         <form:input type="text" name="email" class="form-control ${valid_email}" placeholder="email@posta.com" path="email"></form:input>
-                                                        <div class="invalid-feedback">Email errata o già registrata</div>
+                                                        <div class="invalid-feedback">${mex_err_email}</div>
                                                     </div>   
                                                 </div>
                                                 <div class="col-md-3 col-lg-3">
                                                     <div class="form-group">
                                                         <label class="form-label">Cellulare</label>
                                                         <form:input type="text" name="cellulare" class="form-control ${valid_cellulare}" data-mask="000 000 0000" data-mask-clearifnotmatch="true" placeholder="335 123 4567" path="cellulare"></form:input>
-                                                    	<div class="invalid-feedback">Inserisci un cellulare corretto</div>
+                                                    	<div class="invalid-feedback">Campo obbligatorio</div>
                                                     </div>
                                                 </div>
                                             </div>

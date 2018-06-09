@@ -18,14 +18,17 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import it.mdm.centrify.model.Allievo;
+import it.mdm.centrify.model.Attivita;
 import it.mdm.centrify.model.Azienda;
 import it.mdm.centrify.model.Centro;
 import it.mdm.centrify.model.Responsabile;
 import it.mdm.centrify.service.AllievoService;
 import it.mdm.centrify.service.AttivitaService;
 import it.mdm.centrify.service.AziendaService;
+import it.mdm.centrify.service.CentroService;
 import it.mdm.centrify.service.ResponsabileService;
 import it.mdm.centrify.validator.AllievoValidator;
+import it.mdm.centrify.validator.AttivitaValidator;
 
 @Controller
 @SessionAttributes("responsabile")
@@ -36,12 +39,16 @@ public class ResponsabileController {
 	
 	@Autowired
 	private AziendaService aziendaService; 
+
+	@Autowired
+	private CentroService centroService;
 	
 	@Autowired
 	private AllievoService allievoService;
 	
 	@Autowired
 	private ResponsabileService responsabileService;
+
 	
 	@ModelAttribute("responsabile")
     public Responsabile getResponsabile (Principal principal) {
@@ -73,8 +80,10 @@ public class ResponsabileController {
 		if(responsabile == null) {
 			return "errore_resp";
 		}
+		
 		Centro centro = responsabile.getCentro();
 		model.addAttribute("attivita", centro.getAttivita());
+		//System.out.println(centro.getAttivita());
 		return "mainpage_resp";
 	}
 
@@ -87,12 +96,89 @@ public class ResponsabileController {
 		return "template_attivita";
 	}
 
-	@RequestMapping("/aggiungi_attivita")
-	public String aggiungiAttivita(@ModelAttribute("responsabile") Responsabile responsabile) {
+	@GetMapping("/aggiungi_attivita")
+	public ModelAndView aggiungiAttivita(@ModelAttribute("responsabile") Responsabile responsabile) {
+		if(responsabile == null) {
+			return new ModelAndView("errore_resp");
+		}
+		return new ModelAndView("aggiungi_attivita", "attivita", new Attivita());
+	}
+	
+	@PostMapping("submit_aggiungi_attivita")
+	public String submitAggiungiAttivita(@ModelAttribute("responsabile") Responsabile responsabile, @Valid @ModelAttribute Attivita attivita, BindingResult result, Model model) {
 		if(responsabile == null) {
 			return "errore_resp";
 		}
-		return "aggiungi_attivita";
+		if (result.hasErrors()) {
+			//System.out.println(result.getAllErrors().toString());
+			//return "";
+		}
+		
+		boolean error = false;
+		AttivitaValidator av = new AttivitaValidator(attivita);
+		
+		if(!av.isNomeValid()) {
+			model.addAttribute("valid_nome", "is-invalid");
+			model.addAttribute("mex_err_nome", "Campo obbligatorio");
+			error=true;
+		}
+		
+		if(!av.isGiornoSvolgimentoValid()) {
+			model.addAttribute("valid_giornoSvolgimento", "is-invalid");
+			error=true;
+		}
+		
+		if(!av.isMeseSvolgimentoValid()) {
+			model.addAttribute("valid_meseSvolgimento", "is-invalid");
+			error=true;
+		}
+		
+		if(!av.isAnnoSvolgimentoValid()) {
+			model.addAttribute("valid_annoSvolgimento", "is-invalid");
+			error=true;
+		}
+		
+		if(!av.isOraSvolgimentoValid()) {
+			model.addAttribute("valid_oraSvolgimento", "is-invalid");
+			error=true;
+		}
+		
+		if(!av.isMinutoSvolgimentoValid()) {
+			model.addAttribute("valid_minutoSvolgimento", "is-invalid");
+			error=true;
+		}
+		
+		if(!av.isNomeProfessoreValid()) {
+			model.addAttribute("valid_nomeProfessore", "is-invalid");
+			error=true;
+		}
+		
+		if(!av.isCognomeProfessoreValid()) {
+			model.addAttribute("valid_cognomeProfessore", "is-invalid");
+			error=true;
+		}
+		
+		if(!av.isDescrizioneValid()) {
+			model.addAttribute("valid_descrizione", "is-invalid");
+			error=true;
+		}
+		
+		if(error)
+			return "aggiungi_attivita";		
+		
+		Centro centro = this.centroService.getOne(6l); //provvisorio
+		if (centro != null) {
+			if(centro.containsAttivitaWithName(attivita.getNomeAttivita())) {
+				model.addAttribute("valid_nome", "is-invalid");
+				model.addAttribute("mex_err_nome", "Attività gia esistente");
+				return "aggiungi_attivita";
+			}
+			else {
+				centro.addAttivita(attivita);
+				this.centroService.save(centro);
+			}
+		}	
+		return "template_attivita";
 	}
 
 	
@@ -129,6 +215,7 @@ public class ResponsabileController {
 		
 		if(!av.isEmailValid()) {
 			model.addAttribute("valid_email", "is-invalid");
+			model.addAttribute("mex_err_email", "Compila correttamente questo campo");
 			error = true;
 		}
 		
@@ -164,10 +251,11 @@ public class ResponsabileController {
 		allievo.setDataDiIscrizione(new Date());
 		
 		//System.out.println(allievo.toString());
-		Azienda azienda = this.aziendaService.get(1l); //provvisorio
+		Azienda azienda = this.aziendaService.getOne(1l); //provvisorio
 		if (azienda != null) {
 			if(azienda.containsAllievoWithEmail(allievo.getEmail())) {
 				model.addAttribute("valid_email", "is-invalid");
+				model.addAttribute("mex_err_email", "Email già registrata");
 				return "aggiungi_allievo";
 			}
 			else {

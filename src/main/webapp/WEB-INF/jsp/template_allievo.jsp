@@ -168,20 +168,23 @@
                                                             <th class="text-center w-1"><i class="icon-people"></i></th>
                                                             <th>Nome</th>
                                                             <th>Data Svolgimento</th>
+                                                            <th>Orario Svolgimento</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
 	                                                    <c:forEach var="attivita" items="${allievo.attivita}">
 	                                                        <tr>
 	                                                            <td class="text-center">
-	                                                                <a href="/scheda_attivita/${attivita.id}" class="avatar avatar-green d-block">NA</a>
+	                                                                <a href="/scheda_attivita/${attivita.id}" class="avatar avatar-green d-block">${fn:substring(attivita.nomeAttivita, 0, 1)}</a>
 	                                                            </td>
 	                                                            <td>
-	                                                                <div>${attivita.nome}</div>
+	                                                                <div>${attivita.nomeAttivita}</div>
 	                                                            </td>
 	                                                            <td>
-	                                                                <fmt:formatDate value="${attivita.dataOraSvolgimento}" var="dataSvolgimento" type="date" pattern="dd/MM/yyyy"/>
-	                                                                <div>${dataSvolgimento}</div>
+	                                                            	<div>${attivita.giorno_svolgimento}/${attivita.mese_svolgimento}/${attivita.anno_svolgimento}</div>
+	                                                            </td>
+	                                                            <td>
+	                                                            	<div>${attivita.ora_svolgimento}:${attivita.minuto_svolgimento}</div>
 	                                                            </td>
 	                                                        </tr>
 	                                                     </c:forEach>

@@ -42,7 +42,7 @@ public class Centro {
 	
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "centro_id")
-	@OrderBy("nome")
+	@OrderBy("nomeAttivita")
 	private Set<Attivita> attivita;
 	
 	public Centro() {};
@@ -54,7 +54,6 @@ public class Centro {
 		this.telefono = telefono;
 		this.capienza = capienza;
 		this.attivita = new HashSet<Attivita>();
-		System.out.println();
 	}
 
 	public Long getId() {
@@ -119,6 +118,16 @@ public class Centro {
 	
 	public void addAttivita(Attivita attivita) {
 		this.attivita.add(attivita);
+	}
+
+	public boolean containsAttivitaWithName(String nome) {
+		
+		for(Attivita a : this.attivita) {
+			if(a.getNomeAttivita().equals(nome))
+				return true;
+		}
+		
+		return false;
 	}
 	
 }
