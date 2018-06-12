@@ -29,5 +29,10 @@ public class AziendaService {
 			return null;
 	}
 	
+//	@Transactional
+//	public List<Allievo> getAllieviByNomeOrCognome(String nome, String cognome) {
+//		return this.aziendaRepository.findAllieviByNomeOrCognome(nome, cognome);
+//	}
+	
 
 }
