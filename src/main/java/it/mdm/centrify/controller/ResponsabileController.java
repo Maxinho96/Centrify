@@ -2,7 +2,10 @@ package it.mdm.centrify.controller;
 
 import java.security.Principal;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -66,6 +69,8 @@ public class ResponsabileController {
 
 	@RequestMapping("/scheda_allievo/{id}")
 	public String schedaAllievo(
+			Principal principal,
+			@ModelAttribute("attivita_selezionata") Attivita attivita_selezionata,
 			@ModelAttribute("responsabile") Responsabile responsabile,
 			@PathVariable("id") Long id,
 			Model model) {
@@ -73,6 +78,15 @@ public class ResponsabileController {
 			return "errore_resp";
 		}
 		model.addAttribute("allievo", this.allievoService.getOne(id));
+		
+		Map<Attivita,String> mapAttivita = new HashMap<>();
+		
+		Set<Attivita> attivita = this.getResponsabile(principal).getCentro().getAttivita();
+		for(Attivita a : attivita) {
+			mapAttivita.put(a, a.getNomeAttivita());
+		}
+	
+		model.addAttribute("mapAttivita", mapAttivita);
 		return "template_allievo";
 	}
 

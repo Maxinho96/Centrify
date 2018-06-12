@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" dir="ltr">
@@ -195,6 +196,23 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
+                        	<div class="col-lg-1"></div>
+                        	<div class="col-md-10 col-lg-10">
+                        		
+                        		<div class="card">
+                                    <div class="card-header">
+                                        <h1 class="page-title">Assegna nuova attività</h1>
+                                    </div>
+                                    <div class="card-body">
+                                    <form:select path="attivita_selezionata" class="form-control custom-select" action="/aggiungi_attivita_allievo">
+                                    	<form:option value="none" label="-- Seleziona --"/>
+   										<form:options items="${mapAttivita}"/>
+                                    </form:select>
+                                    </div>
+
+                        	</div>
                         </div>
                     </div>
                 </div>
