@@ -91,6 +91,27 @@ public class ResponsabileController {
 		//System.out.println(centro.getAttivita());
 		return "mainpage_resp";
 	}
+	
+	@RequestMapping("/submit_ricercaAllievo")
+	public String submitRicercaAllievo(
+			Principal principal,
+			@ModelAttribute("responsabile") Responsabile responsabile,
+			@ModelAttribute("stringa_ricerca") String stringa_ricerca,
+			Model model) {
+		if(responsabile == null) {
+			return "errore_resp";
+		}
+		// responsabile = this.getResponsabile(principal);
+		// model.addAttribute("responsabile", responsabile);
+		Azienda azienda = responsabile.getCentro().getAzienda();
+		System.out.println(stringa_ricerca);
+		String[] splitted = stringa_ricerca.split("\\s+");
+		if(splitted.length == 1)
+			model.addAttribute("allievi", this.allievoService.getByAziendaAndNomeOrCognome(azienda.getId(), splitted[0], splitted[0]));
+		else
+			model.addAttribute("allievi", this.allievoService.getByAziendaAndNomeOrCognome(azienda.getId(), splitted[0], splitted[1]));
+		return "template_risultatiRicercaAllievo";
+	}
 
 	@RequestMapping("/scheda_attivita/{id}")
 	public String schedaAttivita(@ModelAttribute("responsabile") Responsabile responsabile, @PathVariable("id") Long id, Model model) {
@@ -110,10 +131,11 @@ public class ResponsabileController {
 	}
 	
 	@PostMapping("submit_aggiungi_attivita")
-	public String submitAggiungiAttivita(@ModelAttribute("responsabile") Responsabile responsabile, @Valid @ModelAttribute Attivita attivita, BindingResult result, Model model) {
+	public String submitAggiungiAttivita(Principal principal, @ModelAttribute("responsabile") Responsabile responsabile, @Valid @ModelAttribute Attivita attivita, BindingResult result, Model model) {
 		if(responsabile == null) {
 			return "errore_resp";
 		}
+		responsabile = this.getResponsabile(principal);
 		if (result.hasErrors()) {
 			//System.out.println(result.getAllErrors().toString());
 			//return "";
@@ -168,7 +190,7 @@ public class ResponsabileController {
 			error=true;
 		}
 		
-		Centro centro = this.centroService.getOne(6l); //provvisorio
+		Centro centro = responsabile.getCentro();
 		if (centro != null) {
 			if(centro.containsAttivitaWithName(attivita.getNomeAttivita())) {
 				model.addAttribute("valid_nome", "is-invalid");
