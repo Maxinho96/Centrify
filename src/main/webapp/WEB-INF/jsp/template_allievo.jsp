@@ -120,7 +120,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-1"></div>
-                            <div class="col-md-6 col-lg-4">
+                            <div class="col-md-4 col-lg-4">
                                 <div class="card">
                                     <div class="card-header">
                                         <h1 class="page-title">${allievo.nome} ${allievo.cognome}</h1>
@@ -195,25 +195,31 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>                            
                         </div>
+                        
                         <div class="row">
                         	<div class="col-lg-1"></div>
-                        	<div class="col-md-10 col-lg-10">
-                        		
-                        		<div class="card">
+                        	<div class="col-10">	
+                        		<form class="card" action="/iscrivi_allievo" method="post">
                                     <div class="card-header">
-                                        <h1 class="page-title">Assegna nuova attività</h1>
+                                        <h1 class="card-title">Assegna nuova attività</h1>
                                     </div>
-                                    <div class="card-body">
-                                    <form:select path="attivita_selezionata" class="form-control custom-select" action="/aggiungi_attivita_allievo">
-                                    	<form:option value="none" label="-- Seleziona --"/>
-   										<form:options items="${mapAttivita}"/>
-                                    </form:select>
+                                    <div class="card-body">		                                    
+	                                    <select name="attivitaDaAggiungere"class="form-control custom-select">
+											<option value="none">Seleziona</option>
+											<c:forEach var="att" items="${listAttivita}">
+												<option value="${att.id}">${att.nomeAttivita}</option>
+											</c:forEach>
+	                                    </select>
                                     </div>
-
+									<div class="card-footer text-right">
+                                    	<button type="submit" class="btn btn-primary">Assegna</button>
+                                    </div>
+								</form>
                         	</div>
                         </div>
+                        
                     </div>
                 </div>
             </div>

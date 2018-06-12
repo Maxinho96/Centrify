@@ -52,7 +52,6 @@ public class ResponsabileController {
 	
 	@Autowired
 	private ResponsabileService responsabileService;
-
 	
 	@ModelAttribute("responsabile")
     public Responsabile getResponsabile (Principal principal) {
@@ -70,26 +69,49 @@ public class ResponsabileController {
 	@RequestMapping("/scheda_allievo/{id}")
 	public String schedaAllievo(
 			Principal principal,
-			@ModelAttribute("attivita_selezionata") Attivita attivita_selezionata,
 			@ModelAttribute("responsabile") Responsabile responsabile,
 			@PathVariable("id") Long id,
 			Model model) {
 		if(responsabile == null) {
 			return "errore_resp";
 		}
-		model.addAttribute("allievo", this.allievoService.getOne(id));
 		
-		Map<Attivita,String> mapAttivita = new HashMap<>();
+		Allievo allievo = this.allievoService.getOne(id);
+		model.addAttribute("allievo", allievo);
 		
-		Set<Attivita> attivita = this.getResponsabile(principal).getCentro().getAttivita();
-		for(Attivita a : attivita) {
-			mapAttivita.put(a, a.getNomeAttivita());
+		Set<Attivita> attivitaCentro = this.getResponsabile(principal).getCentro().getAttivita();
+		Set<Attivita> attivitaAllievo = allievo.getAttivita();
+		
+		for(Attivita a : attivitaCentro) {
+			if(attivitaAllievo.contains(a))
+				attivitaCentro.remove(a);
 		}
 	
-		model.addAttribute("mapAttivita", mapAttivita);
+		model.addAttribute("listAttivita", attivitaCentro);
 		return "template_allievo";
 	}
-
+	
+	@RequestMapping("/iscrivi_allievo")
+	public String iscriviAllievo(
+			Principal principal,
+			@ModelAttribute("responsabile") Responsabile responsabile,
+			@ModelAttribute("allievo") Allievo allievo,
+			@ModelAttribute("attivitaDaAggiungere") Long id_attivitaDaAggiungere,
+			Model model) {
+		
+		if(responsabile == null) {
+			return "errore_resp";
+		}
+		
+		System.out.println(id_attivitaDaAggiungere);
+		
+		//allievo.addAttivita(attivita_selezionata);
+		//attivita_selezionata.addAllievo(allievo);
+		//System.out.println(allievo.getId());
+		
+		return "redirect:/scheda_allievo/4"; //+ allievo.getId();
+	}
+	
 	@RequestMapping("/mainpage_r")
 	public String mainPageResp(
 			Principal principal,
@@ -226,7 +248,7 @@ public class ResponsabileController {
 
 	
     @GetMapping("/aggiungi_allievo")
-    public ModelAndView showForm(@ModelAttribute("responsabile") Responsabile responsabile) {
+    public ModelAndView aggiungiAllievo(@ModelAttribute("responsabile") Responsabile responsabile) {
     	if(responsabile == null) {
     		return new ModelAndView("errore_resp");
     	}
