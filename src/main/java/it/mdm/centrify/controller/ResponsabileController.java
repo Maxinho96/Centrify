@@ -2,6 +2,7 @@ package it.mdm.centrify.controller;
 
 import java.security.Principal;
 import java.util.Date;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -181,8 +182,10 @@ public class ResponsabileController {
 			
 		centro.addAttivita(attivita);
 		this.centroService.save(centro);
+		
+		Long id_attivita = centro.getAttivitaByNome(attivita.getNomeAttivita()).getId();
 	
-		return "template_attivita";
+		return "redirect:/scheda_attivita/"+id_attivita;
 	}
 
 	
@@ -271,9 +274,13 @@ public class ResponsabileController {
 			return "aggiungi_allievo";
 		
 		azienda.addAllievo(allievo);
+		
 		this.aziendaService.save(azienda);
 		
-		return "template_allievo";
+		List<Allievo> allievi = azienda.getAllievi();
+		Long id_allievo = allievi.get(allievi.size() - 1).getId();
+		
+		return "redirect:/scheda_allievo/"+id_allievo;
 	}
 
 	//	@RequestMapping("/logout")

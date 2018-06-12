@@ -6,7 +6,6 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -114,6 +113,14 @@ public class Centro {
 
 	public Set<Attivita> getAttivita() {
 		return attivita;
+	}
+	
+	public Attivita getAttivitaByNome(String nome) {
+		for(Attivita a : this.attivita) {
+			if(a.getNomeAttivita().equals(nome))
+				return a;
+		}
+		return null;
 	}
 
 	public void setAttivita(Set<Attivita> attivita) {
