@@ -42,6 +42,7 @@ public class CentrifyApplication {
 		responsabile1.setCentro(centro1);
 		centro1.setResponsabile(responsabile1);
 		azienda.addCentro(centro1);
+		centro1.setAzienda(azienda);
 		
 		Centro centro2 = new Centro("Scuola Berlusconi", "Via Marco Salvini, 69", "berlusca@school.it", "06 823 2645", 14);
 		Responsabile responsabile2 = new Responsabile("Massimo", "Ottavi", 1400f, "a");
@@ -49,6 +50,7 @@ public class CentrifyApplication {
 		responsabile2.setCentro(centro2);
 		centro2.setResponsabile(responsabile2);
 		azienda.addCentro(centro2);
+		centro2.setAzienda(azienda);
 		
 		Direttore direttore = new Direttore("Paolo", "Atzeni", "118942502330805");
 		azienda.setDirettore(direttore);
