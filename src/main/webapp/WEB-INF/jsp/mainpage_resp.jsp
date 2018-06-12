@@ -125,7 +125,7 @@
                                             <div class="card">
                                                 <div class="card-status card-status-left bg-blue"></div>
                                                 <div class="card-header">
-                                                    <h3 class="card-title">${att.nome}</h3>
+                                                    <h3 class="card-title">${att.nomeAttivita}</h3>
                                                     <div class="card-options">
                                                         <a href="/scheda_attivita/${att.id}" class="btn btn-primary btn-sm">Apri</a>
                                                     </div>

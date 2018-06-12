@@ -100,7 +100,7 @@
                             <div class="col-lg order-lg-first">
                                 <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
                                     <li class="nav-item">
-                                        <a href="/mainpage_r" class="nav-link active"><i class="fe fe-home"></i> Home</a>
+                                        <a href="/mainpage_r" class="nav-link"><i class="fe fe-home"></i> Home</a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="/aggiungi_allievo" class="nav-link"><i class="fe fe-user-plus"></i> Aggiungi allievo</a>
@@ -168,20 +168,23 @@
                                                             <th class="text-center w-1"><i class="icon-people"></i></th>
                                                             <th>Nome</th>
                                                             <th>Data Svolgimento</th>
+                                                            <th>Orario Svolgimento</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
 	                                                    <c:forEach var="attivita" items="${allievo.attivita}">
 	                                                        <tr>
 	                                                            <td class="text-center">
-	                                                                <a href="/scheda_attivita/${attivita.id}" class="avatar avatar-green d-block">NA</a>
+	                                                                <a href="/scheda_attivita/${attivita.id}" class="avatar avatar-green d-block">${fn:substring(attivita.nomeAttivita, 0, 1)}</a>
 	                                                            </td>
 	                                                            <td>
-	                                                                <div>${attivita.nome}</div>
+	                                                                <div>${attivita.nomeAttivita}</div>
 	                                                            </td>
 	                                                            <td>
-	                                                                <fmt:formatDate value="${attivita.dataOraSvolgimento}" var="dataSvolgimento" type="date" pattern="dd/MM/yyyy"/>
-	                                                                <div>${dataSvolgimento}</div>
+	                                                            	<div>${attivita.giorno_svolgimento}/${attivita.mese_svolgimento}/${attivita.anno_svolgimento}</div>
+	                                                            </td>
+	                                                            <td>
+	                                                            	<div>${attivita.ora_svolgimento}:${attivita.minuto_svolgimento}</div>
 	                                                            </td>
 	                                                        </tr>
 	                                                     </c:forEach>

@@ -6,11 +6,11 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
@@ -37,13 +37,16 @@ public class Centro {
 	@Column(nullable = false)
 	private Integer capienza;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "centro", cascade = CascadeType.ALL)
 	private Responsabile responsabile;
 	
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "centro_id")
-	@OrderBy("nome")
+	@OrderBy("nomeAttivita")
 	private Set<Attivita> attivita;
+	
+	@ManyToOne
+	private Azienda azienda;
 	
 	public Centro() {};
 
@@ -54,7 +57,6 @@ public class Centro {
 		this.telefono = telefono;
 		this.capienza = capienza;
 		this.attivita = new HashSet<Attivita>();
-		System.out.println();
 	}
 
 	public Long getId() {
@@ -112,6 +114,14 @@ public class Centro {
 	public Set<Attivita> getAttivita() {
 		return attivita;
 	}
+	
+	public Attivita getAttivitaByNome(String nome) {
+		for(Attivita a : this.attivita) {
+			if(a.getNomeAttivita().equals(nome))
+				return a;
+		}
+		return null;
+	}
 
 	public void setAttivita(Set<Attivita> attivita) {
 		this.attivita = attivita;
@@ -119,6 +129,24 @@ public class Centro {
 	
 	public void addAttivita(Attivita attivita) {
 		this.attivita.add(attivita);
+	}
+
+	public boolean containsAttivitaWithName(String nome) {
+		
+		for(Attivita a : this.attivita) {
+			if(a.getNomeAttivita().equals(nome))
+				return true;
+		}
+		
+		return false;
+	}
+
+	public Azienda getAzienda() {
+		return azienda;
+	}
+
+	public void setAzienda(Azienda azienda) {
+		this.azienda = azienda;
 	}
 	
 }

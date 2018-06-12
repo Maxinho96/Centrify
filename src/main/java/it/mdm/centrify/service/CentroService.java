@@ -16,6 +16,11 @@ public class CentroService {
 	private CentroRepository centroRepository;
 	
 	@Transactional
+	public void save(Centro centro) {
+		this.centroRepository.save(centro);
+	}
+	
+	@Transactional
 	public Centro getOne(Long id) {
 		Optional<Centro> centro = this.centroRepository.findById(id);
 		if(centro.isPresent()) {

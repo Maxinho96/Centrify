@@ -31,8 +31,7 @@ public class Azienda {
 	@JoinColumn(name = "azienda_id")
 	private List<Allievo> allievi;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "azienda_id")
+	@OneToMany(mappedBy = "azienda", cascade = CascadeType.ALL)
 	private List<Centro> centri;
 	
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
