@@ -17,44 +17,47 @@ import javax.persistence.OrderBy;
 
 @Entity
 public class Centro {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	@Column(nullable = false, unique = true)
 	private String nome;
-	
+
 	@Column(nullable = false)
 	private String indirizzo;
-	
+
 	@Column(nullable = false, unique = true)
 	private String email;
-	
+
 	@Column(nullable = false)
 	private String telefono;
-	
+
 	@Column(nullable = false)
 	private Integer capienza;
-	
+
+	private String descrizione;
+
 	@OneToOne(cascade = CascadeType.ALL)
 	private Responsabile responsabile;
-	
+
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "centro_id")
 	@OrderBy("nome")
 	private Set<Attivita> attivita;
-	
-	public Centro() {};
 
-	public Centro(String nome, String indirizzo, String email, String telefono, Integer capienza) {
+	public Centro() {
+	};
+
+	public Centro(String nome, String indirizzo, String email, String telefono, Integer capienza, String descrizione) {
 		this.nome = nome;
 		this.indirizzo = indirizzo;
 		this.email = email;
 		this.telefono = telefono;
 		this.capienza = capienza;
+		this.descrizione = descrizione;
 		this.attivita = new HashSet<Attivita>();
-		System.out.println();
 	}
 
 	public Long getId() {
@@ -116,9 +119,17 @@ public class Centro {
 	public void setAttivita(Set<Attivita> attivita) {
 		this.attivita = attivita;
 	}
-	
+
 	public void addAttivita(Attivita attivita) {
 		this.attivita.add(attivita);
 	}
-	
+
+	public String getDescrizione() {
+		return descrizione;
+	}
+
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
+	}
+
 }

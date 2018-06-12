@@ -108,21 +108,24 @@
 			</div>
 			<div class="my-3 my-md-5">
 				<div class="container">
-					<div class="row">
-						<div class="col-lg-2"></div>
-						<div class="col-lg-8">
-							<div class="card">
-								<div class="card-status card-status-left bg-blue"></div>
-								<div class="card-header">
-									<h3 class="card-title">${centro1.nome}</h3>
-									<div class="card-options">
-										<a href="/scheda_centro/${centro1.id}"
-											class="btn btn-primary btn-sm">Apri</a>
+					<c:forEach var="centro" items="${centri}">
+						<div class="row">
+							<div class="col-lg-2"></div>
+							<div class="col-lg-8">
+								<div class="card">
+									<div class="card-status card-status-left bg-blue"></div>
+									<div class="card-header">
+										<h3 class="card-title">${centro.nome}</h3>
+										<div class="card-options">
+											<a href="/scheda_centro/${centro.id}"
+												class="btn btn-primary btn-sm">Apri</a>
+										</div>
 									</div>
+									<div class="card-body">${centro.descrizione}</div>
 								</div>
 							</div>
 						</div>
-					</div>
+					</c:forEach>
 				</div>
 			</div>
 		</div>

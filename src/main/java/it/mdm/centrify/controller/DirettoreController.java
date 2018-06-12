@@ -1,6 +1,7 @@
 package it.mdm.centrify.controller;
 
 import java.security.Principal;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import it.mdm.centrify.model.Centro;
 import it.mdm.centrify.model.Direttore;
 import it.mdm.centrify.model.Responsabile;
 import it.mdm.centrify.service.CentroService;
@@ -21,7 +23,7 @@ public class DirettoreController {
 
 	@Autowired
 	private DirettoreService direttoreService;
-	
+
 	@Autowired
 	private CentroService centroService;
 
@@ -38,10 +40,14 @@ public class DirettoreController {
 	}
 
 	@RequestMapping("/mainpage_d")
-	public String mainPageDir(@ModelAttribute("direttore") Direttore direttore) {
+	public String mainPageDir(@ModelAttribute("direttore") Direttore direttore, Model model, Principal principal) {
 		if (direttore == null) {
 			return "errore_dir";
 		}
+		direttore = this.getDirettore(principal);
+		model.addAttribute("direttore", direttore);
+		Set<Centro> centri = direttore.getAzienda().getCentri();
+		model.addAttribute("centri", centri);
 		return "mainpage_dir";
 	}
 
@@ -54,9 +60,11 @@ public class DirettoreController {
 	}
 
 	@RequestMapping("/scheda_centro/{id}")
-	public String schedaCentri(@ModelAttribute("direttore") Direttore direttore, @PathVariable("id") Long id,
+	public String schedaAllievo(
+			@ModelAttribute("direttore") Direttore direttore,
+			@PathVariable("id") Long id,
 			Model model) {
-		if (direttore == null) {
+		if(direttore == null) {
 			return "errore_dir";
 		}
 		model.addAttribute("centro", this.centroService.getOne(id));
