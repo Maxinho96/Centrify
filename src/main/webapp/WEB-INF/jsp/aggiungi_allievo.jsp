@@ -88,12 +88,12 @@
                         <div class="container">
                             <div class="row align-items-center">
                                 <div class="col-lg-3 ml-auto">
-                                    <form class="input-icon my-3 my-lg-0">
-                                        <input type="search" class="form-control header-search" placeholder="Cerca allievo&hellip;" tabindex="1">
-                                        <div class="input-icon-addon">
-                                            <i class="fe fe-search"></i>
-                                        </div>
-                                    </form>
+                                    <form class="input-icon my-3 my-lg-0" action="/submit_ricercaAllievo">
+                                            <input type="search" name="stringa_ricerca" class="form-control header-search" placeholder="Cerca allievo&hellip;" tabindex="1" method="get">
+                                            <div class="input-icon-addon">
+                                                <i class="fe fe-search"></i>
+                                            </div>
+                                        </form>
                                 </div>
                                 <div class="col-lg order-lg-first">
                                     <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
