@@ -33,11 +33,17 @@ public class DirettoreController {
     }
 	
 	@RequestMapping("/mainpage_d")
-	public String mainPageDir(@ModelAttribute("direttore") Direttore direttore, Model model) {
+	public String mainPageDir(@ModelAttribute("direttore") Direttore direttore) {
 		if(direttore == null) {
 			return "errore_dir";
 		}
 		return "mainpage_dir";
 	}
-
+	@RequestMapping("/aggiungi_centro")
+	public String aggiungiCentro(@ModelAttribute("direttore") Direttore direttore, Model model) {
+		if(direttore == null) {
+			return "errore_dir";
+		}
+		return "aggiungi_centro";
+	}
 }

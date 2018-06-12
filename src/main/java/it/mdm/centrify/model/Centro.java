@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
@@ -37,13 +38,16 @@ public class Centro {
 	@Column(nullable = false)
 	private Integer capienza;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "centro", cascade = CascadeType.ALL)
 	private Responsabile responsabile;
 	
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "centro_id")
 	@OrderBy("nomeAttivita")
 	private Set<Attivita> attivita;
+	
+	@ManyToOne
+	private Azienda azienda;
 	
 	public Centro() {};
 
@@ -128,6 +132,14 @@ public class Centro {
 		}
 		
 		return false;
+	}
+
+	public Azienda getAzienda() {
+		return azienda;
+	}
+
+	public void setAzienda(Azienda azienda) {
+		this.azienda = azienda;
 	}
 	
 }
