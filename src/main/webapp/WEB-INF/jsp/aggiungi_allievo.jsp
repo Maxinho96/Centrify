@@ -124,18 +124,18 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="row">
-                                                <div class="col-md-3 col-lg-3">
+                                                <div class="col-md-4 col-lg-4">
                                                     <div class="form-group">
                                                         <label class="form-label">Nome</label>
                                                         <form:input type="text" name="nome_allievo" class="form-control ${valid_nome}" placeholder="" path="nome"></form:input>
-                                                    	<div class="invalid-feedback">Campo obbligatorio</div>
+                                                    	<div class="invalid-feedback">Campo obbligatorio, solo lettere</div>
                                                     </div>      
                                                 </div>
-                                                <div class="col-md-3 col-lg-3">
+                                                <div class="col-md-4 col-lg-4">
                                                     <div class="form-group">
                                                         <label class="form-label">Cognome</label>
                                                         <form:input type="text" name="cognome_allievo" class="form-control ${valid_cognome}" placeholder="" path="cognome"></form:input> 
-                                                    	<div class="invalid-feedback">Campo obbligatorio</div>
+                                                    	<div class="invalid-feedback">Campo obbligatorio, solo lettere</div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3 col-lg-3">
@@ -345,8 +345,8 @@
                                                 <div class="col-md-4 col-lg-4">
                                                     <div class="form-group">
                                                         <label class="form-label">Città natale</label>
-                                                        <form:input type="text" name="citta" class="form-control ${valid_luogoDiNascita}" placeholder="" path="luogoDiNascita"></form:input>
-                                                    	<div class="invalid-feedback">Campo obbligatorio</div>	
+                                                        <form:input type="text" name="citta" class="form-control ${valid_luogoDiNascita}" path="luogoDiNascita"></form:input>
+                                                    	<div class="invalid-feedback">Campo obbligatorio, solo lettere</div>	
                                                     </div>
                                                 </div>
                                             </div>

@@ -1,7 +1,5 @@
 package it.mdm.centrify.validator;
 
-import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
-
 import java.util.regex.Pattern;
 
 import it.mdm.centrify.model.Attivita;
@@ -26,7 +24,7 @@ public class AttivitaValidator {
 		boolean isValid = true;
 		String nome = this.attivita.getNomeAttivita();
 		
-		if(isStringInvalid(nome) || !isStringAlphabetic(nome))
+		if(isStringInvalid(nome))
 			isValid = false;
 		
 		return isValid;

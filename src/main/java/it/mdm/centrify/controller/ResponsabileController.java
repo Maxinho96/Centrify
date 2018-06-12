@@ -163,21 +163,21 @@ public class ResponsabileController {
 			error=true;
 		}
 		
-		if(error)
-			return "aggiungi_attivita";		
-		
 		Centro centro = this.centroService.getOne(6l); //provvisorio
 		if (centro != null) {
 			if(centro.containsAttivitaWithName(attivita.getNomeAttivita())) {
 				model.addAttribute("valid_nome", "is-invalid");
 				model.addAttribute("mex_err_nome", "Attività gia esistente");
-				return "aggiungi_attivita";
+				error=true;
 			}
-			else {
-				centro.addAttivita(attivita);
-				this.centroService.save(centro);
-			}
-		}	
+		}
+			
+		if(error)
+			return "aggiungi_attivita";		
+			
+		centro.addAttivita(attivita);
+		this.centroService.save(centro);
+	
 		return "template_attivita";
 	}
 
@@ -244,25 +244,23 @@ public class ResponsabileController {
 			error = true;
 		}
 		
-		if(error)
-			
-			return "aggiungi_allievo";
-		
 		allievo.setDataDiIscrizione(new Date());
 		
-		//System.out.println(allievo.toString());
 		Azienda azienda = this.aziendaService.getOne(1l); //provvisorio
 		if (azienda != null) {
 			if(azienda.containsAllievoWithEmail(allievo.getEmail())) {
 				model.addAttribute("valid_email", "is-invalid");
 				model.addAttribute("mex_err_email", "Email già registrata");
-				return "aggiungi_allievo";
+				error=true;
 			}
-			else {
-				azienda.addAllievo(allievo);
-				this.aziendaService.save(azienda);
-			}
-		}	
+		}
+
+		if(error)
+			return "aggiungi_allievo";
+		
+		azienda.addAllievo(allievo);
+		this.aziendaService.save(azienda);
+		
 		return "template_allievo";
 	}
 

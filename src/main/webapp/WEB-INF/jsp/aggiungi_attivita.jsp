@@ -303,18 +303,18 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-5 col-lg-3">
+                                                <div class="col-md-4 col-lg-4">
                                                     <div class="form-group">
                                                         <label class="form-label">Nome professore</label>
                                                         <form:input type="text" name="nome_professore" class="form-control ${valid_nomeProfessore}" path="nomeProfessore"></form:input>
-                                                        <div class="invalid-feedback">Campo obbligatorio</div>
+                                                        <div class="invalid-feedback">Campo obbligatorio, solo lettere</div>
                                                     </div>      
                                                 </div>
-                                                <div class="col-md-5 col-lg-3">
+                                                <div class="col-md-4 col-lg-4">
                                                     <div class="form-group">
                                                         <label class="form-label">Cognome professore</label>
                                                         <form:input type="text" name="cognome_professore" class="form-control ${valid_cognomeProfessore}" path="cognomeProfessore"></form:input>
-                                                        <div class="invalid-feedback">Campo obbligatorio</div>
+                                                        <div class="invalid-feedback">Campo obbligatorio, solo lettere</div>
                                                     </div>      
                                                 </div>
                                             </div>
@@ -324,6 +324,7 @@
                                                         <label class="form-label">Descrizione
                                                         </label>
                                                         <form:textarea class="form-control ${valid_descrizione}" name="descrizione" rows="3" placeholder="Inserisci descrizione..." path="descrizione"></form:textarea>
+                                                    	<div class="invalid-feedback">Campo obbligatorio</div>
                                                     </div>    
                                                 </div>
                                             </div>
