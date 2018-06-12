@@ -96,7 +96,7 @@ public class ResponsabileController {
 	public String submitRicercaAllievo(
 			Principal principal,
 			@ModelAttribute("responsabile") Responsabile responsabile,
-			@ModelAttribute("stringa_richiesta") String stringa_richiesta,
+			@ModelAttribute("stringa_ricerca") String stringa_ricerca,
 			Model model) {
 		if(responsabile == null) {
 			return "errore_resp";
@@ -104,8 +104,12 @@ public class ResponsabileController {
 		// responsabile = this.getResponsabile(principal);
 		// model.addAttribute("responsabile", responsabile);
 		Azienda azienda = responsabile.getCentro().getAzienda();
-		String[] splitted = stringa_richiesta.split("\\s+");
-		model.addAttribute("allievi", this.allievoService.getByAziendaAndNomeOrCognome(azienda.getId(), splitted[0], splitted[1]));
+		System.out.println(stringa_ricerca);
+		String[] splitted = stringa_ricerca.split("\\s+");
+		if(splitted.length == 1)
+			model.addAttribute("allievi", this.allievoService.getByAziendaAndNomeOrCognome(azienda.getId(), splitted[0], splitted[0]));
+		else
+			model.addAttribute("allievi", this.allievoService.getByAziendaAndNomeOrCognome(azienda.getId(), splitted[0], splitted[1]));
 		return "template_risultatiRicercaAllievo";
 	}
 

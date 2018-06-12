@@ -10,7 +10,7 @@ import it.mdm.centrify.model.Allievo;
 
 public interface AllievoRepository extends CrudRepository<Allievo, Long> {
 	
-	 @Query("SELECT a FROM Allievo a WHERE a.azienda_id = :azienda_id AND (a.nome = :nome OR a.cognome = :cognome)")
+	 @Query(value = "SELECT * FROM allievo WHERE allievo.azienda_id = :azienda_id AND (allievo.nome LIKE CONCAT('%', :nome, '%') OR allievo.cognome LIKE CONCAT('%', :cognome, '%'))", nativeQuery = true)
 	 public List<Allievo> findByAziendaAndNomeOrCognome(@Param("azienda_id") Long azienda_id, @Param("nome") String nome, @Param("cognome") String cognome);
 	 
 }
