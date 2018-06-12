@@ -56,7 +56,7 @@ public class MainController {
 			return "redirect:mainpage_r";
 		}
 		else if(direttore != null){
-			return "redirect:mainpage_d"; // Implementare la pagina del direttore
+			return "redirect:mainpage_d";
 		}
 		else {
 			return "errore_reg"; // Implementare la pagina d'errore

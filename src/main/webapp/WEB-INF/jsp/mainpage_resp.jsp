@@ -48,6 +48,23 @@
 
             </head>
             <body class="">
+                <!--script type="text/javascript" src="/webjars/js-cookie/js.cookie.js">
+   				</script>
+   				<script type="text/javascript">
+	   				$.ajaxSetup({
+					    	beforeSend : function(xhr, settings) {
+					    	  if (settings.type == 'POST' || settings.type == 'PUT'
+					    	      || settings.type == 'DELETE') {
+					    	    if (!(/^http:.*/.test(settings.url) || /^https:.*/
+					    	        .test(settings.url))) {
+					    	      // Only send the token to relative URLs i.e. locally.
+					    	      xhr.setRequestHeader("X-XSRF-TOKEN",
+					    	          Cookies.get('XSRF-TOKEN'));
+					    	    }
+					    	  }
+					    	}
+					    	});
+   				</script-->
                 <div class="page">
                     <div class="page-main">
                         <div class="header py-4">
@@ -71,10 +88,16 @@
                                                 <a class="dropdown-item" href="#"> 
                                                     <i class="dropdown-icon fe fe-user"></i> Profilo 
                                                 </a>
-                                                <a class="dropdown-item" href="#"> 
+                                                <a class="dropdown-item" href="/logout"> 
                                                     <i class="dropdown-icon fe fe-log-out"></i> Sign out
                                                 </a>
-                                            </div>
+                                                <!-- form id="logoutForm" method="post" action="/logout">
+  													<input type="hidden" name="name" value="value" /> 
+  													<a class="dropdown-item" onclick="document.getElementById('logoutForm').submit();">
+  														<i class="dropdown-icon fe fe-log-out"></i> Sign out
+  													</a>
+												</form-->
+											</div>
                                         </div>
                                     </div>
                                     <a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#headerMenuCollapse"> 

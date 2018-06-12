@@ -305,8 +305,9 @@ public class ResponsabileController {
 		return "redirect:/scheda_allievo/"+id_allievo;
 	}
 
-	//	@RequestMapping("/logout")
-	//	public String logout() {
-	//		return "index";
-	//	}
+//	@RequestMapping("/logout")
+//	public String logout(HttpSession session) {
+//		session.invalidate();
+//		return "index";
+//	}
 }
