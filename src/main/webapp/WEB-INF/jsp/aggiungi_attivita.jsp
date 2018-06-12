@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
     <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
     <html lang="en" dir="ltr">
         <head>
@@ -116,7 +117,7 @@
                             <div class="row">
                                 <div class="col-lg-2 col-xl-2"></div>
                                 <div class="col-lg-8 col-xl-8">
-                                    <div class="card">
+                                    <form:form class="card" action="/submit_aggiungi_attivita" method="POST" modelAttribute="attivita">
                                         <div class="card-header">
                                             <h3 class="card-title">Nuova attività</h3>
                                         </div>
@@ -125,7 +126,8 @@
                                                 <div class="col-md-5 col-lg-5">
                                                     <div class="form-group">
                                                         <label class="form-label">Nome</label>
-                                                        <input type="text" name="nome_attivita" class="form-control" placeholder="" />
+                                                        <form:input type="text" name="nome_attivita" class="form-control ${valid_nome}" path="nomeAttivita"></form:input>
+                                                        <div class="invalid-feedback">${mex_err_nome}</div>
                                                     </div>      
                                                 </div>
                                             </div>
@@ -135,7 +137,7 @@
                                                         <label class="form-label">Data svolgimento</label>
                                                         <div class="row gutters-xs">
                                                             <div class="col-4">
-                                                                <select name="giorno_svolgimento" class="form-control custom-select">
+                                                                <form:select name="giorno_svolgimento" class="form-control custom-select ${valid_giornoSvolgimento}" path="giorno_svolgimento">
                                                                     <option value="" selected="selected">Giorno</option>
                                                                     <option value="1">1</option>
                                                                     <option value="2">2</option>
@@ -168,10 +170,10 @@
                                                                     <option value="29">29</option>
                                                                     <option value="30">30</option>
                                                                     <option value="31">31</option>
-                                                                </select>
+                                                                </form:select>
                                                             </div>
                                                             <div class="col-4">
-                                                                <select name="mese_svolgimento" class="form-control custom-select">
+                                                                <form:select name="mese_svolgimento" class="form-control custom-select ${valid_meseSvolgimento}" path="mese_svolgimento">
                                                                     <option value="" selected="selected">Mese</option>
                                                                     <option value="1">Gennaio</option>
                                                                     <option value="2">Febbraio</option>
@@ -185,15 +187,15 @@
                                                                     <option value="10">Ottobre</option>
                                                                     <option value="11">Novembre</option>
                                                                     <option value="12">Dicembre</option>
-                                                                </select>
+                                                                </form:select>
                                                             </div>
                                                             <div class="col-3">
-                                                                <select name="anno_svolgimento" class="form-control custom-select">
+                                                                <form:select name="anno_svolgimento" class="form-control custom-select ${valid_annoSvolgimento}" path="anno_svolgimento">
                                                                     <option value="" selected="selected">Anno</option>
-                                                                    <option value="2005">2018</option>
-                                                                    <option value="2005">2019</option>
-                                                                    <option value="2005">2020</option>
-                                                                </select>
+                                                                    <option value="2018">2018</option>
+                                                                    <option value="2019">2019</option>
+                                                                    <option value="2020">2020</option>
+                                                                </form:select>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -203,18 +205,18 @@
                                                         <label class="form-label">Orario svolgimento</label>
                                                         <div class="row gutters-xs">
                                                             <div class="col-4">
-                                                                <select name="ora_svolgimento" class="form-control custom-select">
+                                                                <form:select name="ora_svolgimento" class="form-control custom-select ${valid_oraSvolgimento}" path="ora_svolgimento">
                                                                     <option value="" selected="selected">Ore</option>
-                                                                    <option value="0">00</option>
-                                                                    <option value="1">01</option>
-                                                                    <option value="2">02</option>
-                                                                    <option value="3">03</option>
-                                                                    <option value="4">04</option>
-                                                                    <option value="5">05</option>
-                                                                    <option value="6">06</option>
-                                                                    <option value="7">07</option>
-                                                                    <option value="8">08</option>
-                                                                    <option value="9">09</option>
+                                                                    <option value="00">00</option>
+                                                                    <option value="01">01</option>
+                                                                    <option value="02">02</option>
+                                                                    <option value="03">03</option>
+                                                                    <option value="04">04</option>
+                                                                    <option value="05">05</option>
+                                                                    <option value="06">06</option>
+                                                                    <option value="07">07</option>
+                                                                    <option value="08">08</option>
+                                                                    <option value="09">09</option>
                                                                     <option value="10">10</option>
                                                                     <option value="11">11</option>
                                                                     <option value="12">12</option>
@@ -229,21 +231,21 @@
                                                                     <option value="21">21</option>
                                                                     <option value="22">22</option>
                                                                     <option value="23">23</option>
-                                                                </select>
+                                                                </form:select>
                                                             </div>
                                                             <div class="col-4">
-                                                                <select name="minuto_svolgimento" class="form-control custom-select">
+                                                                <form:select name="minuto_svolgimento" class="form-control custom-select ${valid_minutoSvolgimento}" path="minuto_svolgimento">
                                                                     <option value="" selected="selected">Min</option>
-                                                                    <option value="0">00</option>
-                                                                    <option value="1">01</option>
-                                                                    <option value="2">02</option>
-                                                                    <option value="3">03</option>
-                                                                    <option value="4">04</option>
-                                                                    <option value="5">05</option>
-                                                                    <option value="6">06</option>
-                                                                    <option value="7">07</option>
-                                                                    <option value="8">08</option>
-                                                                    <option value="9">09</option>
+                                                                    <option value="00">00</option>
+                                                                    <option value="01">01</option>
+                                                                    <option value="02">02</option>
+                                                                    <option value="03">03</option>
+                                                                    <option value="04">04</option>
+                                                                    <option value="05">05</option>
+                                                                    <option value="06">06</option>
+                                                                    <option value="07">07</option>
+                                                                    <option value="08">08</option>
+                                                                    <option value="09">09</option>
                                                                     <option value="10">10</option>
                                                                     <option value="11">11</option>
                                                                     <option value="12">12</option>
@@ -294,23 +296,25 @@
                                                                     <option value="28">57</option>
                                                                     <option value="29">58</option>
                                                                     <option value="30">59</option>
-                                                                </select>
+                                                                </form:select>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-5 col-lg-3">
+                                                <div class="col-md-4 col-lg-4">
                                                     <div class="form-group">
                                                         <label class="form-label">Nome professore</label>
-                                                        <input type="text" name="nome_professore" class="form-control" placeholder="" />
+                                                        <form:input type="text" name="nome_professore" class="form-control ${valid_nomeProfessore}" path="nomeProfessore"></form:input>
+                                                        <div class="invalid-feedback">Campo obbligatorio, solo lettere</div>
                                                     </div>      
                                                 </div>
-                                                <div class="col-md-5 col-lg-3">
+                                                <div class="col-md-4 col-lg-4">
                                                     <div class="form-group">
                                                         <label class="form-label">Cognome professore</label>
-                                                        <input type="text" name="cognome_professore" class="form-control" placeholder="" />
+                                                        <form:input type="text" name="cognome_professore" class="form-control ${valid_cognomeProfessore}" path="cognomeProfessore"></form:input>
+                                                        <div class="invalid-feedback">Campo obbligatorio, solo lettere</div>
                                                     </div>      
                                                 </div>
                                             </div>
@@ -319,7 +323,8 @@
                                                     <div class="form-group">
                                                         <label class="form-label">Descrizione
                                                         </label>
-                                                        <textarea class="form-control" name="descrizione" rows="3" placeholder="Inserisci descrizione..."></textarea>
+                                                        <form:textarea class="form-control ${valid_descrizione}" name="descrizione" rows="3" placeholder="Inserisci descrizione..." path="descrizione"></form:textarea>
+                                                    	<div class="invalid-feedback">Campo obbligatorio</div>
                                                     </div>    
                                                 </div>
                                             </div>
@@ -327,7 +332,7 @@
                                         <div class="card-footer text-right">
                                             <button type="submit" class="btn btn-primary">Aggiungi</button>
                                         </div>
-                                    </div>
+                                    </form:form>
                                     <script>
                                         require(['input-mask']);
                                     </script>
