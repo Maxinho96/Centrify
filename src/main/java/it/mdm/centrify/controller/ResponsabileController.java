@@ -68,10 +68,15 @@ public class ResponsabileController {
 	}
 
 	@RequestMapping("/mainpage_r")
-	public String mainPageResp(@ModelAttribute("responsabile") Responsabile responsabile, Model model) {
+	public String mainPageResp(
+			Principal principal,
+			@ModelAttribute("responsabile") Responsabile responsabile,
+			Model model) {
 		if(responsabile == null) {
 			return "errore_resp";
 		}
+		responsabile = this.getResponsabile(principal);
+		model.addAttribute("responsabile", responsabile);
 		Centro centro = responsabile.getCentro();
 		model.addAttribute("attivita", centro.getAttivita());
 		return "mainpage_resp";
@@ -108,6 +113,7 @@ public class ResponsabileController {
 	
 	@PostMapping("/submit_aggiungi_allievo")
 	public String submitAggiungiAllievo(
+			Principal principal,
 			@ModelAttribute("responsabile") Responsabile responsabile, 
 			@Valid @ModelAttribute Allievo allievo,
 			BindingResult result,
@@ -115,6 +121,7 @@ public class ResponsabileController {
 		if(responsabile == null) {
 			return "errore_resp";
 		}
+		responsabile = this.getResponsabile(principal);
 		if (result.hasErrors()) {
 			System.out.println(result.getAllErrors().toString());
 			return "/error";	//TO DO
@@ -123,7 +130,7 @@ public class ResponsabileController {
 		
 		//System.out.println(allievo.toString());
 		
-		Azienda azienda = this.aziendaService.get(1l); //provvisorio
+		Azienda azienda = responsabile.getCentro().getAzienda();
 		if (azienda != null) {
 			if(azienda.containsAllievoWithEmail(allievo.getEmail())) {
 				model.addAttribute("valid", "is-invalid");

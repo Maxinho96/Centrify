@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
@@ -41,11 +42,13 @@ public class Centro {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private Responsabile responsabile;
-
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+
 	@JoinColumn(name = "centro_id")
 	@OrderBy("nome")
 	private Set<Attivita> attivita;
+	
+	public Centro() {};
 
 	public Centro() {
 	};
@@ -123,13 +126,5 @@ public class Centro {
 	public void addAttivita(Attivita attivita) {
 		this.attivita.add(attivita);
 	}
-
-	public String getDescrizione() {
-		return descrizione;
-	}
-
-	public void setDescrizione(String descrizione) {
-		this.descrizione = descrizione;
-	}
-
+	
 }
