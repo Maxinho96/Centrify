@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -95,25 +96,20 @@ public class ResponsabileController {
 		return "template_allievo";
 	}
 	
-	@RequestMapping("/iscrivi_allievo")
+	@RequestMapping("/iscrivi_allievo/{id}")
 	public String iscriviAllievo(
-			Principal principal,
 			@ModelAttribute("responsabile") Responsabile responsabile,
-			@ModelAttribute("allievo") Allievo allievo,
-			@ModelAttribute("attivitaDaAggiungere") Long id_attivitaDaAggiungere,
-			Model model) {
+			@PathVariable("id") Long idAllievo,
+			@RequestParam("id_attivitaDaAggiungere") Long idAttivita) {
 		
 		if(responsabile == null) {
 			return "errore_resp";
 		}
 		
-		System.out.println(id_attivitaDaAggiungere);
+		System.out.println(idAllievo);
+		System.out.println(idAttivita);
 		
-		//allievo.addAttivita(attivita_selezionata);
-		//attivita_selezionata.addAllievo(allievo);
-		//System.out.println(allievo.getId());
-		
-		return "redirect:/scheda_allievo/4"; //+ allievo.getId();
+		return "redirect:/scheda_allievo/"+idAllievo;
 	}
 	
 	@RequestMapping("/mainpage_r")
