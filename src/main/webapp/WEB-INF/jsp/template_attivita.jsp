@@ -150,7 +150,7 @@
                                                     <div class="col-12">
                                                         <div class="card">
                                                             <div class="card-header">
-                                                                <h1 class="card-title">Utenti iscritti</h1>
+                                                                <h1 class="card-title">Allievi iscritti</h1>
                                                             </div>
                                                             <div class="table-responsive">
                                                                 <table class="table table-hover table-outline table-vcenter text-nowrap card-table">

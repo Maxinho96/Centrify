@@ -128,14 +128,14 @@
                                                     <div class="form-group">
                                                         <label class="form-label">Nome</label>
                                                         <form:input type="text" name="nome_allievo" class="form-control ${valid_nome}" placeholder="" path="nome"></form:input>
-                                                    	<div class="invalid-feedback">Campo obbligatorio, solo lettere</div>
+                                                    	<div class="invalid-feedback">${errNome}</div>
                                                     </div>      
                                                 </div>
                                                 <div class="col-md-4 col-lg-4">
                                                     <div class="form-group">
                                                         <label class="form-label">Cognome</label>
                                                         <form:input type="text" name="cognome_allievo" class="form-control ${valid_cognome}" placeholder="" path="cognome"></form:input> 
-                                                    	<div class="invalid-feedback">Campo obbligatorio, solo lettere</div>
+                                                    	<div class="invalid-feedback">${errCognome}</div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3 col-lg-3">
@@ -159,14 +159,14 @@
                                                     <div class="form-group">
                                                         <label class="form-label">Email</label>
                                                         <form:input type="text" name="email" class="form-control ${valid_email}" placeholder="email@posta.com" path="email"></form:input>
-                                                        <div class="invalid-feedback">${mex_err_email}</div>
+                                                        <div class="invalid-feedback">${errEmail}</div>
                                                     </div>   
                                                 </div>
                                                 <div class="col-md-3 col-lg-3">
                                                     <div class="form-group">
                                                         <label class="form-label">Cellulare</label>
                                                         <form:input type="text" name="cellulare" class="form-control ${valid_cellulare}" data-mask="000 000 0000" data-mask-clearifnotmatch="true" placeholder="335 123 4567" path="cellulare"></form:input>
-                                                    	<div class="invalid-feedback">Campo obbligatorio</div>
+                                                    	<div class="invalid-feedback">${errCellulare}</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -176,7 +176,7 @@
                                                         <label class="form-label">Data di nascita</label>
                                                         <div class="row gutters-xs">
                                                             <div class="col-4">
-                                                                <form:select name="giorno_nascita" class="form-control custom-select ${valid_giornoNascita}" path="giorno_nascita">
+                                                                <form:select name="giorno_nascita" class="form-control custom-select ${valid_giorno}" path="giorno_nascita">
                                                                     <option value="" selected="selected">Giorno</option>
                                                                     <option value="1">1</option>
                                                                     <option value="2">2</option>
@@ -210,9 +210,10 @@
                                                                     <option value="30">30</option>
                                                                     <option value="31">31</option>
                                                                 </form:select>
+                                                                <div class="invalid-feedback">${errGiorno}</div>
                                                             </div>
                                                             <div class="col-4">
-                                                                <form:select name="mese_nascita" class="form-control custom-select ${valid_meseNascita}" path="mese_nascita">
+                                                                <form:select name="mese_nascita" class="form-control custom-select ${valid_mese}" path="mese_nascita">
                                                                     <option value="" selected="selected">Mese</option>
                                                                     <option value="1">Gennaio</option>
                                                                     <option value="2">Febbraio</option>
@@ -227,9 +228,10 @@
                                                                     <option value="11">Novembre</option>
                                                                     <option value="12">Dicembre</option>
                                                                 </form:select>
+                                                                <div class="invalid-feedback">${errMese}</div>
                                                             </div>
                                                             <div class="col-4">
-                                                                <form:select name="anno_nascita" class="form-control custom-select ${valid_annoNascita}" path="anno_nascita">
+                                                                <form:select name="anno_nascita" class="form-control custom-select ${valid_anno}" path="anno_nascita">
                                                                     <option value="" selected="selected">Anno</option>
                                                                     <option value="2005">2005</option>
                                                                     <option value="2004">2004</option>
@@ -338,6 +340,7 @@
                                                                     <option value="1901">1901</option>
                                                                     <option value="1900">1900</option>
                                                                 </form:select>
+                                                                <div class="invalid-feedback">${errAnno}</div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -345,8 +348,8 @@
                                                 <div class="col-md-4 col-lg-4">
                                                     <div class="form-group">
                                                         <label class="form-label">Città natale</label>
-                                                        <form:input type="text" name="citta" class="form-control ${valid_luogoDiNascita}" path="luogoDiNascita"></form:input>
-                                                    	<div class="invalid-feedback">Campo obbligatorio, solo lettere</div>	
+                                                        <form:input type="text" name="citta" class="form-control ${valid_luogo}" path="luogoDiNascita"></form:input>
+                                                    	<div class="invalid-feedback">${errLuogo}</div>	
                                                     </div>
                                                 </div>
                                             </div>

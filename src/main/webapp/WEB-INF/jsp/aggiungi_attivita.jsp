@@ -126,8 +126,8 @@
                                                 <div class="col-md-5 col-lg-5">
                                                     <div class="form-group">
                                                         <label class="form-label">Nome</label>
-                                                        <form:input type="text" name="nome_attivita" class="form-control ${valid_nome}" path="nomeAttivita"></form:input>
-                                                        <div class="invalid-feedback">${mex_err_nome}</div>
+                                                        <form:input type="text" name="nome_attivita" class="form-control ${valid_nomeAttivita}" path="nomeAttivita"></form:input>
+                                                        <div class="invalid-feedback">${errNomeAttivita}</div>
                                                     </div>      
                                                 </div>
                                             </div>
@@ -137,7 +137,7 @@
                                                         <label class="form-label">Data svolgimento</label>
                                                         <div class="row gutters-xs">
                                                             <div class="col-4">
-                                                                <form:select name="giorno_svolgimento" class="form-control custom-select ${valid_giornoSvolgimento}" path="giorno_svolgimento">
+                                                                <form:select name="giorno_svolgimento" class="form-control custom-select ${valid_giorno}" path="giorno_svolgimento">
                                                                     <option value="" selected="selected">Giorno</option>
                                                                     <option value="1">1</option>
                                                                     <option value="2">2</option>
@@ -171,9 +171,10 @@
                                                                     <option value="30">30</option>
                                                                     <option value="31">31</option>
                                                                 </form:select>
+                                                                <div class="invalid-feedback">${errGiorno}</div>
                                                             </div>
                                                             <div class="col-4">
-                                                                <form:select name="mese_svolgimento" class="form-control custom-select ${valid_meseSvolgimento}" path="mese_svolgimento">
+                                                                <form:select name="mese_svolgimento" class="form-control custom-select ${valid_mese}" path="mese_svolgimento">
                                                                     <option value="" selected="selected">Mese</option>
                                                                     <option value="1">Gennaio</option>
                                                                     <option value="2">Febbraio</option>
@@ -188,14 +189,16 @@
                                                                     <option value="11">Novembre</option>
                                                                     <option value="12">Dicembre</option>
                                                                 </form:select>
+                                                                <div class="invalid-feedback">${errMese}</div>
                                                             </div>
                                                             <div class="col-3">
-                                                                <form:select name="anno_svolgimento" class="form-control custom-select ${valid_annoSvolgimento}" path="anno_svolgimento">
+                                                                <form:select name="anno_svolgimento" class="form-control custom-select ${valid_anno}" path="anno_svolgimento">
                                                                     <option value="" selected="selected">Anno</option>
                                                                     <option value="2018">2018</option>
                                                                     <option value="2019">2019</option>
                                                                     <option value="2020">2020</option>
                                                                 </form:select>
+                                                                <div class="invalid-feedback">${errAnno}</div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -205,7 +208,7 @@
                                                         <label class="form-label">Orario svolgimento</label>
                                                         <div class="row gutters-xs">
                                                             <div class="col-4">
-                                                                <form:select name="ora_svolgimento" class="form-control custom-select ${valid_oraSvolgimento}" path="ora_svolgimento">
+                                                                <form:select name="ora_svolgimento" class="form-control custom-select ${valid_ora}" path="ora_svolgimento">
                                                                     <option value="" selected="selected">Ore</option>
                                                                     <option value="00">00</option>
                                                                     <option value="01">01</option>
@@ -232,9 +235,10 @@
                                                                     <option value="22">22</option>
                                                                     <option value="23">23</option>
                                                                 </form:select>
+                                                                <div class="invalid-feedback">${errOra}</div>
                                                             </div>
                                                             <div class="col-4">
-                                                                <form:select name="minuto_svolgimento" class="form-control custom-select ${valid_minutoSvolgimento}" path="minuto_svolgimento">
+                                                                <form:select name="minuto_svolgimento" class="form-control custom-select ${valid_minuto}" path="minuto_svolgimento">
                                                                     <option value="" selected="selected">Min</option>
                                                                     <option value="00">00</option>
                                                                     <option value="01">01</option>
@@ -297,6 +301,7 @@
                                                                     <option value="29">58</option>
                                                                     <option value="30">59</option>
                                                                 </form:select>
+                                                                <div class="invalid-feedback">${errMinuto}</div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -306,15 +311,15 @@
                                                 <div class="col-md-4 col-lg-4">
                                                     <div class="form-group">
                                                         <label class="form-label">Nome professore</label>
-                                                        <form:input type="text" name="nome_professore" class="form-control ${valid_nomeProfessore}" path="nomeProfessore"></form:input>
-                                                        <div class="invalid-feedback">Campo obbligatorio, solo lettere</div>
+                                                        <form:input type="text" name="nome_professore" class="form-control ${valid_nomeProf}" path="nomeProfessore"></form:input>
+                                                        <div class="invalid-feedback">${errNomeProf}</div>
                                                     </div>      
                                                 </div>
                                                 <div class="col-md-4 col-lg-4">
                                                     <div class="form-group">
                                                         <label class="form-label">Cognome professore</label>
-                                                        <form:input type="text" name="cognome_professore" class="form-control ${valid_cognomeProfessore}" path="cognomeProfessore"></form:input>
-                                                        <div class="invalid-feedback">Campo obbligatorio, solo lettere</div>
+                                                        <form:input type="text" name="cognome_professore" class="form-control ${valid_cognomeProf}" path="cognomeProfessore"></form:input>
+                                                        <div class="invalid-feedback">${errCognomeProf}</div>
                                                     </div>      
                                                 </div>
                                             </div>
@@ -324,7 +329,7 @@
                                                         <label class="form-label">Descrizione
                                                         </label>
                                                         <form:textarea class="form-control ${valid_descrizione}" name="descrizione" rows="3" placeholder="Inserisci descrizione..." path="descrizione"></form:textarea>
-                                                    	<div class="invalid-feedback">Campo obbligatorio</div>
+                                                    	<div class="invalid-feedback">${errDescrizione}</div>
                                                     </div>    
                                                 </div>
                                             </div>
