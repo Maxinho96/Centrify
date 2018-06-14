@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 import it.mdm.centrify.model.Allievo;
 import it.mdm.centrify.model.Attivita;
@@ -20,10 +21,15 @@ import it.mdm.centrify.service.AziendaService;
 
 @SpringBootApplication
 @EnableOAuth2Sso
-public class CentrifyApplication extends WebSecurityConfigurerAdapter {
+public class CentrifyApplication extends SpringBootServletInitializer {
 	
 	@Autowired
 	private AziendaService aziendaService;
+	
+	@Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(CentrifyApplication.class);
+    }
 	
 //	@Override
 //	protected void configure(HttpSecurity http) throws Exception {
