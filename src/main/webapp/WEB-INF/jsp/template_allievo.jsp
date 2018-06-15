@@ -202,6 +202,7 @@
                         	<div class="col-lg-1"></div>
                         	<div class="col-10">	
                         		<form class="card" action="/iscrivi_allievo/${allievo.id}" method="POST">
+                        		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> 
                                     <div class="card-header">
                                         <h1 class="card-title">Assegna nuova attività</h1>
                                     </div>
