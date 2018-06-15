@@ -120,8 +120,8 @@
                     <div class="my-3 my-md-5">
                         <div class="container">
                             <div class="row">
-                            	<div class="col-lg-2"></div>
-                                <div class="col-lg-8">
+                            	<div class="col-lg-2 col-xl-2"></div>
+                                <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8">
                                     <div class="row row-cards row-deck">
                                         <div class="col-12">
                                             <div class="card">
@@ -170,16 +170,12 @@
 
             <footer class="footer">
                 <div class="container">
-                    <div class="row align-items-center flex-row-reverse">
-                        <div class="col-auto ml-lg-auto">
-                            <div class="row align-items-center">
-                                <div class="col-auto">
-                                    <a href="https://bitbucket.org/marcoBerb/progetto_siw/" class="btn btn-outline-primary btn-sm">Source code</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
+                    <div class="row align-items-center">
+                        <div class="col-10">
                             Sviluppato con amore da Marco Berbeglia, Diego Barbieri e Massimiliano Bruni
+                        </div>
+                        <div class="col-2 text-right">
+                        	<a href="https://bitbucket.org/marcoBerb/progetto_siw/" class="btn btn-outline-primary btn-sm">Source code</a>
                         </div>
                     </div>
                 </div>

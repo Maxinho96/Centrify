@@ -121,8 +121,8 @@
                                 <div class="my-3 my-md-5">
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-md-1 col-lg-1"></div>
-                                            <div class="col-md-6 col-lg-4">
+                                            <div class="col-lg-1 col-xl-1"></div>
+                                            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                                 <div class="card">
                                                     <div class="card-header">
                                                         <h1 class="page-title">${attivita.nomeAttivita}</h1>
@@ -145,7 +145,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-6">
+                                            <div class="col-sm-12 col-md-8 col-lg-6 col-xl-6">
                                                 <div class="row row-cards row-deck">
                                                     <div class="col-12">
                                                         <div class="card">
@@ -193,21 +193,17 @@
                             </div>
                         </div>
 
-                        <footer class="footer">
-                            <div class="container">
-                                <div class="row align-items-center flex-row-reverse">
-                                    <div class="col-auto ml-lg-auto">
-                                        <div class="row align-items-center">
-                                            <div class="col-auto">
-                                                <a href="https://bitbucket.org/marcoBerb/progetto_siw/" class="btn btn-outline-primary btn-sm">Source code</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
-                                        Sviluppato con amore da Marco Berbeglia, Diego Barbieri e Massimiliano Bruni
-                                    </div>
-                                </div>
-                            </div>
-                        </footer>
+		                <footer class="footer">
+		                    <div class="container">
+		                        <div class="row align-items-center">
+		                            <div class="col-10">
+		                                Sviluppato con amore da Marco Berbeglia, Diego Barbieri e Massimiliano Bruni
+		                            </div>
+		                            <div class="col-2 text-right">
+		                            	<a href="https://bitbucket.org/marcoBerb/progetto_siw/" class="btn btn-outline-primary btn-sm">Source code</a>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </footer>
                     </body>
                 </html>
