@@ -215,7 +215,7 @@
 	                                    </select>
 	                                    <div class="invalid-feedback">${errAttivita}</div>
                                     </div>
-									<div class="card-footer text-right">
+									<div class="text-right">
                                     	<button type="submit" class="btn btn-primary">Assegna</button>
                                     </div>
 								</form>

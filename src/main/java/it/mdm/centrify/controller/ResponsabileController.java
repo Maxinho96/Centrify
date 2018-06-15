@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import it.mdm.centrify.model.Allievo;
 import it.mdm.centrify.model.Attivita;
@@ -77,11 +78,14 @@ public class ResponsabileController {
 			Principal principal,
 			@ModelAttribute("responsabile") Responsabile responsabile,
 			@PathVariable("id") Long id,
+			@ModelAttribute("errAttivita") String errAttivita,
+			@ModelAttribute("valid_Attivita") String valid_Attivita,
 			Model model) {
+		
 		if(responsabile == null) {
 			return "errore_resp";
 		}
-		
+
 		Allievo allievo = this.allievoService.getOne(id);
 		model.addAttribute("allievo", allievo);
 		
@@ -99,7 +103,6 @@ public class ResponsabileController {
 				attivitaAssegnabili.add(a);
 			}
 		}
-	
 		
 		model.addAttribute("attivitaAllievo", attivitaAllievoCentro);
 		model.addAttribute("attivitaAssegnabili", attivitaAssegnabili);
@@ -111,6 +114,7 @@ public class ResponsabileController {
 			@ModelAttribute("responsabile") Responsabile responsabile,
 			@PathVariable("id") Long idAllievo,
 			@RequestParam("id_attivitaDaAggiungere") Long idAttivita,
+			RedirectAttributes redAtt,
 			Model model) {
 		
 		if(responsabile == null) {
@@ -118,14 +122,13 @@ public class ResponsabileController {
 		}
 		
 		if(idAttivita==-1) {
-			System.out.println("invalidAttivita");
-			model.addAttribute("errAttivita", "Seleziona un'attività");
-			model.addAttribute("valid_Attivita", "is-invalid");
-			return "redirect:/scheda_allievo/"+idAllievo; //non ci sono i 2 attributi sopra
+			redAtt.addFlashAttribute("errAttivita", "Seleziona un'attività");
+			redAtt.addFlashAttribute("valid_Attivita", "is-invalid");
+			return "redirect:/scheda_allievo/"+idAllievo;
 		}
 		
 		Allievo allievo = this.allievoService.getOne(idAllievo);
-		Attivita attivitaDaAggiungere = responsabile.getCentro().getAttivitaById(idAttivita);
+		Attivita attivitaDaAggiungere = this.attivitaService.getOne(idAttivita);
 		
 		if(attivitaDaAggiungere == null) {
 			return "error";
