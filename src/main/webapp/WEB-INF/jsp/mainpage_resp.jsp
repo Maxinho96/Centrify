@@ -88,15 +88,15 @@
                                                 <a class="dropdown-item" href="#"> 
                                                     <i class="dropdown-icon fe fe-user"></i> Profilo 
                                                 </a>
-                                                <a class="dropdown-item" href="/logout"> 
+                                                <!--a class="dropdown-item" href="/logout"> 
                                                     <i class="dropdown-icon fe fe-log-out"></i> Sign out
-                                                </a>
-                                                <!-- form id="logoutForm" method="post" action="/logout">
-  													<input type="hidden" name="name" value="value" /> 
+                                                </a-->
+                                                <form id="logoutForm" method="post" action="/logout">
+  													<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> 
   													<a class="dropdown-item" onclick="document.getElementById('logoutForm').submit();">
   														<i class="dropdown-icon fe fe-log-out"></i> Sign out
   													</a>
-												</form-->
+												</form>
 											</div>
                                         </div>
                                     </div>
