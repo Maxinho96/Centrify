@@ -82,7 +82,7 @@ public class ResponsabileController {
 			Model model) {
 		
 		if(responsabile == null) {
-			return "errore_resp";
+			return "redirect:errore_resp.html";
 		}
 
 		Allievo allievo = this.allievoService.getOne(id);
@@ -148,7 +148,7 @@ public class ResponsabileController {
 			@ModelAttribute("responsabile") Responsabile responsabile,
 			Model model) {
 		if(responsabile == null) {
-			return "errore_resp";
+			return "redirect:errore_resp.html";
 		}
 		responsabile = this.getResponsabile(principal);
 		model.addAttribute("responsabile", responsabile);
@@ -165,7 +165,7 @@ public class ResponsabileController {
 			@ModelAttribute("stringa_ricerca") String stringa_ricerca,
 			Model model) {
 		if(responsabile == null) {
-			return "errore_resp";
+			return "redirect:errore_resp.html";
 		}
 		// responsabile = this.getResponsabile(principal);
 		// model.addAttribute("responsabile", responsabile);
@@ -181,7 +181,7 @@ public class ResponsabileController {
 	@RequestMapping("/scheda_attivita/{id}")
 	public String schedaAttivita(@ModelAttribute("responsabile") Responsabile responsabile, @PathVariable("id") Long id, Model model) {
 		if(responsabile == null) {
-			return "errore_resp";
+			return "redirect:errore_resp.html";
 		}
 		model.addAttribute("attivita", this.attivitaService.getOne(id));
 		return "template_attivita";
@@ -190,7 +190,7 @@ public class ResponsabileController {
 	@GetMapping("/aggiungi_attivita")
 	public ModelAndView aggiungiAttivita(@ModelAttribute("responsabile") Responsabile responsabile) {
 		if(responsabile == null) {
-			return new ModelAndView("errore_resp");
+			return new ModelAndView("redirect:errore_resp.html");
 		}
 		return new ModelAndView("aggiungi_attivita", "attivita", new Attivita());
 	}
@@ -203,7 +203,7 @@ public class ResponsabileController {
 			Model model) {
 		
 		if(responsabile == null) {
-			return "errore_resp";
+			return "redirect:errore_resp.html";
 		}
 		
 		responsabile = this.getResponsabile(principal);
@@ -233,7 +233,7 @@ public class ResponsabileController {
     @GetMapping("/aggiungi_allievo")
     public ModelAndView aggiungiAllievo(@ModelAttribute("responsabile") Responsabile responsabile) {
     	if(responsabile == null) {
-    		return new ModelAndView("errore_resp");
+    		return new ModelAndView("redirect:errore_resp.html");
     	}
         return new ModelAndView("aggiungi_allievo", "allievo", new Allievo());
     }
@@ -247,7 +247,7 @@ public class ResponsabileController {
 			Model model) {
 		
 		if(responsabile == null) {
-			return "errore_resp";
+			return "redirect:errore_resp.html";
 		}
 		
 		responsabile = this.getResponsabile(principal);
