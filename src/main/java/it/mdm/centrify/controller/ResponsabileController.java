@@ -1,6 +1,7 @@
 package it.mdm.centrify.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -87,12 +88,21 @@ public class ResponsabileController {
 		Set<Attivita> attivitaCentro = this.getResponsabile(principal).getCentro().getAttivita();
 		Set<Attivita> attivitaAllievo = allievo.getAttivita();
 		
+		List<Attivita> attivitaAssegnabili = new ArrayList<Attivita>();
+		List<Attivita> attivitaAllievoCentro = new ArrayList<Attivita>();
+		
 		for(Attivita a : attivitaCentro) {
-			if(attivitaAllievo.contains(a))
-				attivitaCentro.remove(a);
+			if(attivitaAllievo.contains(a)) {
+				attivitaAllievoCentro.add(a);
+			}
+			else {
+				attivitaAssegnabili.add(a);
+			}
 		}
 	
-		model.addAttribute("listAttivita", attivitaCentro);
+		
+		model.addAttribute("attivitaAllievo", attivitaAllievoCentro);
+		model.addAttribute("attivitaAssegnabili", attivitaAssegnabili);
 		return "template_allievo";
 	}
 	
@@ -100,14 +110,33 @@ public class ResponsabileController {
 	public String iscriviAllievo(
 			@ModelAttribute("responsabile") Responsabile responsabile,
 			@PathVariable("id") Long idAllievo,
-			@RequestParam("id_attivitaDaAggiungere") Long idAttivita) {
+			@RequestParam("id_attivitaDaAggiungere") Long idAttivita,
+			Model model) {
 		
 		if(responsabile == null) {
 			return "errore_resp";
 		}
 		
-		System.out.println(idAllievo);
-		System.out.println(idAttivita);
+		if(idAttivita==-1) {
+			System.out.println("invalidAttivita");
+			model.addAttribute("errAttivita", "Seleziona un'attività");
+			model.addAttribute("valid_Attivita", "is-invalid");
+			return "redirect:/scheda_allievo/"+idAllievo; //non ci sono i 2 attributi sopra
+		}
+		
+		Allievo allievo = this.allievoService.getOne(idAllievo);
+		Attivita attivitaDaAggiungere = responsabile.getCentro().getAttivitaById(idAttivita);
+		
+		if(attivitaDaAggiungere == null) {
+			return "error";
+		}
+		
+		allievo.addAttivita(attivitaDaAggiungere);
+		attivitaDaAggiungere.addAllievo(allievo);
+		
+		allievoService.save(allievo);
+		attivitaService.save(attivitaDaAggiungere);
+		
 		
 		return "redirect:/scheda_allievo/"+idAllievo;
 	}
@@ -140,7 +169,6 @@ public class ResponsabileController {
 		// responsabile = this.getResponsabile(principal);
 		// model.addAttribute("responsabile", responsabile);
 		Azienda azienda = responsabile.getCentro().getAzienda();
-		System.out.println(stringa_ricerca);
 		String[] splitted = stringa_ricerca.split("\\s+");
 		if(splitted.length == 1)
 			model.addAttribute("allievi", this.allievoService.getByAziendaAndNomeOrCognome(azienda.getId(), splitted[0], splitted[0]));

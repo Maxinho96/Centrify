@@ -173,7 +173,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-	                                                    <c:forEach var="attivita" items="${allievo.attivita}">
+	                                                    <c:forEach var="attivita" items="${attivitaAllievo}">
 	                                                        <tr>
 	                                                            <td class="text-center">
 	                                                                <a href="/scheda_attivita/${attivita.id}" class="avatar avatar-green d-block">${fn:substring(attivita.nomeAttivita, 0, 1)}</a>
@@ -207,12 +207,13 @@
                                         <h1 class="card-title">Assegna nuova attività</h1>
                                     </div>
                                     <div class="card-body">		                                    
-	                                    <select name="id_attivitaDaAggiungere" class="form-control custom-select">
-											<option value="none">Seleziona</option>
-											<c:forEach var="att" items="${listAttivita}">
+	                                    <select name="id_attivitaDaAggiungere" class="form-control custom-select ${valid_Attivita}">
+											<option value="-1">Seleziona</option>
+											<c:forEach var="att" items="${attivitaAssegnabili}">
 												<option value="${att.id}">${att.nomeAttivita}</option>
 											</c:forEach>
 	                                    </select>
+	                                    <div class="invalid-feedback">${errAttivita}</div>
                                     </div>
 									<div class="card-footer text-right">
                                     	<button type="submit" class="btn btn-primary">Assegna</button>

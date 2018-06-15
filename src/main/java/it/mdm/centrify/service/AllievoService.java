@@ -17,6 +17,11 @@ public class AllievoService {
 	private AllievoRepository allievoRepository;
 	
 	@Transactional
+	public void save(Allievo allievo) {
+		this.allievoRepository.save(allievo);
+	}
+		
+	@Transactional
 	public Allievo getOne(Long id) {
 		Optional<Allievo> allievo = this.allievoRepository.findById(id);
 		if(allievo.isPresent()) {
