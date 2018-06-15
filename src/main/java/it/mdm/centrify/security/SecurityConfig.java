@@ -1,4 +1,4 @@
-package it.mdm.centrify;
+package it.mdm.centrify.security;
 
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -8,14 +8,14 @@ import org.springframework.stereotype.Component;
 
 @Component
 @EnableOAuth2Sso
-public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 	  http.antMatcher("/**").
 	  authorizeRequests()
-	  //.antMatchers("/", "/login**", "/webjars/**", "/error**")
-	  //.permitAll()
+	  .antMatchers("/", "/index.html", "/assets/**")
+	  .permitAll()
 	  .anyRequest()
 	  .authenticated()
 	  .and()

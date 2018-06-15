@@ -48,23 +48,6 @@
 
             </head>
             <body class="">
-                <!--script type="text/javascript" src="/webjars/js-cookie/js.cookie.js">
-   				</script>
-   				<script type="text/javascript">
-	   				$.ajaxSetup({
-					    	beforeSend : function(xhr, settings) {
-					    	  if (settings.type == 'POST' || settings.type == 'PUT'
-					    	      || settings.type == 'DELETE') {
-					    	    if (!(/^http:.*/.test(settings.url) || /^https:.*/
-					    	        .test(settings.url))) {
-					    	      // Only send the token to relative URLs i.e. locally.
-					    	      xhr.setRequestHeader("X-XSRF-TOKEN",
-					    	          Cookies.get('XSRF-TOKEN'));
-					    	    }
-					    	  }
-					    	}
-					    	});
-   				</script-->
                 <div class="page">
                     <div class="page-main">
                         <div class="header py-4">
@@ -85,9 +68,6 @@
                                                 </span>
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item" href="#"> 
-                                                    <i class="dropdown-icon fe fe-user"></i> Profilo 
-                                                </a>
                                                 <!--a class="dropdown-item" href="/logout"> 
                                                     <i class="dropdown-icon fe fe-log-out"></i> Sign out
                                                 </a-->
