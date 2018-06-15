@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" dir="ltr">
@@ -119,7 +120,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-1"></div>
-                            <div class="col-md-6 col-lg-4">
+                            <div class="col-md-4 col-lg-4">
                                 <div class="card">
                                     <div class="card-header">
                                         <h1 class="page-title">${allievo.nome} ${allievo.cognome}</h1>
@@ -172,7 +173,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-	                                                    <c:forEach var="attivita" items="${allievo.attivita}">
+	                                                    <c:forEach var="attivita" items="${attivitaAllievo}">
 	                                                        <tr>
 	                                                            <td class="text-center">
 	                                                                <a href="/scheda_attivita/${attivita.id}" class="avatar avatar-green d-block">${fn:substring(attivita.nomeAttivita, 0, 1)}</a>
@@ -194,8 +195,33 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>                            
                         </div>
+                        
+                        <div class="row">
+                        	<div class="col-lg-1"></div>
+                        	<div class="col-10">	
+                        		<form class="card" action="/iscrivi_allievo/${allievo.id}" method="POST">
+                        		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> 
+                                    <div class="card-header">
+                                        <h1 class="card-title">Assegna nuova attività</h1>
+                                    </div>
+                                    <div class="card-body">		                                    
+	                                    <select name="id_attivitaDaAggiungere" class="form-control custom-select ${valid_Attivita}">
+											<option value="-1">Seleziona</option>
+											<c:forEach var="att" items="${attivitaAssegnabili}">
+												<option value="${att.id}">${att.nomeAttivita}</option>
+											</c:forEach>
+	                                    </select>
+	                                    <div class="invalid-feedback">${errAttivita}</div>
+                                    </div>
+									<div class="text-right">
+                                    	<button type="submit" class="btn btn-primary">Assegna</button>
+                                    </div>
+								</form>
+                        	</div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>

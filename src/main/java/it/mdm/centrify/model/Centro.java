@@ -140,7 +140,15 @@ public class Centro {
 		
 		return false;
 	}
-
+	
+	public Attivita getAttivitaById(Long id) {
+		for(Attivita a : this.attivita) {
+			if(a.getId() == id)
+				return a;
+		}
+		return null;
+	}
+	
 	public Azienda getAzienda() {
 		return azienda;
 	}
