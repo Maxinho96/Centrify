@@ -78,7 +78,6 @@ public class ResponsabileController {
 			Principal principal,
 			@ModelAttribute("responsabile") Responsabile responsabile,
 			@PathVariable("id") Long id,
-			@ModelAttribute("errAttivita") String errAttivita,
 			@ModelAttribute("valid_Attivita") String valid_Attivita,
 			Model model) {
 		
@@ -122,7 +121,6 @@ public class ResponsabileController {
 		}
 		
 		if(idAttivita==-1) {
-			redAtt.addFlashAttribute("errAttivita", "Seleziona un'attività");
 			redAtt.addFlashAttribute("valid_Attivita", "is-invalid");
 			return "redirect:/scheda_allievo/"+idAllievo;
 		}

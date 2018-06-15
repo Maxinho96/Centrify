@@ -116,29 +116,29 @@
                     <div class="my-3 my-md-5">
                         <div class="container">
                             <div class="row">
-                                <div class="col-lg-2 col-xl-2"></div>
-                                <div class="col-lg-8 col-xl-8">
+                                <div class="col-xl-2"></div>
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-8">
                                     <form:form class="card" action="/submit_aggiungi_allievo" method="POST" modelAttribute="allievo">
                                         <div class="card-header">
                                             <h3 class="card-title">Nuovo allievo</h3>
                                         </div>
                                         <div class="card-body">
                                             <div class="row">
-                                                <div class="col-md-4 col-lg-4">
+                                                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                                     <div class="form-group">
                                                         <label class="form-label">Nome</label>
                                                         <form:input type="text" name="nome_allievo" class="form-control ${valid_nome}" placeholder="" path="nome"></form:input>
                                                     	<div class="invalid-feedback">${errNome}</div>
                                                     </div>      
                                                 </div>
-                                                <div class="col-md-4 col-lg-4">
+                                                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                                     <div class="form-group">
                                                         <label class="form-label">Cognome</label>
                                                         <form:input type="text" name="cognome_allievo" class="form-control ${valid_cognome}" placeholder="" path="cognome"></form:input> 
                                                     	<div class="invalid-feedback">${errCognome}</div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3 col-lg-3">
+                                                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                                     <div class="form-group">
                                                         <div class="form-label">Sesso</div>
                                                         <div class="custom-controls-stacked">
@@ -155,14 +155,14 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-5 col-lg-5">
+                                                <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5">
                                                     <div class="form-group">
                                                         <label class="form-label">Email</label>
                                                         <form:input type="text" name="email" class="form-control ${valid_email}" placeholder="email@posta.com" path="email"></form:input>
                                                         <div class="invalid-feedback">${errEmail}</div>
                                                     </div>   
                                                 </div>
-                                                <div class="col-md-3 col-lg-3">
+                                                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
                                                     <div class="form-group">
                                                         <label class="form-label">Cellulare</label>
                                                         <form:input type="text" name="cellulare" class="form-control ${valid_cellulare}" data-mask="000 000 0000" data-mask-clearifnotmatch="true" placeholder="335 123 4567" path="cellulare"></form:input>
@@ -171,11 +171,11 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-7 col-lg-7">
+                                                <div class="col-sm-12 col-md-7 col-lg-7 col-xl-7">
                                                     <div class="form-group">
                                                         <label class="form-label">Data di nascita</label>
                                                         <div class="row gutters-xs">
-                                                            <div class="col-4">
+                                                            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                                                 <form:select name="giorno_nascita" class="form-control custom-select ${valid_giorno}" path="giorno_nascita">
                                                                     <option value="" selected="selected">Giorno</option>
                                                                     <option value="1">1</option>
@@ -212,7 +212,7 @@
                                                                 </form:select>
                                                                 <div class="invalid-feedback">${errGiorno}</div>
                                                             </div>
-                                                            <div class="col-4">
+                                                            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                                                 <form:select name="mese_nascita" class="form-control custom-select ${valid_mese}" path="mese_nascita">
                                                                     <option value="" selected="selected">Mese</option>
                                                                     <option value="1">Gennaio</option>
@@ -230,7 +230,7 @@
                                                                 </form:select>
                                                                 <div class="invalid-feedback">${errMese}</div>
                                                             </div>
-                                                            <div class="col-4">
+                                                            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                                                 <form:select name="anno_nascita" class="form-control custom-select ${valid_anno}" path="anno_nascita">
                                                                     <option value="" selected="selected">Anno</option>
                                                                     <option value="2005">2005</option>
@@ -345,7 +345,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4 col-lg-4">
+                                                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                                     <div class="form-group">
                                                         <label class="form-label">Città natale</label>
                                                         <form:input type="text" name="citta" class="form-control ${valid_luogo}" path="luogoDiNascita"></form:input>
@@ -369,16 +369,12 @@
             </div>
             <footer class="footer">
                 <div class="container">
-                    <div class="row align-items-center flex-row-reverse">
-                        <div class="col-auto ml-lg-auto">
-                            <div class="row align-items-center">
-                                <div class="col-auto">
-                                    <a href="https://bitbucket.org/marcoBerb/progetto_siw/" class="btn btn-outline-primary btn-sm">Source code</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
+                    <div class="row align-items-center">
+                        <div class="col-10">
                             Sviluppato con amore da Marco Berbeglia, Diego Barbieri e Massimiliano Bruni
+                        </div>
+                        <div class="col-2 text-right">
+                        	<a href="https://bitbucket.org/marcoBerb/progetto_siw/" class="btn btn-outline-primary btn-sm">Source code</a>
                         </div>
                     </div>
                 </div>

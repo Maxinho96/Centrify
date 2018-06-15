@@ -119,8 +119,8 @@
                 <div class="my-3 my-md-5">
                     <div class="container">
                         <div class="row">
-                            <div class="col-lg-1"></div>
-                            <div class="col-md-4 col-lg-4">
+                            <div class="col-lg-1 col-xl-1"></div>
+                            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                 <div class="card">
                                     <div class="card-header">
                                         <h1 class="page-title">${allievo.nome} ${allievo.cognome}</h1>
@@ -155,7 +155,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6 col-lg-6">
+                            <div class="col-sm-12 col-md-8 col-lg-6 col-xl-6">
                                 <div class="row row-cards row-deck">
                                     <div class="col-12">
                                         <div class="card">
@@ -169,7 +169,7 @@
                                                             <th class="text-center w-1"><i class="icon-people"></i></th>
                                                             <th>Nome</th>
                                                             <th>Data Svolgimento</th>
-                                                            <th>Orario Svolgimento</th>
+                                                            <th>Ora Svolgimento</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -199,25 +199,25 @@
                         </div>
                         
                         <div class="row">
-                        	<div class="col-lg-1"></div>
-                        	<div class="col-10">	
+                        	<div class="col-lg-1 col-xl-1"></div>
+                        	<div class="col-sm-12 col-md-12 col-lg-10 col-xl-10">	
                         		<form class="card" action="/iscrivi_allievo/${allievo.id}" method="POST">
                         		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> 
                                     <div class="card-header">
                                         <h1 class="card-title">Assegna nuova attività</h1>
                                     </div>
-                                    <div class="card-body">		                                    
+                                    <div class="card-body input-group">		                                    
 	                                    <select name="id_attivitaDaAggiungere" class="form-control custom-select ${valid_Attivita}">
 											<option value="-1">Seleziona</option>
 											<c:forEach var="att" items="${attivitaAssegnabili}">
 												<option value="${att.id}">${att.nomeAttivita}</option>
 											</c:forEach>
 	                                    </select>
-	                                    <div class="invalid-feedback">${errAttivita}</div>
+	                                    <span class="input-group-append">
+                              				<button type="submit" class="btn btn-primary">Assegna</button>
+                            			</span>
                                     </div>
-									<div class="text-right">
-                                    	<button type="submit" class="btn btn-primary">Assegna</button>
-                                    </div>
+                                    
 								</form>
                         	</div>
                         </div>
@@ -229,16 +229,12 @@
 
         <footer class="footer">
             <div class="container">
-                <div class="row align-items-center flex-row-reverse">
-                    <div class="col-auto ml-lg-auto">
-                        <div class="row align-items-center">
-                            <div class="col-auto">
-                                <a href="https://bitbucket.org/marcoBerb/progetto_siw/" class="btn btn-outline-primary btn-sm">Source code</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
+                <div class="row align-items-center">
+                    <div class="col-10">
                         Sviluppato con amore da Marco Berbeglia, Diego Barbieri e Massimiliano Bruni
+                    </div>
+                    <div class="col-2 text-right">
+                    	<a href="https://bitbucket.org/marcoBerb/progetto_siw/" class="btn btn-outline-primary btn-sm">Source code</a>
                     </div>
                 </div>
             </div>
