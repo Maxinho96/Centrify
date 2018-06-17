@@ -28,22 +28,13 @@
                         <script src="/assets/js/require.min.js"></script>
                         <script>
                             requirejs.config({
-                                baseUrl : '.'
+                                baseUrl : '..'
                             });
                         </script>
 
                         <!-- Dashboard Core -->
                         <link href="/assets/css/dashboard.css" rel="stylesheet" />
                         <script src="/assets/js/dashboard.js"></script>
-
-
-                        <!-- c3.js Charts Plugin -->
-                        <link href="/assets/plugins/charts-c3/plugin.css" rel="stylesheet" />
-                        <script src="/assets/plugins/charts-c3/plugin.js"></script>
-
-                        <!-- Google Maps Plugin -->
-                        <link href="/assets/plugins/maps-google/plugin.css" rel="stylesheet" />
-                        <script src="/assets/plugins/maps-google/plugin.js"></script>
 
                         <!-- Input Mask Plugin -->
                         <script src="/assets/plugins/input-mask/plugin.js"></script>
@@ -60,7 +51,7 @@
                                             </a>
                                             <div class="d-flex order-lg-2 ml-auto">
                                                 <div class="dropdown">
-                                                    <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
+                                                    <a href="" class="nav-link pr-0 leading-none" data-toggle="dropdown">
                                                         <span class="avatar" style="background-image: url(/assets/images/profile_resp.png)">
                                                             <span class="avatar-status bg-green"></span>
                                                         </span>
