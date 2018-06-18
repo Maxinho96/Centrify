@@ -128,7 +128,7 @@
 						<div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
 							<div class="card">
 								<div class="card-header">
-									<h1 class="page-title">${allievo.nome}${allievo.cognome}</h1>
+									<h1 class="page-title">${allievo.nome} ${allievo.cognome}</h1>
 								</div>
 								<div class="card-body">
 									<p>

@@ -11,7 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OrderBy;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
+@Table(uniqueConstraints=@UniqueConstraint(columnNames={"nomeAttivita", "centro_id"}))
 @Entity 
 public class Attivita {
 
@@ -19,7 +22,7 @@ public class Attivita {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(nullable = false, unique = true)
+	@Column(nullable = false)
 	private String nomeAttivita;
 
 	//li ho messi per matchare con gli attributi della jsp al posto di dataSvolgimento
