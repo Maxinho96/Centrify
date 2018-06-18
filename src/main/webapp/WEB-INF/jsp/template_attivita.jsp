@@ -28,22 +28,13 @@
                         <script src="/assets/js/require.min.js"></script>
                         <script>
                             requirejs.config({
-                                baseUrl : '.'
+                                baseUrl : '..'
                             });
                         </script>
 
                         <!-- Dashboard Core -->
                         <link href="/assets/css/dashboard.css" rel="stylesheet" />
                         <script src="/assets/js/dashboard.js"></script>
-
-
-                        <!-- c3.js Charts Plugin -->
-                        <link href="/assets/plugins/charts-c3/plugin.css" rel="stylesheet" />
-                        <script src="/assets/plugins/charts-c3/plugin.js"></script>
-
-                        <!-- Google Maps Plugin -->
-                        <link href="/assets/plugins/maps-google/plugin.css" rel="stylesheet" />
-                        <script src="/assets/plugins/maps-google/plugin.js"></script>
 
                         <!-- Input Mask Plugin -->
                         <script src="/assets/plugins/input-mask/plugin.js"></script>
@@ -58,33 +49,27 @@
                                             <a class="header-brand" href="/mainpage_r">
                                                 <img src="/assets/images/logo_title.png" class="header-brand-img" alt="Centrify logo">
                                             </a>
-			                                            <div class="d-flex order-lg-2 ml-auto">
-										<div class="dropdown">
-											<a href="#" class="nav-link pr-0 leading-none"
-												data-toggle="dropdown"> <span class="avatar"
-												style="background-image: url(/assets/images/profile_resp.png)">
-													<span class="avatar-status bg-green"></span>
-											</span> <span class="ml-2 d-none d-lg-block"> <span
-													class="text-default">${responsabile.nome}
-														${responsabile.cognome}</span> <small
-													class="text-muted d-block mt-1">Responsabile</small>
-											</span>
-											</a>
-											<div
-												class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-												<!--a class="dropdown-item" href="/logout"> 
-			                                                    <i class="dropdown-icon fe fe-log-out"></i> Sign out
-			                                                </a-->
-												<form id="logoutForm" method="post" action="/logout">
-													<input type="hidden" name="${_csrf.parameterName}"
-														value="${_csrf.token}" /> <a class="dropdown-item"
-														onclick="document.getElementById('logoutForm').submit();">
-														<i class="dropdown-icon fe fe-log-out"></i> Sign out
-													</a>
-												</form>
-											</div>
-										</div>
-									</div>
+                                            <div class="d-flex order-lg-2 ml-auto">
+                                                <div class="dropdown">
+                                                    <a href="" class="nav-link pr-0 leading-none" data-toggle="dropdown">
+                                                        <span class="avatar" style="background-image: url(/assets/images/profile_resp.png)">
+                                                            <span class="avatar-status bg-green"></span>
+                                                        </span>
+                                                        <span class="ml-2 d-none d-lg-block"> 
+                                                            <span class="text-default">Marco Rossi</span> 
+                                                            <small class="text-muted d-block mt-1">Responsabile</small>
+                                                        </span>
+                                                    </a>
+                                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                        <a class="dropdown-item" href="#">
+                                                            <i class="dropdown-icon fe fe-user"></i> Profilo
+                                                        </a>
+                                                        <a class="dropdown-item" href="#"> 
+                                                            <i class="dropdown-icon fe fe-log-out"></i> Sign out
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#headerMenuCollapse">
                                                 <span class="header-toggler-icon"></span>
                                             </a>
