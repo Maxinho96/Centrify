@@ -17,7 +17,7 @@ public class CentroValidator {
 		String email = c.getEmail();
 		String telefono = c.getTelefono();
 		String descrizione = c.getDescrizione();
-		int capienza = c.getCapienza();
+		Integer capienza = c.getCapienza();
 
 		if (isStringInvalid(nome)) {
 			valid = false;
@@ -52,21 +52,19 @@ public class CentroValidator {
 			valid = false;
 			m.addAttribute("errCapienza", "Campo obbligatorio");
 			m.addAttribute("valid_capienza", "is-invalid");
+
+			if (isStringInvalid(telefono)) {
+				valid = false;
+				m.addAttribute("errTelefono", "Campo obbligatorio");
+				m.addAttribute("valid_telefono", "is-invalid");
+			}
+
+			if (isStringInvalid(descrizione)) {
+				valid = false;
+				m.addAttribute("errDescrizione", "Campo obbligatorio");
+				m.addAttribute("valid_descrizione", "is-invalid");
+			}
 		}
-
-		if (isStringInvalid(telefono)) {
-			valid = false;
-			m.addAttribute("errTelefono", "Campo obbligatorio");
-			m.addAttribute("valid_telefono", "is-invalid");
-		}
-
-		if (isStringInvalid(descrizione)) {
-			valid = false;
-			m.addAttribute("errDescrizione", "Campo obbligatorio");
-			m.addAttribute("valid_descrizione", "is-invalid");
-
-		}
-
 		return valid;
 	}
 

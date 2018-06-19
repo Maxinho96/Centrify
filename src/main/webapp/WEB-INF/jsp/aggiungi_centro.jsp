@@ -98,8 +98,8 @@
 								<li class="nav-item"><a href="/mainpage_d" class="nav-link"><i
 										class="fe fe-home"></i> Home</a></li>
 								<li class="nav-item"><a href="/aggiungi_centro"
-									class="nav-link"><i class="fe fe-user-plus"></i> Aggiungi
-										Centro</a></li>
+									class="nav-link active"><i class="fe fe-user-plus"></i>
+										Aggiungi Centro</a></li>
 							</ul>
 						</div>
 					</div>
@@ -167,9 +167,11 @@
 										</div>
 										<div class="col-md-5 col-lg-3">
 											<div class="form-group">
-												<label class="form-label">Nome Responsabile</label> <input
-													type="text" name="nome_responsabile" class="form-control"
-													placeholder="" />
+												<label class="form-label">Descrizione </label>
+												<form:textarea class="form-control ${valid_descrizione}"
+													name="descrizione" rows="3"
+													placeholder="Inserisci descrizione..." path="descrizione"></form:textarea>
+												<div class="invalid-feedback">${errDescrizione}</div>
 											</div>
 										</div>
 									</div>
