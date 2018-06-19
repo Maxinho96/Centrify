@@ -1,6 +1,8 @@
 package it.mdm.centrify.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,20 +10,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import it.mdm.centrify.model.Allievo;
+import it.mdm.centrify.model.Attivita;
 import it.mdm.centrify.model.Azienda;
 import it.mdm.centrify.model.Centro;
 import it.mdm.centrify.model.Direttore;
+import it.mdm.centrify.model.Responsabile;
 import it.mdm.centrify.service.CentroService;
 import it.mdm.centrify.service.DirettoreService;
 import it.mdm.centrify.validator.CentroValidator;
 
 @Controller
 @SessionAttributes("direttore")
-@Component
 public class DirettoreController {
 
 	@Autowired
@@ -29,11 +34,8 @@ public class DirettoreController {
 
 	@Autowired
 	private CentroService centroService;
-	
-<<<<<<< HEAD
-=======
+
 	@Autowired
->>>>>>> Diego
 	private CentroValidator centroValidator;
 
 	@ModelAttribute("direttore")
@@ -65,6 +67,20 @@ public class DirettoreController {
 			return "redirect:errore_dir.html";
 		}
 		return "aggiungi_centro";
+	}
+	
+	@RequestMapping("/scheda_centro/{id}")
+	public String schedaCentro(
+			Principal principal,
+			@ModelAttribute("direttore") Direttore direttore,
+			@PathVariable("id") Long id,
+			Model model) {
+		
+		if(direttore == null) {
+			return "redirect:errore_dir.html";
+		}
+		
+		return "template_centro";
 	}
 
 	@PostMapping("/submit_aggiungi_centro")
