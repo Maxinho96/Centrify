@@ -16,7 +16,7 @@ public class CentroValidator {
 		String indirizzo = c.getIndirizzo();
 		String email = c.getEmail();
 		String telefono = c.getTelefono();
-		int capienza = c.getCapienza();
+		Integer capienza = c.getCapienza();
 
 		if (isStringInvalid(nome)) {
 			valid = false;
@@ -51,7 +51,7 @@ public class CentroValidator {
 			m.addAttribute("valid_email", "is-invalid");
 		}
 
-		if (capienza == 0) {
+		if (capienza == null) {
 			valid = false;
 			m.addAttribute("errCapienza", "Campo obbligatorio");
 			m.addAttribute("valid_capienza", "is-invalid");
