@@ -120,9 +120,9 @@
 								</div>
 								<div class="card-body">
 									<p>${centro.descrizione}</p>
-									<p>${centro.capienza}</p>
-									<p>${centro.email}</p>
-									<p>${centro.telefono}</p>
+									Capienza: <p>${centro.capienza}</p>
+									Email: <p>${centro.email}</p>
+									Telefono: <p>${centro.telefono}</p>
 								</div>
 							</div>
 						</div>

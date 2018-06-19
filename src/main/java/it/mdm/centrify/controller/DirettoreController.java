@@ -17,11 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import it.mdm.centrify.model.Attivita;
 import it.mdm.centrify.model.Azienda;
 import it.mdm.centrify.model.Centro;
 import it.mdm.centrify.model.Direttore;
-import it.mdm.centrify.model.Responsabile;
 import it.mdm.centrify.service.AziendaService;
 import it.mdm.centrify.service.CentroService;
 import it.mdm.centrify.service.DirettoreService;
