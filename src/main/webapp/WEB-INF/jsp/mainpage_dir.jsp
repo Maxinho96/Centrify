@@ -70,7 +70,7 @@
 									<!--a class="dropdown-item" href="/logout"> 
                                     	<i class="dropdown-icon fe fe-log-out"></i> Sign out
                                     </a-->
-									<form id="logoutForm" method="post" action="/logout">
+									<form id="logoutForm" method="post" action="/logout" style="cursor:pointer;">
 										<input type="hidden" name="${_csrf.parameterName}"
 											value="${_csrf.token}" /> <a class="dropdown-item"
 											onclick="document.getElementById('logoutForm').submit();">
