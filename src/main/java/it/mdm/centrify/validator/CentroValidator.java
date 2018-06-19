@@ -5,11 +5,12 @@ import java.util.regex.Pattern;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
+import it.mdm.centrify.model.Azienda;
 import it.mdm.centrify.model.Centro;
 
 @Component
 public class CentroValidator {
-	public boolean validate(Centro c, Model m) {
+	public boolean validate(Centro c, Model m, Azienda a) {
 		boolean valid = true;
 
 		String nome = c.getNome();
@@ -18,6 +19,10 @@ public class CentroValidator {
 		String telefono = c.getTelefono();
 		String descrizione = c.getDescrizione();
 		Integer capienza = c.getCapienza();
+
+		nome.trim();
+		indirizzo.trim();
+		email.trim();
 
 		if (isStringInvalid(nome)) {
 			valid = false;
@@ -58,6 +63,18 @@ public class CentroValidator {
 				valid = false;
 				m.addAttribute("errDescrizione", "Campo obbligatorio");
 				m.addAttribute("valid_descrizione", "is-invalid");
+			}
+
+			if (a.containsCentroWithName(nome)) {
+				valid = false;
+				m.addAttribute("valid_nome", "is-invalid");
+				m.addAttribute("errNome", "Centro gia esistente");
+			}
+
+			if (a.containsCentroWithEmail(email)) {
+				valid = false;
+				m.addAttribute("valid_email", "is-invalid");
+				m.addAttribute("errEmail", "Centro gia esistente");
 			}
 		}
 		return valid;

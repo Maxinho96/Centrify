@@ -102,8 +102,7 @@ public class AttivitaValidator {
 			valid=false;
 			m.addAttribute("valid_nomeAttivita", "is-invalid");
 			m.addAttribute("errNomeAttivita", "Attività gia esistente");
-		}	
-		
+		}
 		
 		return valid;
 	}

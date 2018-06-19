@@ -91,37 +91,35 @@ public class DirettoreController {
 	}
 
 	@PostMapping("submit_aggiungi_centro")
-	public String submitAggiungiCentro(Principal principal, 
-			@ModelAttribute("direttore") Direttore direttore, 
-			@Valid @ModelAttribute Centro centro, 
-			BindingResult result, 
-			Model model) {
-		
-		if(direttore == null) {
+	public String submitAggiungiCentro(Principal principal, @ModelAttribute("direttore") Direttore direttore,
+			@Valid @ModelAttribute Centro centro, BindingResult result, Model model) {
+
+		if (direttore == null) {
 			return "redirect:errore_dir.html";
 		}
-		
+
 		direttore = this.getDirettore(principal);
-		
+
 		if (result.hasErrors()) {
-			//System.out.println(result.getAllErrors().toString());
-			//return "";
+			// System.out.println(result.getAllErrors().toString());
+			// return "";
 		}
-		
+
 		Azienda azienda = direttore.getAzienda();
-		
-//		if (centro == null) {
-//			return "error";
-//		}
-		
-		if(!centroValidator.validate(centro, model)) {
+
+		// if (centro == null) {
+		// return "error";
+		// }
+
+		if (!centroValidator.validate(centro, model, azienda)) {
 			return "aggiungi_centro";
 		}
-			
-		azienda.addCentro(centro);;
+
+		azienda.addCentro(centro);
+		;
 		this.centroService.save(centro);
 		Long id_centro = azienda.getCentroByNome(centro.getNome()).getId();
-	
-		return "redirect:/scheda_centro/"+id_centro;
+
+		return "redirect:/scheda_centro/" + id_centro;
 	}
 }

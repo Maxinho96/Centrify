@@ -110,13 +110,29 @@ public class Azienda {
 		}
 		return false;
 	}
-	
+
 	public Centro getCentroByNome(String nome) {
 		for (Centro c : this.centri) {
 			if (c.getNome().equals(nome))
 				return c;
 		}
 		return null;
+	}
+
+	public boolean containsCentroWithName(String nome) {
+
+		for (Centro c : this.centri) {
+			if (c.getNome().equals(nome))
+				return true;
+		}
+		return false;
+	}
+	public boolean containsCentroWithEmail(String email) {
+		for (Centro c : this.centri) {
+			if (c.getEmail().equals(email))
+				return true;
+		}
+		return false;
 	}
 
 }
