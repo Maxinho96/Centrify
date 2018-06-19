@@ -32,10 +32,6 @@ public class CentroValidator {
 			m.addAttribute("errNome", "Campo obbligatorio");
 			m.addAttribute("valid_nome", "is-invalid");
 
-		} else if (!isStringAlphabetic(nome)) {
-			valid = false;
-			m.addAttribute("errNome", "Inserisci solo lettere");
-			m.addAttribute("valid_nome", "is-invalid");
 		}
 
 		if (isStringInvalid(indirizzo)) {
@@ -54,9 +50,7 @@ public class CentroValidator {
 			m.addAttribute("valid_email", "is-invalid");
 		}
 
-		if (capienza == null)
-
-		{
+		if (capienza == null) {
 			valid = false;
 			m.addAttribute("errCapienza", "Campo obbligatorio");
 			m.addAttribute("valid_capienza", "is-invalid");

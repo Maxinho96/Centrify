@@ -78,10 +78,11 @@
 								<div
 									class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
 									<form id="logoutForm" method="post" action="/logout">
-  													<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> 
-  													<a class="dropdown-item" onclick="document.getElementById('logoutForm').submit();">
-  														<i class="dropdown-icon fe fe-log-out"></i> Sign out
-  													</a>
+										<input type="hidden" name="${_csrf.parameterName}"
+											value="${_csrf.token}" /> <a class="dropdown-item"
+											onclick="document.getElementById('logoutForm').submit();">
+											<i class="dropdown-icon fe fe-log-out"></i> Sign out
+										</a>
 									</form>
 								</div>
 							</div>
@@ -121,9 +122,14 @@
 								</div>
 								<div class="card-body">
 									<p>${centro.descrizione}</p>
-									Capienza: <p>${centro.capienza}</p>
-									Email: <p>${centro.email}</p>
-									Telefono: <p>${centro.telefono}</p>
+									Capienza:
+									<p>${centro.capienza}</p>
+									Email:
+									<p>${centro.email}</p>
+									Telefono:
+									<p>${centro.telefono}</p>
+									Indirizzo :
+									<p>${centro.indirizzo}</p>
 								</div>
 							</div>
 						</div>
