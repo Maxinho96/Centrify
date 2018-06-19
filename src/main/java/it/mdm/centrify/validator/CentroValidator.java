@@ -34,11 +34,6 @@ public class CentroValidator {
 			valid = false;
 			m.addAttribute("errIndirizzo", "Campo obbligatorio");
 			m.addAttribute("valid_indirizzo", "is-invalid");
-
-		} else if (!isStringAlphabetic(indirizzo)) {
-			valid = false;
-			m.addAttribute("errIndirizzo", "Inserisci solo lettere");
-			m.addAttribute("valid_indirizzo", "is-invalid");
 		}
 
 		if (isStringInvalid(email)) {
