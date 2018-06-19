@@ -109,9 +109,10 @@
 			<div class="my-3 my-md-5">
 				<div class="container">
 					<div class="row">
-						<div class="col-lg-2 col-xl-2"></div>
-						<div class="col-lg-8 col-xl-8">
-							<div class="card">
+						<div class="col-xl-2"></div>
+						<div class="col-sm-12 col-md-12 col-lg-12 col-xl-8">
+							<form:form class="card" action="/submit_aggiungi_centro"
+								method="POST" modelAttribute="centro">
 								<div class="card-header">
 									<h3 class="card-title">Nuovo Centro</h3>
 								</div>
@@ -119,52 +120,55 @@
 									<div class="row">
 										<div class="col-md-5 col-lg-5">
 											<div class="form-group">
-												<label class="form-label">Nome</label> <input type="text"
-													name="nome_attivita" class="form-control" placeholder="" />
+												<label class="form-label">Nome</label>
+												<form:input type="text" name="nome"
+													class="form-control ${valid_nome}" placeholder=""
+													path="nome"></form:input>
+												<div class="invalid-feedback">${errNome}</div>
 											</div>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-5 col-lg-3">
 											<div class="form-group">
-												<label class="form-label">Indirizzo</label> <input
-													type="text" name="indirizzo_centro" class="form-control"
-													placeholder="" />
-												<form:input type="text" name="nome_centro"
-													class="form-control ${valid_indirizzo}" path="nomeAttivita"></form:input>
+												<label class="form-label">Indirizzo</label>
+												<form:input type="text" name="indirizzo"
+													class="form-control ${valid_indirizzo}" placeholder=""
+													path="indirizzo"></form:input>
 												<div class="invalid-feedback">${errIndirizzo}</div>
 											</div>
 										</div>
 										<div class="col-md-5 col-lg-3">
 											<div class="form-group">
-												<label class="form-label">Email</label> <input type="text"
-													name="email_centro" class="form-control" placeholder="" />
-												<form:input type="text" name="nome_centro"
-													class="form-control ${valid_telefono}" path="nomeAttivita"></form:input>
+												<label class="form-label">Email</label>
+												<form:input type="text" name="email"
+													class="form-control ${valid_email}" placeholder=""
+													path="email"></form:input>
+												<div class="invalid-feedback">${errEmail}</div>
+											</div>
+										</div>
+										<div class="col-md-5 col-lg-3">
+											<div class="form-group">
+												<label class="form-label">Telefono</label>
+												<form:input type="text" name="telefono"
+													class="form-control ${valid_telefono}" placeholder=""
+													path="telefono"></form:input>
 												<div class="invalid-feedback">${errTelefono}</div>
 											</div>
 										</div>
 										<div class="col-md-5 col-lg-3">
 											<div class="form-group">
-												<label class="form-label">Telefono</label> <input
-													type="text" name="telefono_centro" class="form-control"
-													placeholder="" />
-											</div>
-										</div>
-										<div class="col-md-5 col-lg-3">
-											<div class="form-group">
-												<label class="form-label">Capienza</label> <input
-													type="text" name="capienza_centro" class="form-control"
-													placeholder="" />
-												<form:input type="text" name="nome_centro"
-													class="form-control ${valid_capienza}" path="nomeAttivita"></form:input>
+												<label class="form-label">Capienza</label>
+												<form:input type="text" name="capienza"
+													class="form-control ${valid_capienza}" placeholder=""
+													path="capienza"></form:input>
 												<div class="invalid-feedback">${errCapienza}</div>
 											</div>
 										</div>
 										<div class="col-md-5 col-lg-3">
 											<div class="form-group">
 												<label class="form-label">Nome Responsabile</label> <input
-													type="text" name="nome_centro" class="form-control"
+													type="text" name="nome_responsabile" class="form-control"
 													placeholder="" />
 											</div>
 										</div>
@@ -173,7 +177,7 @@
 								<div class="card-footer text-right">
 									<button type="submit" class="btn btn-primary">Aggiungi</button>
 								</div>
-							</div>
+							</form:form>
 							<script>
 								require([ 'input-mask' ]);
 							</script>

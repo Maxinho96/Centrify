@@ -121,7 +121,7 @@
                                                 <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                                     <div class="form-group">
                                                         <label class="form-label">Nome</label>
-                                                        <form:input type="text" name="nome_allievo" class="form-control ${valid_nome}" placeholder="" path="nome"></form:input>
+                                                        <form:input type="text" name="nome_centro" class="form-control ${valid_nome}" placeholder="" path="nome"></form:input>
                                                     	<div class="invalid-feedback">${errNome}</div>
                                                     </div>      
                                                 </div>
