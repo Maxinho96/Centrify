@@ -1,7 +1,9 @@
 package it.mdm.centrify.model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,37 +15,40 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderBy;
 
 @Entity
 public class Azienda {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@Column(nullable = false, unique = true)
 	private String nome;
-	
+
 	@Column(nullable = false)
 	private String indirizzo;
-	
+
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "azienda_id")
 	private List<Allievo> allievi;
-	
-	@OneToMany(mappedBy = "azienda", cascade = CascadeType.ALL)
-	private List<Centro> centri;
-	
+
+	@OrderBy("nome")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "azienda")
+	private Set<Centro> centri;
+
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Direttore direttore;
-	
-	public Azienda() {};
+
+	public Azienda() {
+	};
 
 	public Azienda(String nome, String indirizzo) {
 		this.nome = nome;
 		this.indirizzo = indirizzo;
 		this.allievi = new ArrayList<Allievo>();
-		this.centri = new ArrayList<Centro>();
+		this.centri = new HashSet<Centro>();
 	}
 
 	public Long getId() {
@@ -74,11 +79,11 @@ public class Azienda {
 		this.allievi = allievi;
 	}
 
-	public List<Centro> getCentri() {
+	public Set<Centro> getCentri() {
 		return centri;
 	}
 
-	public void setCentri(List<Centro> centri) {
+	public void setCentri(Set<Centro> centri) {
 		this.centri = centri;
 	}
 
@@ -89,21 +94,45 @@ public class Azienda {
 	public void setDirettore(Direttore direttore) {
 		this.direttore = direttore;
 	}
-	
+
 	public void addCentro(Centro centro) {
 		this.centri.add(centro);
 	}
-	
+
 	public void addAllievo(Allievo allievo) {
 		this.allievi.add(allievo);
 	}
-	
+
 	public boolean containsAllievoWithEmail(String email) {
-		for(Allievo a : this.allievi) {
-			if(a.getEmail().equals(email))
+		for (Allievo a : this.allievi) {
+			if (a.getEmail().equals(email))
 				return true;
 		}
 		return false;
 	}
-	
+
+	public Centro getCentroByNome(String nome) {
+		for (Centro c : this.centri) {
+			if (c.getNome().equals(nome))
+				return c;
+		}
+		return null;
+	}
+
+	public boolean containsCentroWithName(String nome) {
+
+		for (Centro c : this.centri) {
+			if (c.getNome().equals(nome))
+				return true;
+		}
+		return false;
+	}
+	public boolean containsCentroWithEmail(String email) {
+		for (Centro c : this.centri) {
+			if (c.getEmail().equals(email))
+				return true;
+		}
+		return false;
+	}
+
 }

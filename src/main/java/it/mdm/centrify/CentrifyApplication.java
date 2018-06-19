@@ -8,24 +8,25 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 @SpringBootApplication
 
 public class CentrifyApplication extends SpringBootServletInitializer {
-	
-//	@Autowired
-//	private AziendaService aziendaService;
-	
+
+//	 @Autowired
+//	 private AziendaService aziendaService;
+
 	@Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(CentrifyApplication.class);
-    }
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(CentrifyApplication.class);
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(CentrifyApplication.class, args);
 	}
-	
+
+
 //	@PostConstruct
 //	public void init() {
 //		
 //		Azienda azienda = new Azienda("Centrify", "Via Giuseppe Rossi, 80");
-//		Centro centro1 = new Centro("Scuola Garibaldi", "Via Giuseppe Mazzini, 32", "garib@school.it", "06 823 2693", 12);
+//		Centro centro1 = new Centro("Scuola Garibaldi", "Via Giuseppe Mazzini, 32", "garib@school.it", "06 823 2693", 12, "Centro moderno situato in una zona tranquilla.");
 //		Responsabile responsabile1 = new Responsabile("Marco", "Rossi", 1300f, "104563227110019");
 //		// 100003246565067
 //		
@@ -34,7 +35,7 @@ public class CentrifyApplication extends SpringBootServletInitializer {
 //		azienda.addCentro(centro1);
 //		centro1.setAzienda(azienda);
 //		
-//		Centro centro2 = new Centro("Scuola Berlusconi", "Via Marco Salvini, 69", "berlusca@school.it", "06 823 2645", 14);
+//		Centro centro2 = new Centro("Scuola Berlusconi", "Via Marco Salvini, 69", "berlusca@school.it", "06 823 2645", 14, "Centro antico situato in una zona centrale della città.");
 //		Responsabile responsabile2 = new Responsabile("Massimo", "Ottavi", 1400f, "a");
 //		
 //		responsabile2.setCentro(centro2);
@@ -44,6 +45,7 @@ public class CentrifyApplication extends SpringBootServletInitializer {
 //		
 //		Direttore direttore = new Direttore("Paolo", "Atzeni", "118942502330805");
 //		azienda.setDirettore(direttore);
+//		direttore.setAzienda(azienda);
 //		
 //		Allievo allievo1 = new Allievo("Massimiliano", "Bruni", "mas.bruni@school.it", "331 123 4567", 1996, 6, 10, new Date(118, 6, 4), "Roma", 'M');
 //		azienda.addAllievo(allievo1);
@@ -76,5 +78,5 @@ public class CentrifyApplication extends SpringBootServletInitializer {
 //				
 //		this.aziendaService.save(azienda);
 //	}
-	
+
 }
