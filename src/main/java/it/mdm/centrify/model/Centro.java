@@ -42,13 +42,13 @@ public class Centro {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private Responsabile responsabile;
+	
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-
 	@JoinColumn(name = "centro_id")
 	@OrderBy("nomeAttivita")
 	private Set<Attivita> attivita;
 
-	@OneToOne
+	@ManyToOne
 	private Azienda azienda;
 
 	public Centro() {
