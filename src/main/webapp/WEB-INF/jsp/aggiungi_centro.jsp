@@ -70,17 +70,17 @@
 										<span class="avatar-status bg-green"></span>
 								</span> <span class="ml-2 d-none d-lg-block"> <span
 										class="text-default">${direttore.nome}
-											${direttore.cognome}</span> <small
-										class="text-muted d-block mt-1">Direttore</small>
+											${direttore.cognome}</span> <small class="text-muted d-block mt-1">Direttore</small>
 								</span>
 								</a>
 								<div
 									class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
 									<form id="logoutForm" method="post" action="/logout">
-  													<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> 
-  													<a class="dropdown-item" onclick="document.getElementById('logoutForm').submit();">
-  														<i class="dropdown-icon fe fe-log-out"></i> Sign out
-  													</a>
+										<input type="hidden" name="${_csrf.parameterName}"
+											value="${_csrf.token}" /> <a class="dropdown-item"
+											onclick="document.getElementById('logoutForm').submit();">
+											<i class="dropdown-icon fe fe-log-out"></i> Sign out
+										</a>
 									</form>
 								</div>
 							</div>
@@ -107,7 +107,6 @@
 					</div>
 				</div>
 			</div>
-			<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 			<div class="my-3 my-md-5">
 				<div class="container">
 					<div class="row">
@@ -152,8 +151,11 @@
 										<div class="col-md-5 col-lg-3">
 											<div class="form-group">
 												<label class="form-label">Telefono</label>
-                                                        <form:input type="text" name="telefono" class="form-control ${valid_telefono}" data-mask="000 000 0000" data-mask-clearifnotmatch="true" placeholder="335 123 4567" path="telefono"></form:input>
-                                                    	<div class="invalid-feedback">${errTelefono}</div>
+												<form:input type="text" name="telefono"
+													class="form-control ${valid_telefono}"
+													data-mask="000 000 0000" data-mask-clearifnotmatch="true"
+													placeholder="335 123 4567" path="telefono"></form:input>
+												<div class="invalid-feedback">${errTelefono}</div>
 											</div>
 										</div>
 										<div class="col-md-5 col-lg-3">
@@ -174,13 +176,13 @@
 												<div class="invalid-feedback">${errDescrizione}</div>
 											</div>
 										</div>
+										<div class="card-footer text-right">
+											<button type="submit" class="btn btn-primary">Aggiungi</button>
+										</div>
 									</div>
 								</div>
+							</form:form>
 						</div>
-						<div class="card-footer text-right">
-							<button type="submit" class="btn btn-primary">Aggiungi</button>
-						</div>
-						</form:form>
 						<script>
 							require([ 'input-mask' ]);
 						</script>
