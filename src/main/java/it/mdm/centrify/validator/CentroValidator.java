@@ -24,6 +24,9 @@ public class CentroValidator {
 		indirizzo.trim();
 		email.trim();
 
+		String pattern_email = "[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}";
+		String pattern_telefono = "^[0-9]{3} [0-9]{3} [0-9]{4}$";
+
 		if (isStringInvalid(nome)) {
 			valid = false;
 			m.addAttribute("errNome", "Campo obbligatorio");
@@ -45,10 +48,15 @@ public class CentroValidator {
 			valid = false;
 			m.addAttribute("errEmail", "Campo obbligatorio");
 			m.addAttribute("valid_email", "is-invalid");
-
+		} else if (!email.matches(pattern_email)) {
+			valid = false;
+			m.addAttribute("errEmail", "Compila correttamente");
+			m.addAttribute("valid_email", "is-invalid");
 		}
 
-		if (capienza == null) {
+		if (capienza == null)
+
+		{
 			valid = false;
 			m.addAttribute("errCapienza", "Campo obbligatorio");
 			m.addAttribute("valid_capienza", "is-invalid");
@@ -56,6 +64,10 @@ public class CentroValidator {
 			if (isStringInvalid(telefono)) {
 				valid = false;
 				m.addAttribute("errTelefono", "Campo obbligatorio");
+				m.addAttribute("valid_telefono", "is-invalid");
+			} else if (!telefono.matches(pattern_telefono)) {
+				valid = false;
+				m.addAttribute("errTelefono", "Compila correttamente");
 				m.addAttribute("valid_telefono", "is-invalid");
 			}
 
