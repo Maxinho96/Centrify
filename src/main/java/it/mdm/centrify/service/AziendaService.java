@@ -21,13 +21,18 @@ public class AziendaService {
 	}
 	
 	@Transactional
-	public Azienda get(Long id) {
+	public Azienda getOne(Long id) {
 		Optional<Azienda> azienda =this.aziendaRepository.findById(id);
 		if(azienda.isPresent())
 			return azienda.get();
 		else
 			return null;
 	}
+	
+//	@Transactional
+//	public List<Allievo> getAllieviByNomeOrCognome(String nome, String cognome) {
+//		return this.aziendaRepository.findAllieviByNomeOrCognome(nome, cognome);
+//	}
 	
 
 }

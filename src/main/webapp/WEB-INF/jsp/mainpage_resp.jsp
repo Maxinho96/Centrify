@@ -35,14 +35,6 @@
                 <link href="/assets/css/dashboard.css" rel="stylesheet" />
                 <script src="/assets/js/dashboard.js"></script>
 
-                <!-- c3.js Charts Plugin -->
-                <link href="/assets/plugins/charts-c3/plugin.css" rel="stylesheet" />
-                <script src="/assets/plugins/charts-c3/plugin.js"></script>
-
-                <!-- Google Maps Plugin -->
-                <link href="/assets/plugins/maps-google/plugin.css" rel="stylesheet" />
-                <script src="/assets/plugins/maps-google/plugin.js"></script>
-
                 <!-- Input Mask Plugin -->
                 <script src="/assets/plugins/input-mask/plugin.js"></script>
 
@@ -58,7 +50,7 @@
                                     </a>
                                     <div class="d-flex order-lg-2 ml-auto">
                                         <div class="dropdown">
-                                            <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown"> 
+                                            <a href="" class="nav-link pr-0 leading-none" data-toggle="dropdown"> 
                                                 <span class="avatar" style="background-image: url(/assets/images/profile_resp.png)">
                                                     <span class="avatar-status bg-green"></span>
                                                 </span> 
@@ -68,13 +60,16 @@
                                                 </span>
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                <a class="dropdown-item" href="#"> 
-                                                    <i class="dropdown-icon fe fe-user"></i> Profilo 
-                                                </a>
-                                                <a class="dropdown-item" href="#"> 
+                                                <!--a class="dropdown-item" href="/logout"> 
                                                     <i class="dropdown-icon fe fe-log-out"></i> Sign out
-                                                </a>
-                                            </div>
+                                                </a-->
+                                                <form id="logoutForm" method="post" action="/logout">
+  													<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> 
+  													<a class="dropdown-item" onclick="document.getElementById('logoutForm').submit();">
+  														<i class="dropdown-icon fe fe-log-out"></i> Sign out
+  													</a>
+												</form>
+											</div>
                                         </div>
                                     </div>
                                     <a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#headerMenuCollapse"> 
@@ -87,8 +82,8 @@
                             <div class="container">
                                 <div class="row align-items-center">
                                     <div class="col-lg-3 ml-auto">
-                                        <form class="input-icon my-3 my-lg-0">
-                                            <input type="search" class="form-control header-search" placeholder="Cerca allievo&hellip;" tabindex="1">
+                                        <form class="input-icon my-3 my-lg-0" action="/submit_ricercaAllievo">
+                                            <input type="search" name="stringa_ricerca" class="form-control header-search" placeholder="Cerca allievo&hellip;" tabindex="1" method="get">
                                             <div class="input-icon-addon">
                                                 <i class="fe fe-search"></i>
                                             </div>
@@ -120,12 +115,12 @@
                             <div class="container">
                             	<c:forEach var="att" items="${attivita}">
 	                                <div class="row">
-	                                	<div class="col-lg-2"></div>
-                                        <div class="col-lg-8">
+	                                	<div class="col-lg-2 col-xl-2"></div>
+                                        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8">
                                             <div class="card">
                                                 <div class="card-status card-status-left bg-blue"></div>
                                                 <div class="card-header">
-                                                    <h3 class="card-title">${att.nome}</h3>
+                                                    <h3 class="card-title">${att.nomeAttivita}</h3>
                                                     <div class="card-options">
                                                         <a href="/scheda_attivita/${att.id}" class="btn btn-primary btn-sm">Apri</a>
                                                     </div>
@@ -142,16 +137,12 @@
 
                 <footer class="footer">
                     <div class="container">
-                        <div class="row align-items-center flex-row-reverse">
-                            <div class="col-auto ml-lg-auto">
-                                <div class="row align-items-center">
-                                    <div class="col-auto">
-                                        <a href="#" class="btn btn-outline-primary btn-sm">Source code</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
+                        <div class="row align-items-center">
+                            <div class="col-10">
                                 Sviluppato con amore da Marco Berbeglia, Diego Barbieri e Massimiliano Bruni
+                            </div>
+                            <div class="col-2 text-right">
+                            	<a href="https://bitbucket.org/marcoBerb/progetto_siw/" class="btn btn-outline-primary btn-sm">Source code</a>
                             </div>
                         </div>
                     </div>

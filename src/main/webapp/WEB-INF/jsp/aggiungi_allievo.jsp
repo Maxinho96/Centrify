@@ -35,15 +35,6 @@
             <link href="/assets/css/dashboard.css" rel="stylesheet" />
             <script src="/assets/js/dashboard.js"></script>
 
-
-            <!-- c3.js Charts Plugin -->
-            <link href="/assets/plugins/charts-c3/plugin.css" rel="stylesheet" />
-            <script src="/assets/plugins/charts-c3/plugin.js"></script>
-
-            <!-- Google Maps Plugin -->
-            <link href="/assets/plugins/maps-google/plugin.css" rel="stylesheet" />
-            <script src="/assets/plugins/maps-google/plugin.js"></script>
-
             <!-- Input Mask Plugin -->
             <script src="/assets/plugins/input-mask/plugin.js"></script>
 
@@ -59,22 +50,25 @@
                                 </a>
                                 <div class="d-flex order-lg-2 ml-auto">
                                     <div class="dropdown">
-                                        <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
+                                        <a href="" class="nav-link pr-0 leading-none" data-toggle="dropdown">
                                             <span class="avatar" style="background-image: url(/assets/images/profile_resp.png)">
                                                 <span class="avatar-status bg-green"></span>
                                             </span>
                                             <span class="ml-2 d-none d-lg-block">
-                                                <span class="text-default">Marco Rossi</span>
+                                                <span class="text-default">${responsabile.nome} ${responsabile.cognome}</span>
                                                 <small class="text-muted d-block mt-1">Responsabile</small>
                                             </span>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">
-                                                <i class="dropdown-icon fe fe-user"></i> Profilo
-                                            </a>
-                                            <a class="dropdown-item" href="/logout">
-                                                <i class="dropdown-icon fe fe-log-out"></i> Sign out
-                                            </a>
+                                        		<!--a class="dropdown-item" href="/logout"> 
+                                                    <i class="dropdown-icon fe fe-log-out"></i> Sign out
+                                                </a-->
+                                                <form id="logoutForm" method="post" action="/logout">
+  													<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> 
+  													<a class="dropdown-item" onclick="document.getElementById('logoutForm').submit();">
+  														<i class="dropdown-icon fe fe-log-out"></i> Sign out
+  													</a>
+												</form>
                                         </div>
                                     </div>           
                                 </div>
@@ -88,12 +82,12 @@
                         <div class="container">
                             <div class="row align-items-center">
                                 <div class="col-lg-3 ml-auto">
-                                    <form class="input-icon my-3 my-lg-0">
-                                        <input type="search" class="form-control header-search" placeholder="Cerca allievo&hellip;" tabindex="1">
-                                        <div class="input-icon-addon">
-                                            <i class="fe fe-search"></i>
-                                        </div>
-                                    </form>
+                                    <form class="input-icon my-3 my-lg-0" action="/submit_ricercaAllievo">
+                                            <input type="search" name="stringa_ricerca" class="form-control header-search" placeholder="Cerca allievo&hellip;" tabindex="1" method="get">
+                                            <div class="input-icon-addon">
+                                                <i class="fe fe-search"></i>
+                                            </div>
+                                        </form>
                                 </div>
                                 <div class="col-lg order-lg-first">
                                     <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
@@ -116,27 +110,29 @@
                     <div class="my-3 my-md-5">
                         <div class="container">
                             <div class="row">
-                                <div class="col-lg-2 col-xl-2"></div>
-                                <div class="col-lg-8 col-xl-8">
+                                <div class="col-xl-2"></div>
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-8">
                                     <form:form class="card" action="/submit_aggiungi_allievo" method="POST" modelAttribute="allievo">
                                         <div class="card-header">
                                             <h3 class="card-title">Nuovo allievo</h3>
                                         </div>
                                         <div class="card-body">
                                             <div class="row">
-                                                <div class="col-md-3 col-lg-3">
+                                                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                                     <div class="form-group">
                                                         <label class="form-label">Nome</label>
-                                                        <form:input type="text" name="nome_allievo" class="form-control" placeholder="" path="nome"></form:input>
+                                                        <form:input type="text" name="nome_allievo" class="form-control ${valid_nome}" placeholder="" path="nome"></form:input>
+                                                    	<div class="invalid-feedback">${errNome}</div>
                                                     </div>      
                                                 </div>
-                                                <div class="col-md-3 col-lg-3">
+                                                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                                     <div class="form-group">
                                                         <label class="form-label">Cognome</label>
-                                                        <form:input type="text" name="cognome_allievo" class="form-control" placeholder="" path="cognome"></form:input> 
+                                                        <form:input type="text" name="cognome_allievo" class="form-control ${valid_cognome}" placeholder="" path="cognome"></form:input> 
+                                                    	<div class="invalid-feedback">${errCognome}</div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3 col-lg-3">
+                                                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                                     <div class="form-group">
                                                         <div class="form-label">Sesso</div>
                                                         <div class="custom-controls-stacked">
@@ -153,27 +149,28 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-5 col-lg-5">
+                                                <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5">
                                                     <div class="form-group">
                                                         <label class="form-label">Email</label>
-                                                        <form:input type="text" name="email" class="form-control ${valid}" placeholder="email@posta.com" path="email"></form:input>
-                                                        <div class="invalid-feedback">Email già registrata</div>
+                                                        <form:input type="text" name="email" class="form-control ${valid_email}" placeholder="email@posta.com" path="email"></form:input>
+                                                        <div class="invalid-feedback">${errEmail}</div>
                                                     </div>   
                                                 </div>
-                                                <div class="col-md-3 col-lg-3">
+                                                <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
                                                     <div class="form-group">
                                                         <label class="form-label">Cellulare</label>
-                                                        <form:input type="text" name="cellulare" class="form-control" data-mask="000 000 0000" data-mask-clearifnotmatch="true" placeholder="335 123 4567" path="cellulare"></form:input>
+                                                        <form:input type="text" name="cellulare" class="form-control ${valid_cellulare}" data-mask="000 000 0000" data-mask-clearifnotmatch="true" placeholder="335 123 4567" path="cellulare"></form:input>
+                                                    	<div class="invalid-feedback">${errCellulare}</div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-7 col-lg-7">
+                                                <div class="col-sm-12 col-md-7 col-lg-7 col-xl-7">
                                                     <div class="form-group">
                                                         <label class="form-label">Data di nascita</label>
                                                         <div class="row gutters-xs">
-                                                            <div class="col-4">
-                                                                <form:select name="giorno_nascita" class="form-control custom-select" path="giorno_nascita">
+                                                            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                                                <form:select name="giorno_nascita" class="form-control custom-select ${valid_giorno}" path="giorno_nascita">
                                                                     <option value="" selected="selected">Giorno</option>
                                                                     <option value="1">1</option>
                                                                     <option value="2">2</option>
@@ -207,9 +204,10 @@
                                                                     <option value="30">30</option>
                                                                     <option value="31">31</option>
                                                                 </form:select>
+                                                                <div class="invalid-feedback">${errGiorno}</div>
                                                             </div>
-                                                            <div class="col-4">
-                                                                <form:select name="mese_nascita" class="form-control custom-select" path="mese_nascita">
+                                                            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                                                <form:select name="mese_nascita" class="form-control custom-select ${valid_mese}" path="mese_nascita">
                                                                     <option value="" selected="selected">Mese</option>
                                                                     <option value="1">Gennaio</option>
                                                                     <option value="2">Febbraio</option>
@@ -224,9 +222,10 @@
                                                                     <option value="11">Novembre</option>
                                                                     <option value="12">Dicembre</option>
                                                                 </form:select>
+                                                                <div class="invalid-feedback">${errMese}</div>
                                                             </div>
-                                                            <div class="col-4">
-                                                                <form:select name="anno_nascita" class="form-control custom-select" path="anno_nascita">
+                                                            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                                                <form:select name="anno_nascita" class="form-control custom-select ${valid_anno}" path="anno_nascita">
                                                                     <option value="" selected="selected">Anno</option>
                                                                     <option value="2005">2005</option>
                                                                     <option value="2004">2004</option>
@@ -335,14 +334,16 @@
                                                                     <option value="1901">1901</option>
                                                                     <option value="1900">1900</option>
                                                                 </form:select>
+                                                                <div class="invalid-feedback">${errAnno}</div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4 col-lg-4">
+                                                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                                     <div class="form-group">
                                                         <label class="form-label">Città natale</label>
-                                                        <form:input type="text" name="citta" class="form-control" placeholder="" path="luogoDiNascita"></form:input>
+                                                        <form:input type="text" name="citta" class="form-control ${valid_luogo}" path="luogoDiNascita"></form:input>
+                                                    	<div class="invalid-feedback">${errLuogo}</div>	
                                                     </div>
                                                 </div>
                                             </div>
@@ -362,16 +363,12 @@
             </div>
             <footer class="footer">
                 <div class="container">
-                    <div class="row align-items-center flex-row-reverse">
-                        <div class="col-auto ml-lg-auto">
-                            <div class="row align-items-center">
-                                <div class="col-auto">
-                                    <a href="#" class="btn btn-outline-primary btn-sm">Source code</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
+                    <div class="row align-items-center">
+                        <div class="col-10">
                             Sviluppato con amore da Marco Berbeglia, Diego Barbieri e Massimiliano Bruni
+                        </div>
+                        <div class="col-2 text-right">
+                        	<a href="https://bitbucket.org/marcoBerb/progetto_siw/" class="btn btn-outline-primary btn-sm">Source code</a>
                         </div>
                     </div>
                 </div>

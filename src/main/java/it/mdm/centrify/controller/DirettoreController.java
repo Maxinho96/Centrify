@@ -40,9 +40,9 @@ public class DirettoreController {
 	}
 
 	@RequestMapping("/mainpage_d")
-	public String mainPageDir(@ModelAttribute("direttore") Direttore direttore, Model model, Principal principal) {
-		if (direttore == null) {
-			return "errore_dir";
+	public String mainPageDir(@ModelAttribute("direttore") Direttore direttore) {
+		if(direttore == null) {
+			return "redirect:errore_dir.html";
 		}
 		direttore = this.getDirettore(principal);
 		model.addAttribute("direttore", direttore);
@@ -53,8 +53,8 @@ public class DirettoreController {
 
 	@RequestMapping("/aggiungi_centro")
 	public String aggiungiCentro(@ModelAttribute("direttore") Direttore direttore, Model model) {
-		if (direttore == null) {
-			return "errore_dir";
+		if(direttore == null) {
+			return "redirect:errore_dir.html";
 		}
 		return "aggiungi_centro";
 	}

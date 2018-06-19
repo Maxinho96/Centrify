@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
     <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
     <html lang="en" dir="ltr">
         <head>
@@ -34,14 +35,6 @@
             <link href="/assets/css/dashboard.css" rel="stylesheet" />
             <script src="/assets/js/dashboard.js"></script>
 
-            <!-- c3.js Charts Plugin -->
-            <link href="/assets/plugins/charts-c3/plugin.css" rel="stylesheet" />
-            <script src="/assets/plugins/charts-c3/plugin.js"></script>
-
-            <!-- Google Maps Plugin -->
-            <link href="/assets/plugins/maps-google/plugin.css" rel="stylesheet" />
-            <script src="/assets/plugins/maps-google/plugin.js"></script>
-
             <!-- Input Mask Plugin -->
             <script src="/assets/plugins/input-mask/plugin.js"></script>
 
@@ -57,23 +50,27 @@
                                 </a>
                                 <div class="d-flex order-lg-2 ml-auto">
                                     <div class="dropdown">
-                                        <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
+                                        <a href="" class="nav-link pr-0 leading-none" data-toggle="dropdown">
                                             <span class="avatar" style="background-image: url(/assets/images/profile_resp.png)">
                                                 <span class="avatar-status bg-green"></span>
                                             </span>
                                             <span class="ml-2 d-none d-lg-block">
-                                                <span class="text-default">Marco Rossi</span>
+                                                <span class="text-default">${responsabile.nome} ${responsabile.cognome}</span>
                                                 <small class="text-muted d-block mt-1">Responsabile</small>
                                             </span>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#">
-                                                <i class="dropdown-icon fe fe-user"></i> Profilo
-                                            </a>
-                                            <a class="dropdown-item" href="/logout">
-                                                <i class="dropdown-icon fe fe-log-out"></i> Sign out
-                                            </a>
+                                        		<!--a class="dropdown-item" href="/logout"> 
+                                                    <i class="dropdown-icon fe fe-log-out"></i> Sign out
+                                                </a-->
+                                                <form id="logoutForm" method="post" action="/logout">
+  													<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> 
+  													<a class="dropdown-item" onclick="document.getElementById('logoutForm').submit();">
+  														<i class="dropdown-icon fe fe-log-out"></i> Sign out
+  													</a>
+												</form>
                                         </div>
+                                    </div>
                                     </div>           
                                 </div>
                                 <a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#headerMenuCollapse">
@@ -86,8 +83,8 @@
                         <div class="container">
                             <div class="row align-items-center">
                                 <div class="col-lg-3 ml-auto">
-                                    <form class="input-icon my-3 my-lg-0">
-                                        <input type="search" class="form-control header-search" placeholder="Cerca allievo&hellip;" tabindex="1">
+                                    <form class="input-icon my-3 my-lg-0" action="/submit_ricercaAllievo">
+                                        <input type="search" name="stringa_ricerca" class="form-control header-search" placeholder="Cerca allievo&hellip;" tabindex="1" method="get">
                                         <div class="input-icon-addon">
                                             <i class="fe fe-search"></i>
                                         </div>
@@ -114,28 +111,29 @@
                     <div class="my-3 my-md-5">
                         <div class="container">
                             <div class="row">
-                                <div class="col-lg-2 col-xl-2"></div>
-                                <div class="col-lg-8 col-xl-8">
-                                    <div class="card">
+                                <div class="col-xl-2"></div>
+                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-8">
+                                    <form:form class="card" action="/submit_aggiungi_attivita" method="POST" modelAttribute="attivita">
                                         <div class="card-header">
                                             <h3 class="card-title">Nuova attività</h3>
                                         </div>
                                         <div class="card-body">
                                             <div class="row">
-                                                <div class="col-md-5 col-lg-5">
+                                                <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5">
                                                     <div class="form-group">
                                                         <label class="form-label">Nome</label>
-                                                        <input type="text" name="nome_attivita" class="form-control" placeholder="" />
+                                                        <form:input type="text" name="nome_attivita" class="form-control ${valid_nomeAttivita}" path="nomeAttivita"></form:input>
+                                                        <div class="invalid-feedback">${errNomeAttivita}</div>
                                                     </div>      
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-7 col-lg-6">
+                                                <div class="col-sm-12 col-md-7 col-lg-6 col-xl-6">
                                                     <div class="form-group">
                                                         <label class="form-label">Data svolgimento</label>
                                                         <div class="row gutters-xs">
-                                                            <div class="col-4">
-                                                                <select name="giorno_svolgimento" class="form-control custom-select">
+                                                            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                                                <form:select name="giorno_svolgimento" class="form-control custom-select ${valid_giorno}" path="giorno_svolgimento">
                                                                     <option value="" selected="selected">Giorno</option>
                                                                     <option value="1">1</option>
                                                                     <option value="2">2</option>
@@ -168,10 +166,11 @@
                                                                     <option value="29">29</option>
                                                                     <option value="30">30</option>
                                                                     <option value="31">31</option>
-                                                                </select>
+                                                                </form:select>
+                                                                <div class="invalid-feedback">${errGiorno}</div>
                                                             </div>
-                                                            <div class="col-4">
-                                                                <select name="mese_svolgimento" class="form-control custom-select">
+                                                            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                                                <form:select name="mese_svolgimento" class="form-control custom-select ${valid_mese}" path="mese_svolgimento">
                                                                     <option value="" selected="selected">Mese</option>
                                                                     <option value="1">Gennaio</option>
                                                                     <option value="2">Febbraio</option>
@@ -185,36 +184,38 @@
                                                                     <option value="10">Ottobre</option>
                                                                     <option value="11">Novembre</option>
                                                                     <option value="12">Dicembre</option>
-                                                                </select>
+                                                                </form:select>
+                                                                <div class="invalid-feedback">${errMese}</div>
                                                             </div>
-                                                            <div class="col-3">
-                                                                <select name="anno_svolgimento" class="form-control custom-select">
+                                                            <div class="col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                                                                <form:select name="anno_svolgimento" class="form-control custom-select ${valid_anno}" path="anno_svolgimento">
                                                                     <option value="" selected="selected">Anno</option>
-                                                                    <option value="2005">2018</option>
-                                                                    <option value="2005">2019</option>
-                                                                    <option value="2005">2020</option>
-                                                                </select>
+                                                                    <option value="2018">2018</option>
+                                                                    <option value="2019">2019</option>
+                                                                    <option value="2020">2020</option>
+                                                                </form:select>
+                                                                <div class="invalid-feedback">${errAnno}</div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 col-lg-4">
+                                                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                                     <div class="form-group">
                                                         <label class="form-label">Orario svolgimento</label>
                                                         <div class="row gutters-xs">
-                                                            <div class="col-4">
-                                                                <select name="ora_svolgimento" class="form-control custom-select">
+                                                            <div class="col-sm-12 col-md-5 col-lg-4 col-xl-4">
+                                                                <form:select name="ora_svolgimento" class="form-control custom-select ${valid_ora}" path="ora_svolgimento">
                                                                     <option value="" selected="selected">Ore</option>
-                                                                    <option value="0">00</option>
-                                                                    <option value="1">01</option>
-                                                                    <option value="2">02</option>
-                                                                    <option value="3">03</option>
-                                                                    <option value="4">04</option>
-                                                                    <option value="5">05</option>
-                                                                    <option value="6">06</option>
-                                                                    <option value="7">07</option>
-                                                                    <option value="8">08</option>
-                                                                    <option value="9">09</option>
+                                                                    <option value="00">00</option>
+                                                                    <option value="01">01</option>
+                                                                    <option value="02">02</option>
+                                                                    <option value="03">03</option>
+                                                                    <option value="04">04</option>
+                                                                    <option value="05">05</option>
+                                                                    <option value="06">06</option>
+                                                                    <option value="07">07</option>
+                                                                    <option value="08">08</option>
+                                                                    <option value="09">09</option>
                                                                     <option value="10">10</option>
                                                                     <option value="11">11</option>
                                                                     <option value="12">12</option>
@@ -229,21 +230,22 @@
                                                                     <option value="21">21</option>
                                                                     <option value="22">22</option>
                                                                     <option value="23">23</option>
-                                                                </select>
+                                                                </form:select>
+                                                                <div class="invalid-feedback">${errOra}</div>
                                                             </div>
-                                                            <div class="col-4">
-                                                                <select name="minuto_svolgimento" class="form-control custom-select">
+                                                            <div class="col-sm-12 col-md-5 col-lg-4 col-xl-4">
+                                                                <form:select name="minuto_svolgimento" class="form-control custom-select ${valid_minuto}" path="minuto_svolgimento">
                                                                     <option value="" selected="selected">Min</option>
-                                                                    <option value="0">00</option>
-                                                                    <option value="1">01</option>
-                                                                    <option value="2">02</option>
-                                                                    <option value="3">03</option>
-                                                                    <option value="4">04</option>
-                                                                    <option value="5">05</option>
-                                                                    <option value="6">06</option>
-                                                                    <option value="7">07</option>
-                                                                    <option value="8">08</option>
-                                                                    <option value="9">09</option>
+                                                                    <option value="00">00</option>
+                                                                    <option value="01">01</option>
+                                                                    <option value="02">02</option>
+                                                                    <option value="03">03</option>
+                                                                    <option value="04">04</option>
+                                                                    <option value="05">05</option>
+                                                                    <option value="06">06</option>
+                                                                    <option value="07">07</option>
+                                                                    <option value="08">08</option>
+                                                                    <option value="09">09</option>
                                                                     <option value="10">10</option>
                                                                     <option value="11">11</option>
                                                                     <option value="12">12</option>
@@ -294,32 +296,36 @@
                                                                     <option value="28">57</option>
                                                                     <option value="29">58</option>
                                                                     <option value="30">59</option>
-                                                                </select>
+                                                                </form:select>
+                                                                <div class="invalid-feedback">${errMinuto}</div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-5 col-lg-3">
+                                                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                                     <div class="form-group">
                                                         <label class="form-label">Nome professore</label>
-                                                        <input type="text" name="nome_professore" class="form-control" placeholder="" />
+                                                        <form:input type="text" name="nome_professore" class="form-control ${valid_nomeProf}" path="nomeProfessore"></form:input>
+                                                        <div class="invalid-feedback">${errNomeProf}</div>
                                                     </div>      
                                                 </div>
-                                                <div class="col-md-5 col-lg-3">
+                                                <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                                     <div class="form-group">
                                                         <label class="form-label">Cognome professore</label>
-                                                        <input type="text" name="cognome_professore" class="form-control" placeholder="" />
+                                                        <form:input type="text" name="cognome_professore" class="form-control ${valid_cognomeProf}" path="cognomeProfessore"></form:input>
+                                                        <div class="invalid-feedback">${errCognomeProf}</div>
                                                     </div>      
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-12 col-lg-12">
+                                                <div class="col-12">
                                                     <div class="form-group">
                                                         <label class="form-label">Descrizione
                                                         </label>
-                                                        <textarea class="form-control" name="descrizione" rows="3" placeholder="Inserisci descrizione..."></textarea>
+                                                        <form:textarea class="form-control ${valid_descrizione}" name="descrizione" rows="3" placeholder="Inserisci descrizione..." path="descrizione"></form:textarea>
+                                                    	<div class="invalid-feedback">${errDescrizione}</div>
                                                     </div>    
                                                 </div>
                                             </div>
@@ -327,7 +333,7 @@
                                         <div class="card-footer text-right">
                                             <button type="submit" class="btn btn-primary">Aggiungi</button>
                                         </div>
-                                    </div>
+                                    </form:form>
                                     <script>
                                         require(['input-mask']);
                                     </script>
@@ -339,16 +345,12 @@
             </div>
             <footer class="footer">
                 <div class="container">
-                    <div class="row align-items-center flex-row-reverse">
-                        <div class="col-auto ml-lg-auto">
-                            <div class="row align-items-center">
-                                <div class="col-auto">
-                                    <a href="#" class="btn btn-outline-primary btn-sm">Source code</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
+                    <div class="row align-items-center">
+                        <div class="col-10">
                             Sviluppato con amore da Marco Berbeglia, Diego Barbieri e Massimiliano Bruni
+                        </div>
+                        <div class="col-2 text-right">
+                        	<a href="https://bitbucket.org/marcoBerb/progetto_siw/" class="btn btn-outline-primary btn-sm">Source code</a>
                         </div>
                     </div>
                 </div>

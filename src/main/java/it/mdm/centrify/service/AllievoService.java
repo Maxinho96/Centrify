@@ -1,5 +1,6 @@
 package it.mdm.centrify.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,11 @@ public class AllievoService {
 	private AllievoRepository allievoRepository;
 	
 	@Transactional
+	public void save(Allievo allievo) {
+		this.allievoRepository.save(allievo);
+	}
+		
+	@Transactional
 	public Allievo getOne(Long id) {
 		Optional<Allievo> allievo = this.allievoRepository.findById(id);
 		if(allievo.isPresent()) {
@@ -26,13 +32,9 @@ public class AllievoService {
 		}
 	}
 
-//	@Transactional
-//	public Allievo addAllievo(Allievo allievo) {
-//		Optional<Allievo> a = this.allievoRepository.findByEmail(allievo.getEmail());
-//		if(a.isPresent())
-//			return null;
-//		else
-//			return this.allievoRepository.save(allievo);
-//	}
+	@Transactional
+	public List<Allievo> getByAziendaAndNomeOrCognome(Long azienda_id, String nome, String cognome) {
+		return this.allievoRepository.findByAziendaAndNomeOrCognome(azienda_id, nome, cognome);
+	}
 	
 }

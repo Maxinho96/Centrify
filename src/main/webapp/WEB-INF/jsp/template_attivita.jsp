@@ -21,29 +21,20 @@
                         <link rel="icon" href="/assets/images/favicon.png" type="image/x-icon" />
                         <link rel="shortcut icon" href="/assets/images/favicon.png" type="image/x-icon" />
 
-                        <title>${attivita.nome}</title>
+                        <title>${attivita.nomeAttivita}</title>
 
                         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
                         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
                         <script src="/assets/js/require.min.js"></script>
                         <script>
                             requirejs.config({
-                                baseUrl : '.'
+                                baseUrl : '..'
                             });
                         </script>
 
                         <!-- Dashboard Core -->
                         <link href="/assets/css/dashboard.css" rel="stylesheet" />
                         <script src="/assets/js/dashboard.js"></script>
-
-
-                        <!-- c3.js Charts Plugin -->
-                        <link href="/assets/plugins/charts-c3/plugin.css" rel="stylesheet" />
-                        <script src="/assets/plugins/charts-c3/plugin.js"></script>
-
-                        <!-- Google Maps Plugin -->
-                        <link href="/assets/plugins/maps-google/plugin.css" rel="stylesheet" />
-                        <script src="/assets/plugins/maps-google/plugin.js"></script>
 
                         <!-- Input Mask Plugin -->
                         <script src="/assets/plugins/input-mask/plugin.js"></script>
@@ -60,22 +51,25 @@
                                             </a>
                                             <div class="d-flex order-lg-2 ml-auto">
                                                 <div class="dropdown">
-                                                    <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
+                                                    <a href="" class="nav-link pr-0 leading-none" data-toggle="dropdown">
                                                         <span class="avatar" style="background-image: url(/assets/images/profile_resp.png)">
                                                             <span class="avatar-status bg-green"></span>
                                                         </span>
                                                         <span class="ml-2 d-none d-lg-block"> 
-                                                            <span class="text-default">Marco Rossi</span> 
+                                                            <span class="text-default">${responsabile.nome} ${responsabile.cognome}</span> 
                                                             <small class="text-muted d-block mt-1">Responsabile</small>
                                                         </span>
                                                     </a>
                                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                        <a class="dropdown-item" href="#">
-                                                            <i class="dropdown-icon fe fe-user"></i> Profilo
-                                                        </a>
-                                                        <a class="dropdown-item" href="#"> 
-                                                            <i class="dropdown-icon fe fe-log-out"></i> Sign out
-                                                        </a>
+                                                        <!--a class="dropdown-item" href="/logout"> 
+                                                    <i class="dropdown-icon fe fe-log-out"></i> Sign out
+                                                </a-->
+                                                <form id="logoutForm" method="post" action="/logout">
+  													<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> 
+  													<a class="dropdown-item" onclick="document.getElementById('logoutForm').submit();">
+  														<i class="dropdown-icon fe fe-log-out"></i> Sign out
+  													</a>
+												</form>
                                                     </div>
                                                 </div>
                                             </div>
@@ -89,8 +83,8 @@
                                     <div class="container">
                                         <div class="row align-items-center">
                                             <div class="col-lg-3 ml-auto">
-                                                <form class="input-icon my-3 my-lg-0">
-                                                    <input type="search" class="form-control header-search" placeholder="Cerca allievo&hellip;" tabindex="1">
+                                                <form class="input-icon my-3 my-lg-0" action="/submit_ricercaAllievo">
+                                                    <input type="search" name="stringa_ricerca" class="form-control header-search" placeholder="Cerca allievo&hellip;" tabindex="1" method="get">
                                                     <div class="input-icon-addon">
                                                         <i class="fe fe-search"></i>
                                                     </div>
@@ -99,7 +93,7 @@
                                             <div class="col-lg order-lg-first">
                                                 <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
                                                     <li class="nav-item">
-                                                        <a href="/mainpage_r" class="nav-link active">
+                                                        <a href="/mainpage_r" class="nav-link">
                                                             <i class="fe fe-home"></i> Home
                                                         </a>
                                                     </li>
@@ -121,23 +115,21 @@
                                 <div class="my-3 my-md-5">
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-md-1 col-lg-1"></div>
-                                            <div class="col-md-6 col-lg-4">
+                                            <div class="col-lg-1 col-xl-1"></div>
+                                            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                                                 <div class="card">
                                                     <div class="card-header">
-                                                        <h1 class="page-title">${attivita.nome}</h1>
+                                                        <h1 class="page-title">${attivita.nomeAttivita}</h1>
                                                     </div>
                                                     <div class="card-body">
                                                         <p>${attivita.descrizione}</p>
                                                         <p>
-                                                            <fmt:formatDate value="${attivita.dataOraSvolgimento}" var="data" type="date" pattern="dd/MM/yyyy" />
                                                             <span class="card-title">Data: </span> 
-                                                            <span>${data}</span>
+                                                            <span>${attivita.giorno_svolgimento}/${attivita.mese_svolgimento}/${attivita.anno_svolgimento}</span>
                                                         </p>
                                                         <p>	
-                                                            <fmt:formatDate value="${attivita.dataOraSvolgimento}" var="ora" type="time" pattern="H:m" />
                                                             <span class="card-title">Orario: </span>
-                                                            <span>${ora}</span>
+                                                            <span>${attivita.ora_svolgimento}:${attivita.minuto_svolgimento}</span>
                                                         </p>
                                                         <p>
                                                             <span class="card-title">Docente: </span>
@@ -147,12 +139,12 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-6">
+                                            <div class="col-sm-12 col-md-8 col-lg-6 col-xl-6">
                                                 <div class="row row-cards row-deck">
                                                     <div class="col-12">
                                                         <div class="card">
                                                             <div class="card-header">
-                                                                <h1 class="card-title">Utenti iscritti</h1>
+                                                                <h1 class="card-title">Allievi iscritti</h1>
                                                             </div>
                                                             <div class="table-responsive">
                                                                 <table class="table table-hover table-outline table-vcenter text-nowrap card-table">
@@ -195,21 +187,17 @@
                             </div>
                         </div>
 
-                        <footer class="footer">
-                            <div class="container">
-                                <div class="row align-items-center flex-row-reverse">
-                                    <div class="col-auto ml-lg-auto">
-                                        <div class="row align-items-center">
-                                            <div class="col-auto">
-                                                <a href="#" class="btn btn-outline-primary btn-sm">Source code</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
-                                        Sviluppato con amore da Marco Berbeglia, Diego Barbieri e Massimiliano Bruni
-                                    </div>
-                                </div>
-                            </div>
-                        </footer>
+		                <footer class="footer">
+		                    <div class="container">
+		                        <div class="row align-items-center">
+		                            <div class="col-10">
+		                                Sviluppato con amore da Marco Berbeglia, Diego Barbieri e Massimiliano Bruni
+		                            </div>
+		                            <div class="col-2 text-right">
+		                            	<a href="https://bitbucket.org/marcoBerb/progetto_siw/" class="btn btn-outline-primary btn-sm">Source code</a>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </footer>
                     </body>
                 </html>

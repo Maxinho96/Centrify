@@ -1,3 +1,5 @@
 # progetto_siw
 
-progetto universitario per la materia sistemi informativi su web PORCO DIO
+Progetto universitario per la materia Sistemi Informativi su Web
+
+Contributors: Marco Berbeglia, Jorge Diego Barbieri Alvarez, Massimiliano Bruni

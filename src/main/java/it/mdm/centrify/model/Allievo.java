@@ -34,7 +34,7 @@ public class Allievo {
 	@Column(nullable = false)
 	private String cellulare;
 	
-	//li ho messi per matchare con gli attributi della jsp al posto di dataIscrizione
+	//li ho messi per matchare con gli attributi della jsp al posto di dataNascita
 	@Column(nullable = false)
 	private int giorno_nascita;
 	
@@ -55,7 +55,7 @@ public class Allievo {
 	private Character sesso;
 	
 	@ManyToMany(mappedBy = "allievi", fetch = FetchType.EAGER)
-	@OrderBy("nome")
+	@OrderBy("nomeAttivita")
 	private Set<Attivita> attivita;
 	
 	public Allievo() {};
@@ -78,7 +78,7 @@ public class Allievo {
 	public Long getId() {
 		return id;
 	}
-
+	
 	public String getNome() {
 		return nome;
 	}
