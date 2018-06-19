@@ -144,7 +144,7 @@
 											<div class="form-group">
 												<label class="form-label">Email</label>
 												<form:input type="text" name="email"
-													class="form-control ${valid_email}" placeholder=""
+													class="form-control ${valid_email}" placeholder="email@posta.com"
 													path="email"></form:input>
 												<div class="invalid-feedback">${errEmail}</div>
 											</div>
