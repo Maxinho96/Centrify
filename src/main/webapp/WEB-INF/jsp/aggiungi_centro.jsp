@@ -107,7 +107,7 @@
 					</div>
 				</div>
 			</div>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+			<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 			<div class="my-3 my-md-5">
 				<div class="container">
 					<div class="row">
@@ -152,10 +152,8 @@
 										<div class="col-md-5 col-lg-3">
 											<div class="form-group">
 												<label class="form-label">Telefono</label>
-												<form:input type="text" name="telefono"
-													class="form-control ${valid_telefono}" placeholder=""
-													path="telefono"></form:input>
-												<div class="invalid-feedback">${errTelefono}</div>
+                                                        <form:input type="text" name="telefono" class="form-control ${valid_telefono}" data-mask="000 000 0000" data-mask-clearifnotmatch="true" placeholder="335 123 4567" path="telefono"></form:input>
+                                                    	<div class="invalid-feedback">${errTelefono}</div>
 											</div>
 										</div>
 										<div class="col-md-5 col-lg-3">
@@ -167,7 +165,7 @@
 												<div class="invalid-feedback">${errCapienza}</div>
 											</div>
 										</div>
-										<div class="col-md-5 col-lg-3">
+										<div class="col-12">
 											<div class="form-group">
 												<label class="form-label">Descrizione </label>
 												<form:textarea class="form-control ${valid_descrizione}"
@@ -178,18 +176,19 @@
 										</div>
 									</div>
 								</div>
-								<div class="card-footer text-right">
-									<button type="submit" class="btn btn-primary">Aggiungi</button>
-								</div>
-							</form:form>
-							<script>
-								require([ 'input-mask' ]);
-							</script>
 						</div>
+						<div class="card-footer text-right">
+							<button type="submit" class="btn btn-primary">Aggiungi</button>
+						</div>
+						</form:form>
+						<script>
+							require([ 'input-mask' ]);
+						</script>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 	<footer class="footer">
 	<div class="container">
