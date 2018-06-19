@@ -47,8 +47,6 @@ public class Centro {
 	@JoinColumn(name = "centro_id")
 	@OrderBy("nome")
 	private Set<Attivita> attivita;
-	
-	public Centro() {};
 
 	public Centro() {
 	};
@@ -126,5 +124,5 @@ public class Centro {
 	public void addAttivita(Attivita attivita) {
 		this.attivita.add(attivita);
 	}
-	
+
 }
