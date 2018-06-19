@@ -22,6 +22,7 @@ import it.mdm.centrify.validator.CentroValidator;
 
 @Controller
 @SessionAttributes("direttore")
+@Component
 public class DirettoreController {
 
 	@Autowired
@@ -30,7 +31,6 @@ public class DirettoreController {
 	@Autowired
 	private CentroService centroService;
 	
-	@Component
 	private CentroValidator centroValidator;
 
 	@ModelAttribute("direttore")
