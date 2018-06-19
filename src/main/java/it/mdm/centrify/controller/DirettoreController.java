@@ -124,6 +124,6 @@ public class DirettoreController {
 		this.centroService.save(centro);
 		Long id_centro = azienda.getCentroByNome(centro.getNome()).getId();
 	
-		return "redirect:/scheda_attivita/"+id_centro;
+		return "redirect:/scheda_centro/"+id_centro;
 	}
 }
