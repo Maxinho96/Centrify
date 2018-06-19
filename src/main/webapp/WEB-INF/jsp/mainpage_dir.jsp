@@ -55,24 +55,29 @@
 						</a>
 						<div class="d-flex order-lg-2 ml-auto">
 							<div class="dropdown">
-								<a href="" class="nav-link pr-0 leading-none"
-									data-toggle="dropdown"> <span class="avatar"
-									style="background-image: url(/assets/images/profile_resp.png)">
-										<span class="avatar-status bg-green"></span>
-								</span> <span class="ml-2 d-none d-lg-block"> <span
-										class="text-default">${direttore.nome}
-											${direttore.cognome}</span> <small class="text-muted d-block mt-1">Direttore</small>
+								<a href="#" class="nav-link pr-0 leading-none"
+									data-toggle="dropdown">
+								<span class="avatar" style="background-image: url(/assets/images/profile_resp.png)">
+									<span class="avatar-status bg-green"></span>
+								</span>
+								<span class="ml-2 d-none d-lg-block">
+									<span class="text-default">${direttore.nome} ${direttore.cognome}</span>
+									<small class="text-muted d-block mt-1">Direttore</small>
 								</span>
 								</a>
 								<div
 									class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-									<a class="dropdown-item" href="#"> <i
-										class="dropdown-icon fe fe-user"></i> Profilo
-									</a> <a class="dropdown-item" href="#"> <i
-										class="dropdown-icon fe fe-log-out"></i> Sign out
-									</a>
+									<!--a class="dropdown-item" href="/logout"> 
+                                    	<i class="dropdown-icon fe fe-log-out"></i> Sign out
+                                    </a-->
+									<form id="logoutForm" method="post" action="/logout">
+										<input type="hidden" name="${_csrf.parameterName}"
+											value="${_csrf.token}" /> <a class="dropdown-item"
+											onclick="document.getElementById('logoutForm').submit();">
+											<i class="dropdown-icon fe fe-log-out"></i> Sign out
+										</a>
+									</form>
 								</div>
-							</div>
 						</div>
 						<a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0"
 							data-toggle="collapse" data-target="#headerMenuCollapse"> <span
