@@ -48,7 +48,7 @@ public class Centro {
 	@OrderBy("nomeAttivita")
 	private Set<Attivita> attivita;
 
-	@ManyToOne
+	@OneToOne
 	private Azienda azienda;
 
 	public Centro() {
