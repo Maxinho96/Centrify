@@ -2,10 +2,12 @@ package it.mdm.centrify.validator;
 
 import java.util.regex.Pattern;
 
+import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
 import it.mdm.centrify.model.Centro;
 
+@Component
 public class CentroValidator {
 	public boolean validate(Centro c, Model m) {
 		boolean valid = true;
