@@ -35,8 +35,7 @@ public class Azienda {
 	private List<Allievo> allievi;
 
 	@OrderBy("nome")
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "azienda_id")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "azienda")
 	private Set<Centro> centri;
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
