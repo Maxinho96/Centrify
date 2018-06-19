@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" dir="ltr">
 <head>
@@ -129,12 +130,18 @@
 												<label class="form-label">Indirizzo</label> <input
 													type="text" name="indirizzo_centro" class="form-control"
 													placeholder="" />
+												<form:input type="text" name="nome_centro"
+													class="form-control ${valid_indirizzo}" path="nomeAttivita"></form:input>
+												<div class="invalid-feedback">${errIndirizzo}</div>
 											</div>
 										</div>
 										<div class="col-md-5 col-lg-3">
 											<div class="form-group">
 												<label class="form-label">Email</label> <input type="text"
 													name="email_centro" class="form-control" placeholder="" />
+												<form:input type="text" name="nome_centro"
+													class="form-control ${valid_telefono}" path="nomeAttivita"></form:input>
+												<div class="invalid-feedback">${errTelefono}</div>
 											</div>
 										</div>
 										<div class="col-md-5 col-lg-3">
@@ -149,6 +156,9 @@
 												<label class="form-label">Capienza</label> <input
 													type="text" name="capienza_centro" class="form-control"
 													placeholder="" />
+												<form:input type="text" name="nome_centro"
+													class="form-control ${valid_capienza}" path="nomeAttivita"></form:input>
+												<div class="invalid-feedback">${errCapienza}</div>
 											</div>
 										</div>
 										<div class="col-md-5 col-lg-3">

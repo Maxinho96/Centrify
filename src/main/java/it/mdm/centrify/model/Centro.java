@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -47,7 +48,7 @@ public class Centro {
 	@OrderBy("nomeAttivita")
 	private Set<Attivita> attivita;
 
-	@OneToOne
+	@ManyToOne
 	private Azienda azienda;
 
 	public Centro() {
@@ -118,10 +119,10 @@ public class Centro {
 	public Set<Attivita> getAttivita() {
 		return attivita;
 	}
-	
+
 	public Attivita getAttivitaByNome(String nome) {
-		for(Attivita a : this.attivita) {
-			if(a.getNomeAttivita().equals(nome))
+		for (Attivita a : this.attivita) {
+			if (a.getNomeAttivita().equals(nome))
 				return a;
 		}
 		return null;
@@ -144,23 +145,23 @@ public class Centro {
 	}
 
 	public boolean containsAttivitaWithName(String nome) {
-		
-		for(Attivita a : this.attivita) {
-			if(a.getNomeAttivita().equals(nome))
+
+		for (Attivita a : this.attivita) {
+			if (a.getNomeAttivita().equals(nome))
 				return true;
 		}
-		
+
 		return false;
 	}
-	
+
 	public Attivita getAttivitaById(Long id) {
-		for(Attivita a : this.attivita) {
-			if(a.getId() == id)
+		for (Attivita a : this.attivita) {
+			if (a.getId() == id)
 				return a;
 		}
 		return null;
 	}
-	
+
 	public Azienda getAzienda() {
 		return azienda;
 	}
