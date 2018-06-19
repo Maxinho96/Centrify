@@ -211,10 +211,12 @@
 												<c:forEach var="att" items="${attivitaAssegnabili}">
 													<option value="${att.id}">${att.nomeAttivita}</option>
 												</c:forEach>
-											</select> <span class="input-group-append">
+											</select> 
+											<span class="input-group-append">
 												<button type="submit" class="btn btn-primary">Assegna</button>
 											</span>
 										</div>
+										<span style="margin-left:25px; margin-bottom:5px; color:red;">${errAssegna}</span>	
 									</form>
 								</div>
 							</div>
