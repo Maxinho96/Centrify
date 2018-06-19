@@ -125,7 +125,22 @@ public class ResponsabileController {
 			return "redirect:/scheda_allievo/"+idAllievo;
 		}
 		
+		List<Allievo> allieviCentro = new ArrayList<Allievo>();
+		for(Attivita at : responsabile.getCentro().getAttivita()) {
+			for(Allievo al: at.getAllievi()) {
+				if(!allieviCentro.contains(al))
+					allieviCentro.add(al);
+			}
+		}
+		
 		Allievo allievo = this.allievoService.getOne(idAllievo);
+		
+		if(!allieviCentro.contains(allievo) && allieviCentro.size() >= responsabile.getCentro().getCapienza()) {
+			redAtt.addFlashAttribute("errAssegna", "Raggiunta capienza massima del centro");
+			return "redirect:/scheda_allievo/"+idAllievo;
+		}
+		
+		
 		Attivita attivitaDaAggiungere = this.attivitaService.getOne(idAttivita);
 		
 		if(attivitaDaAggiungere == null) {
@@ -137,8 +152,7 @@ public class ResponsabileController {
 		
 		allievoService.save(allievo);
 		attivitaService.save(attivitaDaAggiungere);
-		
-		
+
 		return "redirect:/scheda_allievo/"+idAllievo;
 	}
 	

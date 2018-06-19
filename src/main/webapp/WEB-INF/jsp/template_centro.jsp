@@ -77,7 +77,7 @@
 								</a>
 								<div
 									class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-									<form id="logoutForm" method="post" action="/logout">
+									<form id="logoutForm" method="post" action="/logout" style="cursor:pointer;">
 										<input type="hidden" name="${_csrf.parameterName}"
 											value="${_csrf.token}" /> <a class="dropdown-item"
 											onclick="document.getElementById('logoutForm').submit();">
@@ -100,7 +100,7 @@
 						<div class="col-lg order-lg-first">
 							<ul class="nav nav-tabs border-0 flex-column flex-lg-row">
 								<li class="nav-item"><a href="/mainpage_d"
-									class="nav-link active"> <i class="fe fe-home"></i> Home
+									class="nav-link"> <i class="fe fe-home"></i> Home
 								</a></li>
 								<li class="nav-item"><a href="/aggiungi_centro"
 									class="nav-link"> <i class="fe fe-user-plus"></i> Aggiungi
@@ -122,14 +122,22 @@
 								</div>
 								<div class="card-body">
 									<p>${centro.descrizione}</p>
-									Capienza:
-									<p>${centro.capienza}</p>
-									Email:
-									<p>${centro.email}</p>
-									Telefono:
-									<p>${centro.telefono}</p>
-									Indirizzo :
-									<p>${centro.indirizzo}</p>
+									<p>
+                                    	<span class="card-title">Capienza: </span> 
+                                        <span>${centro.capienza}</span>
+                                    </p>
+									<p>
+                                    	<span class="card-title">Email: </span> 
+                                        <span>${centro.email}</span>
+                                    </p>
+									<p>
+                                    	<span class="card-title">Telefono: </span> 
+                                        <span>${centro.telefono}</span>
+                                    </p>
+									<p>
+                                    	<span class="card-title">Indirizzo: </span> 
+                                        <span>${centro.indirizzo}</span>
+                                    </p>
 								</div>
 							</div>
 						</div>
@@ -182,17 +190,13 @@
 
 	<footer class="footer">
 	<div class="container">
-		<div class="row align-items-center flex-row-reverse">
-			<div class="col-auto ml-lg-auto">
-				<div class="row align-items-center">
-					<div class="col-auto">
-						<a href="#" class="btn btn-outline-primary btn-sm">Source code</a>
-					</div>
-				</div>
+		<div class="row align-items-center">
+			<div class="col-10">Sviluppato con amore da Marco Berbeglia,
+				Diego Barbieri e Massimiliano Bruni</div>
+			<div class="col-2 text-right">
+				<a href="https://bitbucket.org/marcoBerb/progetto_siw/"
+					class="btn btn-outline-primary btn-sm">Source code</a>
 			</div>
-			<div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
-				Sviluppato con amore da Marco Berbeglia, Diego Barbieri e
-				Massimiliano Bruni</div>
 		</div>
 	</div>
 	</footer>
