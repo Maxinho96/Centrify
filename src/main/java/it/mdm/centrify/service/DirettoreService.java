@@ -11,17 +11,26 @@ import it.mdm.centrify.repository.DirettoreRepository;
 
 @Service
 public class DirettoreService {
-	
+
 	@Autowired
 	private DirettoreRepository direttoreRepository;
 
 	@Transactional
 	public Direttore getByOauthIdentifier(String oauthIdentifier) {
 		Optional<Direttore> direttore = this.direttoreRepository.findByOauthIdentifier(oauthIdentifier);
-		if(direttore.isPresent()) {
+		if (direttore.isPresent()) {
 			return direttore.get();
+		} else {
+			return null;
 		}
-		else {
+	}
+
+	@Transactional
+	public Direttore getOne(Long id) {
+		Optional<Direttore> direttore = this.direttoreRepository.findById(id);
+		if (direttore.isPresent()) {
+			return direttore.get();
+		} else {
 			return null;
 		}
 	}

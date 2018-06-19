@@ -1,9 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" dir="ltr">
 <head>
-<meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -23,7 +24,7 @@
 <link rel="shortcut icon" href="/assets/images/favicon.png"
 	type="image/x-icon" />
 
-<title>Aggiungi Centro</title>
+<title>${centro.nome}</title>
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -32,13 +33,14 @@
 <script src="/assets/js/require.min.js"></script>
 <script>
 	requirejs.config({
-		baseUrl : '.'
+		baseUrl : '..'
 	});
 </script>
 
 <!-- Dashboard Core -->
 <link href="/assets/css/dashboard.css" rel="stylesheet" />
 <script src="/assets/js/dashboard.js"></script>
+
 
 <!-- c3.js Charts Plugin -->
 <link href="/assets/plugins/charts-c3/plugin.css" rel="stylesheet" />
@@ -58,7 +60,7 @@
 			<div class="header py-4">
 				<div class="container">
 					<div class="d-flex">
-						<a class="header-brand" href="/mainpage_r"> <img
+						<a class="header-brand" href="/mainpage_dir"> <img
 							src="/assets/images/logo_title.png" class="header-brand-img"
 							alt="Centrify logo">
 						</a>
@@ -97,11 +99,13 @@
 					<div class="row align-items-center">
 						<div class="col-lg order-lg-first">
 							<ul class="nav nav-tabs border-0 flex-column flex-lg-row">
-								<li class="nav-item"><a href="/mainpage_d" class="nav-link"><i
-										class="fe fe-home"></i> Home</a></li>
+								<li class="nav-item"><a href="/mainpage_d"
+									class="nav-link active"> <i class="fe fe-home"></i> Home
+								</a></li>
 								<li class="nav-item"><a href="/aggiungi_centro"
-									class="nav-link active"><i class="fe fe-user-plus"></i>
-										Aggiungi Centro</a></li>
+									class="nav-link"> <i class="fe fe-user-plus"></i> Aggiungi
+										Centro
+								</a></li>
 							</ul>
 						</div>
 					</div>
@@ -110,88 +114,72 @@
 			<div class="my-3 my-md-5">
 				<div class="container">
 					<div class="row">
-						<div class="col-xl-2"></div>
-						<div class="col-sm-12 col-md-12 col-lg-12 col-xl-8">
-							<form:form class="card" action="/submit_aggiungi_centro"
-								method="POST" modelAttribute="centro">
+						<div class="col-md-1 col-lg-1"></div>
+						<div class="col-md-6 col-lg-4">
+							<div class="card">
 								<div class="card-header">
-									<h3 class="card-title">Nuovo Centro</h3>
+									<h1 class="page-title">${centro.nome}</h1>
 								</div>
 								<div class="card-body">
-									<div class="row">
-										<div class="col-md-5 col-lg-5">
-											<div class="form-group">
-												<label class="form-label">Nome</label>
-												<form:input type="text" name="nome"
-													class="form-control ${valid_nome}" placeholder=""
-													path="nome"></form:input>
-												<div class="invalid-feedback">${errNome}</div>
-											</div>
+									<p>${centro.descrizione}</p>
+									Capienza:
+									<p>${centro.capienza}</p>
+									Email:
+									<p>${centro.email}</p>
+									Telefono:
+									<p>${centro.telefono}</p>
+									Indirizzo :
+									<p>${centro.indirizzo}</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-6">
+							<div class="row row-cards row-deck">
+								<div class="col-12">
+									<div class="card">
+										<div class="card-header">
+											<h1 class="card-title">Responsabile</h1>
 										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-5 col-lg-3">
-											<div class="form-group">
-												<label class="form-label">Indirizzo</label>
-												<form:input type="text" name="indirizzo"
-													class="form-control ${valid_indirizzo}" placeholder=""
-													path="indirizzo"></form:input>
-												<div class="invalid-feedback">${errIndirizzo}</div>
-											</div>
-										</div>
-										<div class="col-md-5 col-lg-3">
-											<div class="form-group">
-												<label class="form-label">Email</label>
-												<form:input type="text" name="email"
-													class="form-control ${valid_email}" placeholder="email@posta.com"
-													path="email"></form:input>
-												<div class="invalid-feedback">${errEmail}</div>
-											</div>
-										</div>
-										<div class="col-md-5 col-lg-3">
-											<div class="form-group">
-												<label class="form-label">Telefono</label>
-												<form:input type="text" name="telefono"
-													class="form-control ${valid_telefono}"
-													data-mask="000 000 0000" data-mask-clearifnotmatch="true"
-													placeholder="335 123 4567" path="telefono"></form:input>
-												<div class="invalid-feedback">${errTelefono}</div>
-											</div>
-										</div>
-										<div class="col-md-5 col-lg-3">
-											<div class="form-group">
-												<label class="form-label">Capienza</label>
-												<form:input type="text" name="capienza"
-													class="form-control ${valid_capienza}" placeholder=""
-													path="capienza"></form:input>
-												<div class="invalid-feedback">${errCapienza}</div>
-											</div>
-										</div>
-										<div class="col-12">
-											<div class="form-group">
-												<label class="form-label">Descrizione </label>
-												<form:textarea class="form-control ${valid_descrizione}"
-													name="descrizione" rows="3"
-													placeholder="Inserisci descrizione..." path="descrizione"></form:textarea>
-												<div class="invalid-feedback">${errDescrizione}</div>
-											</div>
-										</div>
-										<div class="card-footer text-right">
-											<button type="submit" class="btn btn-primary">Aggiungi</button>
+										<div class="table-responsive">
+											<table
+												class="table table-hover table-outline table-vcenter text-nowrap card-table">
+												<thead>
+													<tr>
+														<th class="text-center w-1"><i class="icon-people"></i></th>
+														<th>Nome</th>
+														<th>Cognome</th>
+														<th>Stipendio</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td class="text-center"><span
+															class="avatar avatar-cyan d-block">${fn:substring(centro.responsabile.nome, 0, 1)}${fn:substring(centro.responsabile.cognome, 0, 1)}</span>
+														</td>
+														<td>
+															<div>${centro.responsabile.nome}</div>
+														</td>
+														<td>
+															<div>${centro.responsabile.cognome}</div>
+														</td>
+														<td>
+															<div>${centro.responsabile.stipendio}</div>
+														</td>
+													</tr>
+												</tbody>
+											</table>
 										</div>
 									</div>
 								</div>
-							</form:form>
+							</div>
 						</div>
-						<script>
-							require([ 'input-mask' ]);
-						</script>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	</div>
+
 	<footer class="footer">
 	<div class="container">
 		<div class="row align-items-center flex-row-reverse">

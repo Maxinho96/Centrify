@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Direttore {
@@ -21,6 +22,9 @@ public class Direttore {
 	
 	@Column(nullable = false, unique = true)
 	private String oauthIdentifier;
+	
+	@OneToOne(mappedBy="direttore")
+	private Azienda azienda;
 	
 	public Direttore() {};
 
@@ -57,5 +61,14 @@ public class Direttore {
 	public void setOauthIdentifier(String oauthIdentifier) {
 		this.oauthIdentifier = oauthIdentifier;
 	}
+
+	public Azienda getAzienda() {
+		return azienda;
+	}
+
+	public void setAzienda(Azienda azienda) {
+		this.azienda = azienda;
+	}
+	
 
 }
