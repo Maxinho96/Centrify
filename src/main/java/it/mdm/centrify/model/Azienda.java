@@ -33,10 +33,12 @@ public class Azienda {
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "azienda_id")
 	private List<Allievo> allievi;
+	
 	@OrderBy("nome")
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "azienda_id")
 	private Set<Centro> centri;
+	
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Direttore direttore;
 

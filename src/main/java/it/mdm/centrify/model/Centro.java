@@ -48,6 +48,9 @@ public class Centro {
 	@OrderBy("nome")
 	private Set<Attivita> attivita;
 
+	@OneToOne
+	private Azienda azienda;
+
 	public Centro() {
 	};
 
@@ -124,5 +127,5 @@ public class Centro {
 	public void addAttivita(Attivita attivita) {
 		this.attivita.add(attivita);
 	}
-
+	
 }
