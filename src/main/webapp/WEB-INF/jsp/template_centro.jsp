@@ -60,7 +60,7 @@
 			<div class="header py-4">
 				<div class="container">
 					<div class="d-flex">
-						<a class="header-brand" href="/mainpage_dir"> <img
+						<a class="header-brand" href="/mainpage_d"> <img
 							src="/assets/images/logo_title.png" class="header-brand-img"
 							alt="Centrify logo">
 						</a>
