@@ -75,7 +75,7 @@
 								</a>
 								<div
 									class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-									<form id="logoutForm" method="post" action="/logout">
+									<form id="logoutForm" method="post" action="/logout" style="cursor:pointer;">
 										<input type="hidden" name="${_csrf.parameterName}"
 											value="${_csrf.token}" /> <a class="dropdown-item"
 											onclick="document.getElementById('logoutForm').submit();">
@@ -176,10 +176,10 @@
 												<div class="invalid-feedback">${errDescrizione}</div>
 											</div>
 										</div>
-										<div class="card-footer text-right">
-											<button type="submit" class="btn btn-primary">Aggiungi</button>
-										</div>
 									</div>
+								</div>
+								<div class="card-footer text-right">
+									<button type="submit" class="btn btn-primary">Aggiungi</button>
 								</div>
 							</form:form>
 						</div>
@@ -192,19 +192,15 @@
 		</div>
 	</div>
 	</div>
-	<footer class="footer">
+<footer class="footer">
 	<div class="container">
-		<div class="row align-items-center flex-row-reverse">
-			<div class="col-auto ml-lg-auto">
-				<div class="row align-items-center">
-					<div class="col-auto">
-						<a href="#" class="btn btn-outline-primary btn-sm">Source code</a>
-					</div>
-				</div>
+		<div class="row align-items-center">
+			<div class="col-10">Sviluppato con amore da Marco Berbeglia,
+				Diego Barbieri e Massimiliano Bruni</div>
+			<div class="col-2 text-right">
+				<a href="https://bitbucket.org/marcoBerb/progetto_siw/"
+					class="btn btn-outline-primary btn-sm">Source code</a>
 			</div>
-			<div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
-				Sviluppato con amore da Marco Berbeglia, Diego Barbieri e
-				Massimiliano Bruni</div>
 		</div>
 	</div>
 	</footer>

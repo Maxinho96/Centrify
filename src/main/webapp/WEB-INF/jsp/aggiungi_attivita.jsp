@@ -71,45 +71,41 @@
 									<!--a class="dropdown-item" href="/logout"> 
                                                     <i class="dropdown-icon fe fe-log-out"></i> Sign out
                                                 </a-->
-									<form id="logoutForm" method="post" action="/logout">
-										<input type="hidden" name="${_csrf.parameterName}"
-											value="${_csrf.token}" /> <a class="dropdown-item"
-											onclick="document.getElementById('logoutForm').submit();">
-											<i class="dropdown-icon fe fe-log-out"></i> Sign out
-										</a>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-					<a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0"
-						data-toggle="collapse" data-target="#headerMenuCollapse"> <span
-						class="header-toggler-icon"></span>
-					</a>
-				</div>
-			</div>
-		</div>
-		<div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
-			<div class="container">
-				<div class="row align-items-center">
-					<div class="col-lg-3 ml-auto">
-						<form class="input-icon my-3 my-lg-0"
-							action="/submit_ricercaAllievo">
-							<input type="search" name="stringa_ricerca"
-								class="form-control header-search"
-								placeholder="Cerca allievo&hellip;" tabindex="1" method="get">
-							<div class="input-icon-addon">
-								<i class="fe fe-search"></i>
-							</div>
-						</form>
-					</div>
-					<div class="col-lg order-lg-first">
-						<ul class="nav nav-tabs border-0 flex-column flex-lg-row">
-							<li class="nav-item"><a href="/mainpage_r" class="nav-link"><i
-									class="fe fe-home"></i> Home</a></li>
-							<li class="nav-item"><a href="/aggiungi_allievo"
-								class="nav-link"><i class="fe fe-user-plus"></i> Aggiungi
-									allievo</a></li>
+                                                <form id="logoutForm" method="post" action="/logout" style="cursor:pointer;">
+  													<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> 
+  													<a class="dropdown-item" onclick="document.getElementById('logoutForm').submit();">
+  														<i class="dropdown-icon fe fe-log-out"></i> Sign out
+  													</a>
+												</form>
+                                        </div>
+                                    </div>
+                                    </div>           
+                                </div>
+                                <a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#headerMenuCollapse">
+                                    <span class="header-toggler-icon"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <div class="col-lg-3 ml-auto">
+                                    <form class="input-icon my-3 my-lg-0" action="/submit_ricercaAllievo">
+                                        <input type="search" name="stringa_ricerca" class="form-control header-search" placeholder="Cerca allievo&hellip;" tabindex="1" method="get">
+                                        <div class="input-icon-addon">
+                                            <i class="fe fe-search"></i>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-lg order-lg-first">
+                                    <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
+                                        <li class="nav-item">
+                                            <a href="/mainpage_r" class="nav-link"><i class="fe fe-home"></i> Home</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="/aggiungi_allievo" class="nav-link"><i class="fe fe-user-plus"></i> Aggiungi allievo</a>
+                                        </li>
 
 							<li class="nav-item"><a href="/aggiungi_attivita"
 								class="nav-link active"><i class="fe fe-file-plus"></i>
