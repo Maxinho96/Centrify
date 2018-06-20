@@ -20,7 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 import it.mdm.centrify.model.Azienda;
 import it.mdm.centrify.model.Centro;
 import it.mdm.centrify.model.Direttore;
-import it.mdm.centrify.service.AziendaService;
 import it.mdm.centrify.service.CentroService;
 import it.mdm.centrify.service.DirettoreService;
 import it.mdm.centrify.validator.CentroValidator;
@@ -37,8 +36,6 @@ public class DirettoreController {
 
 	@Autowired
 	private CentroValidator centroValidator;
-
-	private AziendaService aziendaService;
 
 	@ModelAttribute("direttore")
 	public Direttore getDirettore(Principal principal) {
